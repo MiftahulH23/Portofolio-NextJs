@@ -7,6 +7,7 @@ export const portfolioData = {
     email: "miftahulh942@gmail.com",
     linkedin: "https://linkedin.com/in/miftahulhuda23",
     github: "https://github.com/MiftahulH23",
+    instagram: "https://instagram.com/miftahulhuda23_"
   },
   education: {
     institution: "Politekenik Caltex Riau",
@@ -34,7 +35,7 @@ export const portfolioData = {
       description:
         "Sistem informasi terintegrasi untuk mengelola dan mendokumentasikan prestasi mahasiswa, mulai dari pengajuan proposal lomba hingga pencatatan pencapaian.",
       technologies: [
-        "Laravel 12",
+        "Laravel",
         "Inertia.js",
         "React.js (JSX)",
         "TailwindCSS",
@@ -57,18 +58,18 @@ export const portfolioData = {
       ],
     },
     {
-      title: "Supply Chain Management System - Es Teh Indonesia",
-      role: "Full-Stack Developer",
-      description:
-        "Sistem manajemen rantai pasok untuk membantu mitra dan manajemen pusat dalam mengelola proses permintaan, stok, dan distribusi produk.",
-      technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
-    },
-    {
       title: "Dashboard Supply Chain & Redesign Website",
       role: "Full-Stack Developer",
       description:
         "Proyek akademis berfokus pada perancangan ulang website dan pengembangan dashboard SCM untuk meningkatkan pengalaman pengguna serta efisiensi operasional.",
       technologies: ["C#", ".Net", "JavaScript", "HTML", "CSS", "TailwindCSS"],
+    },
+    {
+      title: "Supply Chain Management System - Es Teh Indonesia",
+      role: "Full-Stack Developer",
+      description:
+        "Sistem manajemen rantai pasok untuk membantu mitra dan manajemen pusat dalam mengelola proses permintaan, stok, dan distribusi produk.",
+      technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
     },
   ],
   skills: {

@@ -14,9 +14,9 @@ export default function Skills() {
   const allSkills = Object.values(portfolioData.skills).flat();
 
   return (
-    <section id="skills" className="w-full py-12 md:py-24 lg:py-32">
+    <section id="skills" className="w-full py-6 md:py-12 lg:py-24">
       <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl text-center mb-12">
-        Teknologi yang Saya Kuasai
+        Keahlian & Teknologi
       </h2>
 
       {/* Menggunakan komponen Marquee yang baru di-install */}

@@ -49,10 +49,7 @@
 
   --animation: {
     scroll: 'scroll var(--animation-duration, 40s) linear infinite',
-    /* --- TAMBAHKAN ANIMASI BARU DI BAWAH INI --- */
-    marquee: 'marquee 25s linear infinite'
   };
-  /* === AKHIR PENAMBAHAN === */
 }
 
 :root {
@@ -128,9 +125,7 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
+  
 }
 
 /* === KEYFRAME UNTUK ANIMASI SCROLL === */
@@ -140,7 +135,9 @@
   }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-100%); }
+
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

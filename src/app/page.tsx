@@ -2,6 +2,7 @@ import Experience from "@/components/sections/Experience";
 import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
+import Education from "@/components/sections/Education";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <main className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Hero />
         <Skills />
+        <Education />
         <Experience />
         <Projects />
       </main>
@@ -18,8 +20,7 @@ export default function Home() {
       <footer className="w-full py-8 mt-16">
         <div className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 text-center">
           <p className="text-sm text-muted-foreground">
-            Dibuat dengan ❤️ oleh Miftahul Huda menggunakan Next.js & Tailwind
-            CSS.
+            &copy; 2025 Miftahul Huda
           </p>
         </div>
       </footer>
