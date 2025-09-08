@@ -2,8 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { portfolioData } from "@/lib/data";
-import { Briefcase } from "lucide-react";
 import { motion } from "framer-motion"; // Import motion
+import { Briefcase } from "lucide-react";
 
 export default function Experience() {
   return (

@@ -1,8 +1,8 @@
 "use client";
 
+import { Card, CardHeader, CardTitle } from "@/components/ui/card";
 import { portfolioData } from "@/lib/data";
 import { motion } from "framer-motion";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { GraduationCap } from "lucide-react";
 
 export default function Education() {

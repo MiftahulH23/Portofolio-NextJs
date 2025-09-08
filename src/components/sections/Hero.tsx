@@ -1,8 +1,7 @@
 "use client";
 
-import React from "react";
-import { HeroParallax } from "../ui/hero-parallax";
 import { portfolioData } from "@/lib/data";
+import { HeroParallax } from "../ui/hero-parallax";
 
 // Mengambil 5 proyek pertama untuk ditampilkan di parallax
 const products = portfolioData.projects.slice(0, 5).map(project => ({

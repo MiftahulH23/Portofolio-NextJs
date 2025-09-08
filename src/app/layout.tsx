@@ -1,11 +1,11 @@
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/sections/Header";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
-import ScrollToTopButton from "@/components/ui/ScrollToTopButton";
+import ScrollToTopButton from "@/components/ScrollToTopButton";
 
-const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
+// Kita tidak perlu import 'Inter' jika tidak digunakan secara langsung di sini
 
 export default function RootLayout({
   children,
@@ -13,20 +13,24 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    // 1. Tambahkan className="dark" di sini
-    // 2. Ubah style colorScheme menjadi 'dark'
-    <html lang="en" className="dark" style={{ colorScheme: 'dark' }}>
+    <html lang="en" suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen font-sans antialiased bg-background text-foreground"
         )}
       >
-        <CursorSpotlight />
-        <Header />
-        {children}
-        <ScrollToTopButton />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <CursorSpotlight />
+          <Header />
+          {children}
+          <ScrollToTopButton />
+        </ThemeProvider>
       </body>
     </html>
   );
 }
-

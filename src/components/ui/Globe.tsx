@@ -1,40 +1,24 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { Color, Scene } from "three";
+import React, { useEffect, useState } from "react";
+import { Color } from "three";
 import { useThree, Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import ThreeGlobe from "three-globe";
 
-// Tipe dan konfigurasi lainnya tetap sama
-type GlobeConfig = {
-  pointSize?: number;
-  globeColor?: string;
-  showAtmosphere?: boolean;
-  atmosphereColor?: string;
-  atmosphereAltitude?: number;
-  emissive?: string;
-  emissiveIntensity?: number;
-  shininess?: number;
-  polygonColor?: string;
-  ambientLight?: string;
-  directionalLeftLight?: string;
-  directionalTopLight?: string;
-  pointLight?: string;
-  arcTime?: number;
-  arcLength?: number;
-  rings?: number;
-  maxRings?: number;
-  initialDistance?: number;
-  autoRotate?: boolean;
-  autoRotateSpeed?: number;
+// 1. Definisikan tipe yang lebih spesifik untuk data GeoJSON
+type GeoJsonFeature = {
+  type: string;
+  properties: Record<string, unknown>;
+  geometry: Record<string, unknown>;
 };
+
+// ... (Tipe GlobeConfig tetap sama) ...
 
 type WorldProps = {
-  globeConfig: GlobeConfig;
-  data: any[];
+  data: GeoJsonFeature[];
 };
 
-const World: React.FC<WorldProps> = ({ globeConfig, data }) => {
+const World: React.FC<WorldProps> = ({ data }) => {
   const { scene } = useThree();
 
   useEffect(() => {
@@ -48,7 +32,8 @@ const World: React.FC<WorldProps> = ({ globeConfig, data }) => {
       .showAtmosphere(true)
       .atmosphereColor("#3a228a")
       .atmosphereAltitude(0.25)
-      .hexPolygonColor((e) => "#1b63c4");
+      // 2. Hapus parameter '_' yang tidak terpakai
+      .hexPolygonColor(() => "#1b63c4");
 
     globe.rotateY(-Math.PI * (5 / 9));
     globe.rotateZ(-Math.PI / 6);
@@ -66,12 +51,9 @@ const World: React.FC<WorldProps> = ({ globeConfig, data }) => {
 
     scene.add(globe);
 
-    // --- PERBAIKAN DI SINI ---
     return () => {
-      // Hapus baris globe.dispose() yang menyebabkan error
       scene.remove(globe);
     };
-    // --- AKHIR PERBAIKAN ---
   }, [data, scene]);
 
   return null;
@@ -98,7 +80,7 @@ export function GlobeDemo() {
           position={[-100, -100, -100]}
           intensity={0.8}
         />
-        <World globeConfig={{}} data={countries.features} />
+        <World data={countries.features} />
         <OrbitControls
           enableZoom={false}
           enablePan={false}
