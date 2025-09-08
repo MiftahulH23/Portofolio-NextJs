@@ -12,7 +12,9 @@ export const TextGenerateEffect = ({
   className?: string;
 }) => {
   const [scope, animate] = useAnimate();
-  let wordsArray = words.split(" ");
+  // Ganti 'let' menjadi 'const'
+  const wordsArray = words.split(" ");
+
   useEffect(() => {
     animate(
       "span",
@@ -24,7 +26,7 @@ export const TextGenerateEffect = ({
         delay: stagger(0.1),
       }
     );
-  }, [scope.current]);
+  }, [animate]); // Tambahkan 'animate' ke dependency array
 
   const renderWords = () => {
     return (
