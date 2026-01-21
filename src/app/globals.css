@@ -3,6 +3,20 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@layer utilities {
+  .spotlight {
+    background: radial-gradient(
+      circle at var(--x, 50%) var(--y, 50%),
+      rgba(255, 255, 255, 0.1) 0%,
+      transparent 80%
+    );
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500;
+  }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

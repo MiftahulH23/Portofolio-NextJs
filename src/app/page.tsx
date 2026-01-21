@@ -3,6 +3,7 @@ import Hero from "@/components/sections/Hero";
 import Projects from "@/components/sections/Projects";
 import Skills from "@/components/sections/Skills";
 import Education from "@/components/sections/Education";
+import About from "@/components/sections/About";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       {/* Container Utama untuk semua section */}
       <main className="container mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
         <Hero />
+        <About />
         <Skills />
         <Education />
         <Experience />
