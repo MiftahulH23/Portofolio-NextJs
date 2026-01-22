@@ -4,6 +4,7 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import Header from "@/components/sections/Header";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 
 // Kita tidak perlu import 'Inter' jika tidak digunakan secara langsung di sini
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <ScrollProgress />
           <CursorSpotlight />
           <Header />
           {children}

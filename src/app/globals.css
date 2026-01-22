@@ -16,6 +16,19 @@
     @apply bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-500;
   }
 }
+/* Efek Noise Overlay */
+.bg-noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 40;
+  opacity: 0.05; /* Sesuaikan transparansi, makin kecil makin halus */
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  filter: contrast(100%) brightness(100%);
+}
 
 @theme inline {
   --color-background: var(--background);

@@ -113,7 +113,7 @@ export default function About() {
             {[
               {
                 icon: GraduationCap,
-                title: "Lulusan Baru",
+                title: "Lulusan",
                 subtitle: portfolioData.education.institution,
                 meta: `GPA: ${portfolioData.education.gpa}`,
                 color: "text-blue-500",
