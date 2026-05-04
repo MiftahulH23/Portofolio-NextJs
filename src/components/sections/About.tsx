@@ -1,15 +1,19 @@
 "use client";
 import { portfolioData } from "@/lib/data";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Mail, Phone, Copy, Check, MapPin, GraduationCap, Monitor, Globe } from "lucide-react";
 import { useState } from "react";
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
+    transition: { 
+      duration: 0.55, 
+      delay: i * 0.1, 
+      ease: [0.16, 1, 0.3, 1] as const 
+    },
   }),
 };
 
