@@ -1,171 +1,179 @@
 "use client";
 import { portfolioData } from "@/lib/data";
 import { motion } from "framer-motion";
-import {
-  MapPin,
-  GraduationCap,
-  Briefcase,
-  Code,
-  Mail,
-  Phone,
-  Copy,
-  Check,
-} from "lucide-react";
+import { Mail, Phone, Copy, Check, MapPin, GraduationCap, Monitor, Globe } from "lucide-react";
 import { useState } from "react";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] },
+  }),
+};
 
 export default function About() {
   const [copied, setCopied] = useState(false);
 
-  const handleCopyEmail = () => {
+  const handleCopy = () => {
     navigator.clipboard.writeText(portfolioData.personalInfo.email);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const stats = [
+    { label: "Years Learning", value: "4+" },
+    { label: "Projects Built", value: `${portfolioData.projects.length}` },
+    { label: "GPA", value: portfolioData.education.gpa.split("/")[0] },
+  ];
+
+  const details = [
+    { Icon: MapPin, label: "Location", value: "Riau, Indonesia" },
+    { Icon: GraduationCap, label: "Education", value: portfolioData.education.institution },
+    { Icon: Monitor, label: "Degree", value: portfolioData.education.degree },
+    { Icon: Globe, label: "Availability", value: "Remote / On-site" },
+  ];
+
   return (
-    <section
-      id="about"
-      className="py-20 w-full bg-neutral-50/50 dark:bg-neutral-900/30 border-y border-neutral-200 dark:border-white/5"
-    >
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+    <section id="about" className="relative py-32 overflow-hidden">
+      {/* Divider */}
+      <div className="divider-glow" />
+      {/* Ambient glow */}
+      <div className="section-glow-left" />
+
+      <div className="max-w-5xl mx-auto px-6 pt-2">
+        <motion.p
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
+          className="section-label mb-14"
         >
-          {/* Kolom Kiri */}
-          <div className="flex flex-col h-full justify-between">
-            <div>
-              <h2 className="text-3xl font-bold text-neutral-900 dark:text-white mb-6 flex items-center gap-2">
-                <span className="text-blue-500">/</span> Tentang Saya
-              </h2>
+          01 — About
+        </motion.p>
 
-              <div className="space-y-4 text-neutral-600 dark:text-neutral-400 leading-relaxed text-lg mb-8">
-                <p>
-                  Halo! Saya{" "}
-                  <span className="text-neutral-900 dark:text-white font-semibold">
-                    {portfolioData.personalInfo.name}
-                  </span>
-                  .
-                </p>
-                <p>{portfolioData.personalInfo.summary}</p>
-              </div>
-            </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          {/* LEFT */}
+          <div>
+            <motion.h2
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight leading-tight mb-6"
+            >
+              {portfolioData.personalInfo.name}
+            </motion.h2>
 
-            {/* Kontak */}
-            <div className="mt-auto pt-6 border-t border-neutral-200 dark:border-neutral-800">
-              <h3 className="text-neutral-900 dark:text-white font-semibold mb-4 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse"></span>
-                Siap untuk Peluang Baru
-              </h3>
+            <motion.p
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="text-[#484848] leading-relaxed text-[0.95rem]"
+            >
+              {portfolioData.personalInfo.summary}
+            </motion.p>
 
-              <div className="flex flex-col gap-3">
-                {/* Email Card - Fix background & text color */}
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 transition-colors shadow-sm">
-                  <div className="p-2 bg-blue-500/10 rounded-md text-blue-600 dark:text-blue-500">
-                    <Mail size={20} />
-                  </div>
-                  <div className="flex-grow">
-                    <p className="text-xs text-neutral-500">Email</p>
+            {/* Stats row */}
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex gap-10 mt-12"
+            >
+              {stats.map((s) => (
+                <div key={s.label}>
+                  <p className="text-2xl font-bold text-[#e8e8e8] tracking-tight">{s.value}</p>
+                  <p className="text-[11px] text-[#383838] mt-1 tracking-widest uppercase font-semibold">
+                    {s.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* RIGHT */}
+          <div className="flex flex-col gap-5">
+            {/* Contact card */}
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="card-dark p-6"
+            >
+              <p className="section-label mb-5">Contact</p>
+              <div className="space-y-4">
+                {/* Email */}
+                <div className="flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-3">
+                    <Mail size={13} className="text-[#383838] flex-shrink-0" />
                     <a
                       href={`mailto:${portfolioData.personalInfo.email}`}
-                      className="text-sm text-neutral-800 dark:text-neutral-200 hover:text-blue-500 transition-colors"
+                      className="text-sm text-[#5a5a5a] hover:text-[#e8e8e8] transition-colors"
                     >
                       {portfolioData.personalInfo.email}
                     </a>
                   </div>
                   <button
-                    onClick={handleCopyEmail}
-                    className="p-2 text-neutral-400 hover:text-neutral-900 dark:hover:text-white transition-colors"
+                    onClick={handleCopy}
+                    className="text-[#2a2a2a] hover:text-[#666666] transition-colors flex-shrink-0"
+                    aria-label="Copy email"
                   >
                     {copied ? (
-                      <Check size={16} className="text-green-500" />
+                      <Check size={13} className="text-green-600" />
                     ) : (
-                      <Copy size={16} />
+                      <Copy size={13} />
                     )}
                   </button>
                 </div>
-
-                {/* Phone Card */}
-                <div className="flex items-center gap-3 p-3 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-green-500/50 transition-colors shadow-sm">
-                  <div className="p-2 bg-green-500/10 rounded-md text-green-600 dark:text-green-500">
-                    <Phone size={20} />
-                  </div>
-                  <div className="flex-grow">
-                    <p className="text-xs text-neutral-500">Phone / WhatsApp</p>
-                    <a
-                      href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
-                      target="_blank"
-                      className="text-sm text-neutral-800 dark:text-neutral-200 hover:text-green-500 transition-colors"
-                    >
-                      {portfolioData.personalInfo.phone}
-                    </a>
-                  </div>
+                {/* Phone */}
+                <div className="flex items-center gap-3">
+                  <Phone size={13} className="text-[#383838] flex-shrink-0" />
+                  <a
+                    href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-[#5a5a5a] hover:text-[#e8e8e8] transition-colors"
+                  >
+                    {portfolioData.personalInfo.phone}
+                  </a>
                 </div>
               </div>
-            </div>
-          </div>
+            </motion.div>
 
-          {/* Kolom Kanan: Stats Cards - Fix bg & text */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              {
-                icon: GraduationCap,
-                title: "Lulusan",
-                subtitle: portfolioData.education.institution,
-                meta: `GPA: ${portfolioData.education.gpa}`,
-                color: "text-blue-500",
-                bgMeta: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-              },
-              {
-                icon: Briefcase,
-                title: "Pengalaman",
-                subtitle: "Internship di Bank Riau Kepri Syariah",
-                meta: "Full-Stack Implementation",
-                color: "text-green-500",
-                bgMeta: "text-neutral-500",
-              },
-              {
-                icon: MapPin,
-                title: "Lokasi",
-                subtitle: "Riau, Indonesia",
-                meta: "Remote / On-site",
-                color: "text-red-500",
-                bgMeta: "text-neutral-500",
-              },
-              {
-                icon: Code,
-                title: "Fokus Utama",
-                subtitle: "Web Development",
-                meta: "Laravel & React Ecosystem",
-                color: "text-purple-500",
-                bgMeta: "text-neutral-500",
-              },
-            ].map((item, idx) => (
-              <div
-                key={idx}
-                className="p-5 rounded-xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 transition-colors group shadow-sm"
-              >
-                <item.icon
-                  className={`w-8 h-8 ${item.color} mb-3 group-hover:scale-110 transition-transform`}
-                />
-                <h3 className="font-bold text-neutral-900 dark:text-white">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mt-1">
-                  {item.subtitle}
-                </p>
-                <p
-                  className={`text-xs mt-2 ${item.bgMeta.includes("bg-") ? `inline-block px-2 py-1 rounded font-mono ${item.bgMeta}` : item.bgMeta}`}
-                >
-                  {item.meta}
-                </p>
+            {/* Details card */}
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="card-dark p-6"
+            >
+              <p className="section-label mb-5">Details</p>
+              <div className="space-y-3">
+                {details.map(({ Icon, label, value }) => (
+                  <div key={label} className="flex items-center justify-between gap-4 text-sm">
+                    <div className="flex items-center gap-2.5 text-[#2e2e2e]">
+                      <Icon size={12} />
+                      <span>{label}</span>
+                    </div>
+                    <span className="text-[#5a5a5a] text-right">{value}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </motion.div>
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

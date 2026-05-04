@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useCallback } from "react"; // Tambahkan useCallback
+import React, { useCallback, useEffect, useState } from "react"; // Tambahkan useCallback
 
 export const InfiniteMovingCards = ({
   items,

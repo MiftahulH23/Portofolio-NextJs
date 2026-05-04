@@ -1,12 +1,12 @@
 import "./globals.css";
-import { cn } from "@/lib/utils";
-import { ThemeProvider } from "@/components/ThemeProvider";
-import Header from "@/components/sections/Header";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import Ticker from "@/components/sections/Ticker";
 
-// Kita tidak perlu import 'Inter' jika tidak digunakan secara langsung di sini
+export const metadata = {
+  title: "Miftahul Huda — Full-Stack Developer",
+  description: "Portfolio of Miftahul Huda, a Full-Stack Web Developer focused on building modern, fast, and scalable web applications.",
+};
 
 export default function RootLayout({
   children,
@@ -14,24 +14,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={cn(
-          "min-h-screen font-sans antialiased bg-background text-foreground"
-        )}
-      >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          <ScrollProgress />
-          <CursorSpotlight />
-          <Header />
-          {children}
-          <ScrollToTopButton />
-        </ThemeProvider>
+    <html lang="en" className="dark" suppressHydrationWarning>
+      <body className="min-h-screen bg-[#080808] text-[#f0f0f0] antialiased grain">
+        <ScrollProgress />
+        <CursorSpotlight />
+        <Ticker />
+        {children}
       </body>
     </html>
   );

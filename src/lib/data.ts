@@ -3,7 +3,7 @@ export const portfolioData = {
     name: "Miftahul Huda",
     headline: "Full-Stack Web Developer",
     summary:
-      "Pengembang web dengan kemampuan Full-Stack yang adaptif terhadap berbagai teknologi modern. Memiliki pengalaman profesional dalam merancang arsitektur sistem yang aman dan user-friendly, mulai dari proyek akademis hingga aplikasi korporat di industri perbankan",
+      "A Full-Stack Web Developer with adaptive skills across modern technologies. I have professional experience designing secure and user-friendly system architectures — from academic projects to corporate applications in the banking industry.",
     email: "miftahulh942@gmail.com",
     phone: "+6282252209655",
     linkedin: "https://linkedin.com/in/miftahulhuda23",
@@ -11,85 +11,113 @@ export const portfolioData = {
     instagram: "https://instagram.com/miftahulhuda23_",
   },
   education: {
-    institution: "Politekenik Caltex Riau",
-    degree: "Sarjana Terapan Sistem Informasi",
+    institution: "Politeknik Caltex Riau",
+    degree: "Applied Bachelor of Information Systems",
     gpa: "3.80/4.00",
-    duration: "Sep 2021 - Oct 2025",
+    duration: "Sep 2021 — Oct 2025",
   },
+  services: [
+    {
+      number: "01",
+      title: "Frontend Development",
+      description:
+        "Building pixel-perfect, responsive interfaces with React.js, Next.js, and modern CSS frameworks. Every UI is crafted for performance and accessibility.",
+      tags: ["React.js", "Next.js", "TailwindCSS", "TypeScript"],
+    },
+    {
+      number: "02",
+      title: "Backend Development",
+      description:
+        "Designing scalable server-side architectures with Laravel, Node.js, and Express. RESTful APIs, database design, and secure authentication flows.",
+      tags: ["Laravel", "Node.js", "Express.js", "MySQL"],
+    },
+    {
+      number: "03",
+      title: "Full-Stack Solutions",
+      description:
+        "End-to-end product development from database schema to polished UI. I bridge the gap between design and engineering to ship complete, production-ready apps.",
+      tags: ["Full-Stack", "System Design", "API Integration", "Deployment"],
+    },
+  ],
   workExperience: [
     {
       company: "PT Bank Riau Kepri Syariah",
       position: "Web Developer Intern",
-      duration: "Feb 2024 - Jun 2024",
+      duration: "Feb 2024 — Jun 2024",
       achievements: [
-        "Berhasil merancang dan mengembangkan sistem absensi berbasis web dari nol untuk peserta pelatihan internal menggunakan Laravel & MySQL.",
-        "Meningkatkan pengalaman pengguna dengan mengimplementasikan antarmuka yang responsif dan intuitif menggunakan TailwindCSS.",
-        "Menerjemahkan kebutuhan bisnis dari analisis bagian Manajemen Sumber Daya Insani (MSDI) menjadi fitur fungsional yang efektif untuk manajemen pelatihan.",
-        "Memastikan performa optimal aplikasi di berbagai perangkat (desktop & mobile) melalui pengujian dan optimasi kode.",
+        "Designed and developed a web-based attendance system from scratch for internal training participants using Laravel & MySQL.",
+        "Improved user experience by implementing a responsive and intuitive interface with TailwindCSS.",
+        "Translated business requirements from the Human Resource Management (HRM) division into effective functional features for training management.",
+        "Ensured optimal application performance across devices (desktop & mobile) through thorough testing and code optimization.",
       ],
     },
   ],
   projects: [
     {
-      title: "Sistem Informasi Prestasi Mahasiswa",
+      title: "Student Achievement Information System",
       role: "Full-Stack Developer",
       image: "/thumbnails/sistem-informasi-prestasi-mahasiswa.png",
       github:
         "https://github.com/MiftahulH23/sistem-informasi-prestasi-mahasiswa",
       demo: "https://sipresma.pocari.id/",
       description:
-        "Sistem informasi terintegrasi untuk mengelola dan mendokumentasikan prestasi mahasiswa, mulai dari pengajuan proposal lomba hingga pencatatan pencapaian.",
+        "An integrated information system to manage and document student achievements — from competition proposal submissions to final achievement records.",
       technologies: [
         "Laravel",
         "Inertia.js",
-        "React.js (JSX)",
+        "React.js",
         "TailwindCSS",
         "Shadcn/UI",
         "MySQL",
       ],
+      featured: true,
     },
     {
-      title: "Sistem Lembaga Pengelola Sampah (LPS)",
+      title: "Waste Management Institution System",
       role: "Full-Stack Developer",
       image: "/thumbnails/sistem-lembaga-pengelola-sampah-(lps).png",
       github: "https://github.com/MiftahulH23/LembagaPengelolaSampah",
       demo: "https://silepaspku.pocari.id/",
       description:
-        "Aplikasi berbasis web untuk membantu LPS dalam manajemen data warga, iuran bulanan, dan pencatatan pengambilan sampah.",
+        "A web application to help waste management institutions manage resident data, monthly fees, and waste collection records.",
       technologies: [
         "Laravel",
         "Inertia.js",
-        "React.js (TSX)",
+        "React.js",
         "TypeScript",
         "TailwindCSS",
         "Shadcn/UI",
       ],
+      featured: false,
     },
     {
-      title: "Dashboard Supply Chain & Redesign Website",
+      title: "Supply Chain Dashboard & Website Redesign",
       role: "Full-Stack Developer",
       image: "/thumbnails/dashboard-supply-chain-&-redesign-website.png",
       github: "https://github.com/hibatillah/indogrosir-scm",
       demo: "https://github.com/hibatillah/indogrosir-scm",
       description:
-        "Proyek akademis berfokus pada perancangan ulang website dan pengembangan dashboard SCM untuk meningkatkan pengalaman pengguna serta efisiensi operasional.",
-      technologies: ["C#", ".Net", "JavaScript", "HTML", "CSS", "TailwindCSS"],
+        "An academic project focused on website redesign and SCM dashboard development to improve user experience and operational efficiency.",
+      technologies: ["C#", ".NET", "JavaScript", "HTML", "CSS", "TailwindCSS"],
+      featured: false,
     },
     {
-      title: "Supply Chain Management System - Es Teh Indonesia",
+      title: "Supply Chain Management — Es Teh Indonesia",
       role: "Full-Stack Developer",
       image:
         "/thumbnails/supply-chain-management-system---es-teh-indonesia.png",
       github: "https://github.com/MiftahulH23/Capstone",
       demo: "https://github.com/MiftahulH23/Capstone",
       description:
-        "Sistem manajemen rantai pasok untuk membantu mitra dan manajemen pusat dalam mengelola proses permintaan, stok, dan distribusi produk.",
+        "A supply chain management system to help partners and central management handle demand requests, inventory, and product distribution.",
       technologies: ["React.js", "Node.js", "Express.js", "MongoDB"],
+      featured: false,
     },
   ],
   skills: {
     "Front-End": [
       { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB" },
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/ffffff" },
       {
         name: "JavaScript",
         icon: "https://cdn.simpleicons.org/javascript/F7DF1E",
@@ -103,7 +131,6 @@ export const portfolioData = {
         icon: "https://cdn.simpleicons.org/inertia/9553E9",
       },
       { name: "HTML5", icon: "https://cdn.simpleicons.org/html5/E34F26" },
-      // FIX: Ganti CSS3 pakai Devicon
       {
         name: "CSS3",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
@@ -116,21 +143,22 @@ export const portfolioData = {
     "Back-End": [
       { name: "PHP", icon: "https://cdn.simpleicons.org/php/777BB4" },
       { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/FF2D20" },
-      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
+      {
+        name: "Node.js",
+        icon: "https://cdn.simpleicons.org/nodedotjs/339933",
+      },
       {
         name: "Express.js",
-        icon: "https://cdn.simpleicons.org/express/000000/white",
+        icon: "https://cdn.simpleicons.org/express/ffffff",
       },
-      // FIX: Ganti C# pakai Devicon
       {
         name: "C#",
         icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
       },
       { name: ".NET", icon: "https://cdn.simpleicons.org/dotnet/512BD4" },
-      // FIX: Ganti RESTful API pakai icon ilustrasi berwarna
       {
         name: "RESTful API",
-        icon: "https://img.icons8.com/external-flaticons-lineal-color-flat-icons/64/external-api-web-development-flaticons-lineal-color-flat-icons-2.png",
+        icon: "https://cdn.simpleicons.org/postman/FF6C37",
       },
     ],
     Database: [
@@ -141,14 +169,11 @@ export const portfolioData = {
       },
       { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
     ],
-    "Tools & Lainnya": [
+    "Tools & Others": [
       { name: "Git", icon: "https://cdn.simpleicons.org/git/F05032" },
+      { name: "GitHub", icon: "https://cdn.simpleicons.org/github/ffffff" },
       { name: "Postman", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
-      // FIX: Ganti Manual Testing pakai icon ilustrasi berwarna
-      {
-        name: "Manual Testing",
-        icon: "https://img.icons8.com/?size=100&id=gVFxgvqeu7IV&format=png&color=000000",
-      },
+      { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
     ],
   },
 };

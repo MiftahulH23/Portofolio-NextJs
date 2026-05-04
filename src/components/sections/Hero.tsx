@@ -1,64 +1,124 @@
 "use client";
 import { motion } from "framer-motion";
 import { portfolioData } from "@/lib/data";
-import { ArrowRight, Download, Linkedin } from "lucide-react";
+import { Mail, Phone, Github, Linkedin, Instagram } from "lucide-react";
 
 export default function Hero() {
   return (
-    <section className="h-[35rem] w-full flex flex-col items-center justify-center relative overflow-hidden bg-background">
-      {/* Background Effect - Beda warna grid untuk Light & Dark */}
-      <div className="absolute inset-0 bg-grid-black/[0.05] dark:bg-grid-white/[0.02] bg-[size:50px_50px]" />
-      
-      {/* Masking Gradient */}
-      <div className="absolute h-full w-full bg-background [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
-      
-      {/* Spotlight Effect (Hanya visible di Dark Mode biar rapi) */}
-      <div className="hidden dark:block absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-500/20 rounded-full blur-[100px] opacity-50" />
+    <section
+      id="home"
+      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10"
+    >
+      {/* Bottom glow */}
+      <div className="hero-glow" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
+      {/* Ambient top-left glow */}
+      <div
+        className="absolute pointer-events-none"
+        style={{
+          top: "-200px",
+          left: "-200px",
+          width: "600px",
+          height: "600px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%)",
+        }}
+      />
+
+      {/* Background Large Text */}
+      <div className="bg-text" aria-hidden="true">
+        <span>PORTFOLIO</span>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+        {/* Main Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-[clamp(3.5rem,11vw,9rem)] text-[#e8e8e8] mb-12"
+        >
+          Let&apos;s build
+          <br />
+          something<span className="text-[#303030]">.</span>
+        </motion.h1>
+
+        {/* Sub-label */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="text-[#383838] text-sm font-medium tracking-widest uppercase mb-10"
+        >
+          {portfolioData.personalInfo.headline}
+        </motion.p>
+
+        {/* CTA Buttons */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-wrap gap-3 justify-center mb-16"
         >
-          {/* Badge Status */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400 text-xs font-medium mb-6">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
-            </span>
-            Siap untuk Peluang Baru
-          </div>
+          <a
+            href={`mailto:${portfolioData.personalInfo.email}`}
+            className="btn-primary"
+          >
+            <Mail size={14} />
+            Send Email
+          </a>
+          <a
+            href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-outline"
+          >
+            <Phone size={14} />
+            Book a Call
+          </a>
+        </motion.div>
 
-          {/* Main Headline - Text Gradient disesuaikan */}
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-b from-neutral-900 to-neutral-600 dark:from-white dark:to-white/60 mb-6">
-            Building Digital <br />
-            <span className="text-blue-600 dark:text-blue-500">Experiences that Matter.</span>
-          </h1>
-
-          {/* Sub Headline */}
-          <p className="mt-4 text-lg text-neutral-600 dark:text-neutral-400 max-w-2xl mx-auto mb-10">
-            Seorang Full-Stack Developer yang fokus menciptakan aplikasi web modern, cepat, dan <i>scalable</i>.
-          </p>
-
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <a 
-              href="#projects" 
-              className="px-8 py-3 rounded-full bg-blue-600 text-white font-bold transition hover:bg-blue-700 hover:scale-105 flex items-center gap-2 shadow-lg shadow-blue-500/20"
-            >
-              Lihat Karya <ArrowRight size={18} />
-            </a>
-            <a 
-              href={portfolioData.personalInfo.linkedin}
+        {/* Social Links */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.7, delay: 0.6 }}
+          className="flex items-center gap-2"
+        >
+          {[
+            { href: portfolioData.personalInfo.github, label: "GitHub", Icon: Github },
+            { href: portfolioData.personalInfo.linkedin, label: "LinkedIn", Icon: Linkedin },
+            { href: portfolioData.personalInfo.instagram, label: "Instagram", Icon: Instagram },
+          ].map(({ href, label, Icon }) => (
+            <a
+              key={label}
+              href={href}
               target="_blank"
-              className="px-8 py-3 rounded-full border border-neutral-300 dark:border-neutral-700 text-neutral-700 dark:text-neutral-300 font-bold transition hover:bg-neutral-100 dark:hover:bg-neutral-800 flex items-center gap-2"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 text-[11px] font-semibold text-[#333333] border border-[#171717] rounded-full hover:text-[#777777] hover:border-[#2a2a2a] transition-all duration-300 tracking-wider"
             >
-              <Linkedin size={18} /> LinkedIn
+              <Icon size={12} />
+              {label}
             </a>
-          </div>
+          ))}
         </motion.div>
       </div>
+
+      {/* Scroll indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.5 }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+      >
+        <span className="text-[9px] tracking-[0.25em] text-[#2a2a2a] uppercase font-bold">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          className="w-px h-10 bg-gradient-to-b from-[#2a2a2a] to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

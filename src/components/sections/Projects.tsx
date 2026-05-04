@@ -1,87 +1,211 @@
 "use client";
 import { portfolioData } from "@/lib/data";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { motion, Variants } from "framer-motion";
+import { ArrowUpRight, Github } from "lucide-react";
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { 
+      duration: 0.55, 
+      delay: i * 0.1, 
+      ease: [0.16, 1, 0.3, 1] as const 
+    },
+  }),
+};
+
+type Project = (typeof portfolioData.projects)[number];
+
+function FeaturedProjectCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <motion.div
+      custom={index + 2}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="project-card group col-span-1 md:col-span-2"
+    >
+      {/* Image */}
+      <div className="relative w-full h-72 overflow-hidden bg-[#0a0a0a]">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover grayscale group-hover:grayscale-0 opacity-65 group-hover:opacity-90 transition-all duration-700 scale-105 group-hover:scale-100"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">No Preview</span>
+          </div>
+        )}
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-7 flex flex-col flex-1 relative z-10">
+        <div className="flex justify-between items-start gap-4 mb-3">
+          <h3 className="text-lg font-bold text-[#e8e8e8] tracking-tight group-hover:text-white transition-colors leading-tight">
+            {project.title}
+          </h3>
+          <div className="flex gap-1 flex-shrink-0">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-[#444444] hover:text-[#aaaaaa] transition-colors"
+              aria-label="Source code"
+            >
+              <Github size={15} />
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 text-[#444444] hover:text-[#aaaaaa] transition-colors"
+              aria-label="Live demo"
+            >
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
+        </div>
+        <p className="text-sm text-[#5a5a5a] leading-relaxed mb-6">{project.description}</p>
+        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-auto">
+          {project.technologies.map((tech) => (
+            <span key={tech} className="text-[10px] font-bold tracking-widest text-[#3e3e3e] uppercase">
+              {tech}
+            </span>
+          ))}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function SmallProjectCard({ project, index }: { project: Project; index: number }) {
+  return (
+    <motion.div
+      custom={index + 2}
+      variants={fadeUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="project-card group"
+    >
+      {/* Image */}
+      <div className="relative w-full h-44 overflow-hidden bg-[#0a0a0a]">
+        {project.image ? (
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            className="object-cover grayscale group-hover:grayscale-0 opacity-55 group-hover:opacity-80 transition-all duration-700 scale-105 group-hover:scale-100"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">No Preview</span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
+      </div>
+
+      {/* Content */}
+      <div className="p-5 flex flex-col flex-1 relative z-10">
+        <div className="flex justify-between items-start gap-4 mb-2">
+          <h3 className="text-base font-bold text-[#d8d8d8] tracking-tight group-hover:text-white transition-colors leading-tight">
+            {project.title}
+          </h3>
+          <div className="flex gap-1 flex-shrink-0">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 text-[#404040] hover:text-[#888888] transition-colors"
+              aria-label="Source code"
+            >
+              <Github size={13} />
+            </a>
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-1.5 text-[#404040] hover:text-[#888888] transition-colors"
+              aria-label="Live demo"
+            >
+              <ArrowUpRight size={13} />
+            </a>
+          </div>
+        </div>
+        <p className="text-xs text-[#505050] leading-relaxed mb-4 line-clamp-2">
+          {project.description}
+        </p>
+        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-auto">
+          {project.technologies.slice(0, 3).map((tech) => (
+            <span key={tech} className="text-[9px] font-bold tracking-widest text-[#3d3d3d] uppercase">
+              {tech}
+            </span>
+          ))}
+          {project.technologies.length > 3 && (
+            <span className="text-[9px] font-bold text-[#333333] uppercase">
+              +{project.technologies.length - 3}
+            </span>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
 
 export default function Projects() {
+  const featured = portfolioData.projects.filter((p) => p.featured);
+  const rest = portfolioData.projects.filter((p) => !p.featured);
+
   return (
-    <section id="projects" className="py-20 w-full">
-      <div className="max-w-5xl mx-auto px-4">
-        <h2 className="text-3xl md:text-5xl font-bold text-center mb-16 text-neutral-900 dark:text-white">
-          Proyek Unggulan
-        </h2>
+    <section id="projects" className="relative py-32 overflow-hidden">
+      <div className="divider-glow" />
+      <div className="section-glow-right" />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {portfolioData.projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 overflow-hidden hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-300 flex flex-col"
-            >
-              {/* Image Container */}
-              <div className="relative h-56 w-full overflow-hidden bg-neutral-100 dark:bg-neutral-800">
-                <div className="absolute inset-0 flex items-center justify-center text-neutral-400">
-                   {project.image ? (
-                      <Image 
-                        src={project.image} 
-                        alt={project.title} 
-                        fill 
-                        className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      />
-                   ) : (
-                      <span>No Image Available</span>
-                   )}
-                </div>
-                
-                {/* Overlay Hover */}
-                <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 z-20">
-                   <a 
-                     href={project.github} 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     className="p-3 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-110"
-                   >
-                     <Github size={22}/>
-                   </a>
-                   <a 
-                     href={project.demo} 
-                     target="_blank" 
-                     rel="noopener noreferrer"
-                     className="p-3 bg-blue-600/80 backdrop-blur-md border border-blue-500/50 rounded-full text-white hover:bg-blue-600 transition-all duration-300 transform hover:scale-110"
-                   >
-                     <ExternalLink size={22}/>
-                   </a>
-                </div>
-              </div>
+      <div className="max-w-5xl mx-auto px-6">
+        <motion.p
+          custom={0}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="section-label mb-4"
+        >
+          06 — Projects
+        </motion.p>
 
-              {/* Content */}
-              <div className="p-6 flex flex-col flex-grow relative z-10 bg-white dark:bg-neutral-900">
-                <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-xl font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                      {project.title}
-                    </h3>
-                </div>
-                
-                <p className="text-sm text-neutral-600 dark:text-neutral-400 mb-4 flex-grow line-clamp-3 leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex flex-wrap gap-2 mt-auto">
-                  {project.technologies.slice(0, 4).map((tech, i) => (
-                    <span key={i} className="text-xs px-2 py-1 bg-neutral-100 dark:bg-neutral-800 rounded-md text-neutral-700 dark:text-neutral-300 border border-neutral-200 dark:border-neutral-700/50">
-                      {tech}
-                    </span>
-                  ))}
-                  {project.technologies.length > 4 && (
-                     <span className="text-xs px-2 py-1 text-neutral-500">+{project.technologies.length - 4}</span>
-                  )}
-                </div>
-              </div>
-            </motion.div>
+        <motion.h2
+          custom={1}
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-14"
+        >
+          Selected work.
+        </motion.h2>
+
+        {/* Featured project — full width */}
+        {featured.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+            {featured.map((project, i) => (
+              <FeaturedProjectCard key={project.title} project={project} index={i} />
+            ))}
+          </div>
+        )}
+
+        {/* Remaining projects — 3 column grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+          {rest.map((project, i) => (
+            <SmallProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
       </div>
