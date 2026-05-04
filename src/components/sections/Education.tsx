@@ -46,16 +46,6 @@ export default function Education() {
           viewport={{ once: true }}
           className="relative card-dark p-8 md:p-10 overflow-hidden" 
         >
-          {/* Taruh GlowingEffect persis di dalam card */}
-          <GlowingEffect
-            blur={0}
-            borderWidth={3}
-            spread={80}
-            glow={true}
-            disabled={false}
-            proximity={64}
-            inactiveZone={0.01}
-          />
           
           {/* Bungkus konten aslinya di div relative agar teks tidak tertimpa efek glow */}
           <div className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
