@@ -32,16 +32,32 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
+        {/* Availability Badge */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+          className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-8 backdrop-blur-sm"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+          </span>
+          <span className="text-[10px] text-emerald-400 tracking-[0.2em] font-bold uppercase mt-0.5">
+            Available for work
+          </span>
+        </motion.div>
+
         {/* Main Heading */}
         <motion.h1
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(3.5rem,11vw,9rem)] text-[#e8e8e8] mb-12"
+          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display text-[clamp(3.5rem,11vw,9rem)] text-[#e8e8e8] mb-10 leading-[1.05]"
         >
           Let&apos;s build
           <br />
-          something<span className="text-[#303030]">.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 animate-gradient-x">something</span><span className="text-[#303030]">.</span>
         </motion.h1>
 
         {/* Sub-label */}

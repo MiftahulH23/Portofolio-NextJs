@@ -3,6 +3,7 @@ import { portfolioData } from "@/lib/data";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
+import { TiltCard } from "../ui/TiltCard";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -27,8 +28,9 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="project-card group col-span-1 md:col-span-2"
+      className="col-span-1 md:col-span-2"
     >
+      <TiltCard className="project-card group relative w-full h-full">
       {/* Image */}
       <div className="relative w-full h-72 overflow-hidden bg-[#0a0a0a]">
         {project.image ? (
@@ -36,7 +38,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover grayscale group-hover:grayscale-0 opacity-65 group-hover:opacity-90 transition-all duration-700 scale-105 group-hover:scale-100"
+            className="object-cover grayscale group-hover:grayscale-0 opacity-65 group-hover:opacity-100 transition-all duration-700 scale-100 group-hover:scale-110"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -45,6 +47,13 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
         )}
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
+        
+        {/* Featured Badge */}
+        <div className="absolute top-4 left-4 z-20 pointer-events-none">
+          <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-[9px] font-bold tracking-[0.2em] text-white uppercase shadow-lg">
+            Featured
+          </span>
+        </div>
       </div>
 
       {/* Content */}
@@ -83,6 +92,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
           ))}
         </div>
       </div>
+      </TiltCard>
     </motion.div>
   );
 }
@@ -95,8 +105,8 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="project-card group"
     >
+      <TiltCard className="project-card group relative w-full h-full">
       {/* Image */}
       <div className="relative w-full h-44 overflow-hidden bg-[#0a0a0a]">
         {project.image ? (
@@ -104,7 +114,7 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
             src={project.image}
             alt={project.title}
             fill
-            className="object-cover grayscale group-hover:grayscale-0 opacity-55 group-hover:opacity-80 transition-all duration-700 scale-105 group-hover:scale-100"
+            className="object-cover grayscale group-hover:grayscale-0 opacity-55 group-hover:opacity-100 transition-all duration-700 scale-100 group-hover:scale-110"
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
@@ -157,6 +167,7 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
           )}
         </div>
       </div>
+      </TiltCard>
     </motion.div>
   );
 }
@@ -167,6 +178,12 @@ export default function Projects() {
 
   return (
     <section id="projects" className="relative py-32 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-dot-pattern" />
+      <div className="bg-text opacity-5">
+        <span>PROJECTS</span>
+      </div>
+
       <div className="divider-glow" />
       <div className="section-glow-right" />
 

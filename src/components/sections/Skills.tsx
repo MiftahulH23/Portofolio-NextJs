@@ -19,6 +19,12 @@ export default function Skills() {
 
   return (
     <section id="skills" className="relative py-28 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-dot-pattern opacity-50" />
+      <div className="bg-text opacity-5">
+        <span>SKILLS</span>
+      </div>
+
       <div className="divider-glow" />
       <div className="section-glow-right" />
 

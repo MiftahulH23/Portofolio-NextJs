@@ -2,7 +2,7 @@
 import { portfolioData } from "@/lib/data";
 import { motion, Variants } from "framer-motion";
 import { BackgroundBeams } from "../ui/background-beams";
-import { GlowingEffect } from "../ui/glowing-effect";
+import { TiltCard } from "../ui/TiltCard";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -22,6 +22,12 @@ export default function Education() {
 
   return (
     <section id="education" className="relative py-32 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-grid-pattern opacity-40" />
+      <div className="bg-text opacity-15">
+        <span>EDUCATION</span>
+      </div>
+
       <div className="divider-glow" />
       <div className="section-glow-left" />
 
@@ -44,8 +50,8 @@ export default function Education() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="relative card-dark p-8 md:p-10 overflow-hidden" 
         >
+          <TiltCard className="relative card-dark p-8 md:p-10 overflow-hidden group w-full h-full">
           
           {/* Bungkus konten aslinya di div relative agar teks tidak tertimpa efek glow */}
           <div className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
@@ -68,6 +74,7 @@ export default function Education() {
               </div>
             </div>
           </div>
+          </TiltCard>
         </motion.div>
       </div>
     </section>

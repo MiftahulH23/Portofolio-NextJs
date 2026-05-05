@@ -9,10 +9,10 @@ import { useState } from "react";
 
 const navItems = [
   { name: "Home", href: "#home" },
-  { name: "Skills", href: "#skills" },
-  { name: "Pendidikan", href: "#education" },
-  { name: "Pengalaman", href: "#experience" },
-  { name: "Proyek", href: "#projects" },
+  { name: "About", href: "#about" },
+  { name: "Services", href: "#services" },
+  { name: "Experience", href: "#experience" },
+  { name: "Projects", href: "#projects" },
 ];
 
 export default function Header() {

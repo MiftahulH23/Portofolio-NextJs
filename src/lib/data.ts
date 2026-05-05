@@ -38,6 +38,13 @@ export const portfolioData = {
         "End-to-end product development from database schema to polished UI. I bridge the gap between design and engineering to ship complete, production-ready apps.",
       tags: ["Full-Stack", "System Design", "API Integration", "Deployment"],
     },
+    {
+      number: "04",
+      title: "Mobile Development",
+      description:
+        "Building native and cross-platform mobile applications with smooth animations and robust performance for both iOS and Android.",
+      tags: ["Flutter", "React Native", "Swift"],
+    },
   ],
   workExperience: [
     {

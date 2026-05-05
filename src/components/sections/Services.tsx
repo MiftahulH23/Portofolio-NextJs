@@ -2,7 +2,7 @@
 import { portfolioData } from "@/lib/data";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { GlowingEffect } from "../ui/glowing-effect";
+import { TiltCard } from "../ui/TiltCard";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -20,6 +20,12 @@ const fadeUp: Variants = {
 export default function Services() {
   return (
     <section id="services" className="relative py-32 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-grid-pattern opacity-50" />
+      <div className="bg-text opacity-15">
+        <span>SERVICES</span>
+      </div>
+
       <div className="divider-glow" />
       <div className="section-glow-left" />
       <div className="section-glow-accent" />
@@ -47,16 +53,7 @@ export default function Services() {
           Services I provide.
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <GlowingEffect
-          blur={0}
-          borderWidth={3}
-          spread={80}
-          glow={true}
-          disabled={false}
-          proximity={64}
-          inactiveZone={0.01}
-        />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {portfolioData.services.map((service, i) => (
             <motion.div
               key={service.number}
@@ -65,42 +62,44 @@ export default function Services() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="service-card group"
             >
-              {/* Number */}
-              <p className="text-[10px] font-bold tracking-[0.15em] text-[#252525] mb-8">
-                {service.number}
-              </p>
+              <TiltCard className="service-card group relative h-full w-full">
+              <div className="relative z-10 flex flex-col h-full">
+                <div className="flex justify-between items-start mb-6">
+                  {/* Number */}
+                  <p className="text-[10px] font-bold tracking-[0.15em] text-[#252525]">
+                    {service.number}
+                  </p>
+                  {/* Arrow on hover */}
+                  <ArrowUpRight
+                    size={18}
+                    className="text-[#1e1e1e] group-hover:text-[#666666] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
+                  />
+                </div>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold text-[#e8e8e8] tracking-tight mb-4 group-hover:text-white transition-colors">
-                {service.title}
-              </h3>
+                {/* Title */}
+                <h3 className="text-xl font-bold text-[#e8e8e8] tracking-tight mb-3 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-cyan-400 transition-all duration-300">
+                  {service.title}
+                </h3>
 
-              {/* Description */}
-              <p className="text-sm text-[#3e3e3e] leading-relaxed mb-8">
-                {service.description}
-              </p>
+                {/* Description */}
+                <p className="text-sm text-[#4a4a4a] leading-relaxed mb-6 group-hover:text-[#6a6a6a] transition-colors duration-300 line-clamp-3">
+                  {service.description}
+                </p>
 
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-auto">
-                {service.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] font-semibold tracking-widest text-[#2a2a2a] uppercase px-2.5 py-1 border border-[#181818] rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
+                {/* Tags */}
+                <div className="flex flex-wrap gap-2 mt-auto">
+                  {service.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="text-[10px] font-semibold tracking-widest text-[#2a2a2a] group-hover:text-[#444444] uppercase px-2.5 py-1 border border-[#181818] group-hover:border-[#2a2a2a] rounded-full transition-colors duration-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
-
-              {/* Arrow on hover */}
-              <div className="flex justify-end mt-6">
-                <ArrowUpRight
-                  size={16}
-                  className="text-[#1e1e1e] group-hover:text-[#444444] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all duration-300"
-                />
-              </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

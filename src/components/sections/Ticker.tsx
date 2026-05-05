@@ -23,7 +23,7 @@ const Star = () => (
 
 export default function Ticker() {
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-[#080808] border-b border-[#111111]">
+    <div className="fixed top-0 left-0 right-0 z-50 overflow-hidden bg-[#080808]/80 backdrop-blur-md border-b border-[#111111]/50">
       <div className="ticker-track py-3">
         {items.map((item, i) => (
           <span key={i} className="flex items-center flex-shrink-0 text-[10px] font-bold tracking-[0.2em] text-[#333333] uppercase whitespace-nowrap">

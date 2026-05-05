@@ -1,6 +1,7 @@
 "use client";
 import { portfolioData } from "@/lib/data";
 import { motion, Variants } from "framer-motion";
+import { TiltCard } from "../ui/TiltCard";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -18,6 +19,12 @@ const fadeUp: Variants = {
 export default function Experience() {
   return (
     <section id="experience" className="relative py-32 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-diagonal-pattern" />
+      <div className="bg-text opacity-5">
+        <span>EXPERIENCE</span>
+      </div>
+
       <div className="divider-glow" />
       <div className="section-glow-left" />
       <div className="section-glow-right" />
@@ -55,9 +62,10 @@ export default function Experience() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="card-dark p-8 md:p-10 mb-5 group"
+              className="mb-5"
             >
-              <div className="grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
+              <TiltCard className="card-dark p-8 md:p-10 group relative w-full h-full">
+              <div className="relative z-10 grid grid-cols-1 md:grid-cols-[1fr_2fr] gap-8">
                 {/* Left */}
                 <div>
                   <p className="text-base font-bold text-[#e8e8e8] mb-1 group-hover:text-white transition-colors">
@@ -79,6 +87,7 @@ export default function Experience() {
                   ))}
                 </ul>
               </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

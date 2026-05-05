@@ -3,6 +3,7 @@ import { portfolioData } from "@/lib/data";
 import { motion, Variants } from "framer-motion";
 import { Mail, Phone, Copy, Check, MapPin, GraduationCap, Monitor, Globe } from "lucide-react";
 import { useState } from "react";
+import { TiltCard } from "../ui/TiltCard";
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -41,6 +42,12 @@ export default function About() {
 
   return (
     <section id="about" className="relative py-32 overflow-hidden">
+      {/* Background elements */}
+      <div className="bg-dot-pattern opacity-40" />
+      <div className="bg-text opacity-5">
+        <span>ABOUT</span>
+      </div>
+
       {/* Divider */}
       <div className="divider-glow" />
       {/* Ambient glow */}
@@ -112,9 +119,10 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="card-dark p-6"
             >
-              <p className="section-label mb-5">Contact</p>
+              <TiltCard className="card-dark p-6 group relative w-full h-full">
+              <div className="relative z-10">
+                <p className="section-label mb-5">Contact</p>
               <div className="space-y-4">
                 {/* Email */}
                 <div className="flex items-center justify-between gap-4">
@@ -151,7 +159,9 @@ export default function About() {
                     {portfolioData.personalInfo.phone}
                   </a>
                 </div>
+                </div>
               </div>
+              </TiltCard>
             </motion.div>
 
             {/* Details card */}
@@ -161,9 +171,10 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="card-dark p-6"
             >
-              <p className="section-label mb-5">Details</p>
+              <TiltCard className="card-dark p-6 group relative w-full h-full">
+              <div className="relative z-10">
+                <p className="section-label mb-5">Details</p>
               <div className="space-y-3">
                 {details.map(({ Icon, label, value }) => (
                   <div key={label} className="flex items-center justify-between gap-4 text-sm">
@@ -175,6 +186,8 @@ export default function About() {
                   </div>
                 ))}
               </div>
+              </div>
+              </TiltCard>
             </motion.div>
           </div>
         </div>

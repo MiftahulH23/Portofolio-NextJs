@@ -44,6 +44,28 @@ html {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
+
+  ::selection {
+    background: rgba(130, 80, 255, 0.3);
+    color: #ffffff;
+  }
+}
+
+/* ==============================
+   CUSTOM SCROLLBAR
+   ============================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
 }
 
 /* ==============================
@@ -145,6 +167,49 @@ html {
 }
 
 /* ==============================
+   SECTION BACKGROUND PATTERNS
+   ============================== */
+.bg-grid-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 30%, transparent 100%);
+}
+
+.bg-dot-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1.5px, transparent 1.5px);
+  background-size: 1.5rem 1.5rem;
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 20%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 50%, #000 20%, transparent 100%);
+}
+
+.bg-diagonal-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.015),
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 1px,
+    transparent 20px
+  );
+  mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 20%, black 80%, transparent);
+}
+
+
+/* ==============================
    TYPOGRAPHY
    ============================== */
 .font-display {
@@ -210,7 +275,7 @@ html {
 .btn-primary:hover {
   background: #ffffff;
   transform: translateY(-2px);
-  box-shadow: 0 8px 30px rgba(255,255,255,0.08);
+  box-shadow: 0 8px 30px rgba(255,255,255,0.15), 0 0 20px rgba(255, 255, 255, 0.4);
 }
 
 .btn-outline {
@@ -230,25 +295,45 @@ html {
 }
 
 .btn-outline:hover {
-  border-color: #444444;
-  color: #e8e8e8;
+  border-color: #555555;
+  color: #ffffff;
   transform: translateY(-2px);
-  background: #0e0e0e;
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5), inset 0 0 15px rgba(255, 255, 255, 0.03);
 }
 
 /* ==============================
    CARDS
    ============================== */
 .card-dark {
-  background: #0c0c0c;
-  border: 1px solid #1a1a1a;
+  background: rgba(12, 12, 12, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1rem;
-  transition: border-color 0.3s ease, background 0.3s ease;
+  transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.card-dark::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.03) 0%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.card-dark:hover::before {
+  opacity: 1;
 }
 
 .card-dark:hover {
-  border-color: #2a2a2a;
-  background: #0f0f0f;
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(15, 15, 15, 0.8);
+  box-shadow: 0 10px 40px -10px rgba(0,0,0,0.5), 0 0 20px -5px rgba(130, 80, 255, 0.1);
 }
 
 /* ==============================
@@ -308,11 +393,13 @@ html {
    SERVICE CARDS
    ============================== */
 .service-card {
-  border: 1px solid #161616;
+  border: 1px solid rgba(255, 255, 255, 0.04);
   border-radius: 1.25rem;
-  padding: 2rem;
-  background: #090909;
-  transition: border-color 0.4s ease, background 0.4s ease;
+  padding: 1.5rem;
+  background: rgba(9, 9, 9, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   position: relative;
   overflow: hidden;
 }
@@ -328,19 +415,22 @@ html {
 }
 
 .service-card:hover {
-  border-color: #242424;
-  background: #0d0d0d;
+  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(15, 15, 15, 0.7);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.02);
 }
 
 /* ==============================
    PROJECT CARDS
    ============================== */
 .project-card {
-  border: 1px solid #1e1e1e;
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 1.25rem;
   overflow: hidden;
-  background: linear-gradient(145deg, #0f0f0f 0%, #0c0c0c 100%);
-  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+  background: linear-gradient(145deg, rgba(15,15,15,0.7) 0%, rgba(10,10,10,0.9) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: border-color 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -364,7 +454,6 @@ html {
 
 .project-card:hover {
   border-color: #383838;
-  transform: translateY(-5px);
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(130,80,255,0.08);
 }
 
@@ -426,8 +515,19 @@ html {
 }
 
 @theme inline {
-  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1
-  var(--delay, 0ms);
+  --animate-cell-ripple: cell-ripple var(--duration, 200ms) ease-out none 1 var(--delay, 0ms);
+  --animate-gradient-x: gradient-x 6s ease infinite;
+
+  @keyframes gradient-x {
+    0%, 100% {
+      background-size: 200% 200%;
+      background-position: left center;
+    }
+    50% {
+      background-size: 200% 200%;
+      background-position: right center;
+    }
+  }
 
   @keyframes cell-ripple {
     0% {
