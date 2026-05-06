@@ -18,10 +18,10 @@ const fadeUp: Variants = {
 
 export default function Experience() {
   return (
-    <section id="experience" className="relative py-32 overflow-hidden">
+    <section id="experience" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       {/* Background elements */}
       <div className="bg-diagonal-pattern" />
-      <div className="bg-text opacity-5">
+      <div className="bg-text opacity-15">
         <span>EXPERIENCE</span>
       </div>
 

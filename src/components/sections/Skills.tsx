@@ -18,10 +18,10 @@ export default function Skills() {
   const categories = Object.entries(portfolioData.skills);
 
   return (
-    <section id="skills" className="relative py-28 overflow-hidden">
+    <section id="skills" className="relative py-32 overflow-hidden bg-[#0b0c10]">
       {/* Background elements */}
       <div className="bg-dot-pattern opacity-50" />
-      <div className="bg-text opacity-5">
+      <div className="bg-text opacity-15">
         <span>SKILLS</span>
       </div>
 

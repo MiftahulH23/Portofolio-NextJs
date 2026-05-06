@@ -177,10 +177,10 @@ export default function Projects() {
   const rest = portfolioData.projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative py-32 overflow-hidden">
+    <section id="projects" className="relative py-32 overflow-hidden bg-[#0b0c10]">
       {/* Background elements */}
       <div className="bg-dot-pattern" />
-      <div className="bg-text opacity-5">
+      <div className="bg-text opacity-15">
         <span>PROJECTS</span>
       </div>
 

@@ -5,7 +5,7 @@ import { Mail, Phone, ArrowUpRight } from "lucide-react";
 
 export default function ContactCTA() {
   return (
-    <section id="contact" className="relative py-32 overflow-hidden">
+    <section id="contact" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       <div className="divider-glow" />
       {/* Center glow */}
       <div className="contact-cta-glow" />

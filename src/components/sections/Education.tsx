@@ -21,10 +21,10 @@ export default function Education() {
   const { education } = portfolioData;
 
   return (
-    <section id="education" className="relative py-32 overflow-hidden">
+    <section id="education" className="relative py-32 overflow-hidden bg-[#0b0c10]">
       {/* Background elements */}
       <div className="bg-grid-pattern opacity-40" />
-      <div className="bg-text opacity-15">
+      <div className="bg-text opacity-20">
         <span>EDUCATION</span>
       </div>
 

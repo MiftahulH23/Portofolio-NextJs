@@ -26,7 +26,7 @@ export default function Hero() {
       />
 
       {/* Background Large Text */}
-      <div className="bg-text" aria-hidden="true">
+      <div className="bg-text opacity-20" aria-hidden="true">
         <span>PORTFOLIO</span>
       </div>
 
@@ -65,7 +65,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-[#383838] text-sm font-medium tracking-widest uppercase mb-10"
+          className="text-[#9a9a9a] text-sm font-bold tracking-[0.2em] uppercase mb-10"
         >
           {portfolioData.personalInfo.headline}
         </motion.p>

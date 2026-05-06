@@ -41,10 +41,10 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
+    <section id="about" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       {/* Background elements */}
       <div className="bg-dot-pattern opacity-40" />
-      <div className="bg-text opacity-5">
+      <div className="bg-text opacity-15">
         <span>ABOUT</span>
       </div>
 

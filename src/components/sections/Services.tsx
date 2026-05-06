@@ -19,10 +19,10 @@ const fadeUp: Variants = {
 
 export default function Services() {
   return (
-    <section id="services" className="relative py-32 overflow-hidden">
+    <section id="services" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       {/* Background elements */}
       <div className="bg-grid-pattern opacity-50" />
-      <div className="bg-text opacity-15">
+      <div className="bg-text opacity-20">
         <span>SERVICES</span>
       </div>
 
