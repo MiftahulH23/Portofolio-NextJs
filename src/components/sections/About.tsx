@@ -1,5 +1,5 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, Variants } from "framer-motion";
 import { Mail, Phone, Copy, Check, MapPin, GraduationCap, Monitor, Globe } from "lucide-react";
 import { useState } from "react";
@@ -19,6 +19,7 @@ const fadeUp: Variants = {
 };
 
 export default function About() {
+  const { data: portfolioData, t } = useLanguage();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {

@@ -2,6 +2,8 @@ import "./globals.css";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
 import ScrollProgress from "@/components/ui/ScrollProgress";
 import Ticker from "@/components/sections/Ticker";
+import Header from "@/components/sections/Header";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata = {
   title: "Miftahul Huda — Full-Stack Developer",
@@ -16,10 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
       <body className="min-h-screen bg-[#080808] text-[#f0f0f0] antialiased grain">
-        <ScrollProgress />
-        <CursorSpotlight />
-        <Ticker />
-        {children}
+        <LanguageProvider>
+          <ScrollProgress />
+          <CursorSpotlight />
+          <Ticker />
+          <Header />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

@@ -1,5 +1,5 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, Variants } from "framer-motion";
 
 const fadeUp: Variants = {
@@ -15,6 +15,7 @@ const fadeUp: Variants = {
   }),
 };
 export default function Skills() {
+  const { data: portfolioData, t } = useLanguage();
   const categories = Object.entries(portfolioData.skills);
 
   return (

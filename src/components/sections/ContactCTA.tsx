@@ -1,16 +1,20 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowUpRight } from "lucide-react";
+import Lanyard from "../ui/Lanyard";
 
 export default function ContactCTA() {
+  const { data: portfolioData, t } = useLanguage();
   return (
     <section id="contact" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       <div className="divider-glow" />
       {/* Center glow */}
       <div className="contact-cta-glow" />
 
-      <div className="max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        {/* Left Content */}
+        <div className="text-center lg:text-left flex flex-col items-center lg:items-start z-10">
         <motion.p
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -18,7 +22,7 @@ export default function ContactCTA() {
           transition={{ duration: 0.5 }}
           className="section-label mb-8"
         >
-          07 — Let&apos;s Talk
+          07 — {t.contact.title}
         </motion.p>
 
         <motion.h2
@@ -28,9 +32,7 @@ export default function ContactCTA() {
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[clamp(3rem,9vw,7rem)] text-[#e8e8e8] mb-10"
         >
-          Let&apos;s work
-          <br />
-          together<span className="text-[#252525]">.</span>
+          {t.contact.heading}
         </motion.h2>
 
         <motion.p
@@ -40,8 +42,7 @@ export default function ContactCTA() {
           transition={{ duration: 0.6, delay: 0.25 }}
           className="text-[#404040] text-base max-w-md mb-12 leading-relaxed"
         >
-          Have a project in mind or looking for a developer to join your team?
-          I&apos;d love to hear from you.
+          {t.contact.desc}
         </motion.p>
 
         <motion.div
@@ -49,7 +50,7 @@ export default function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="flex flex-wrap gap-4 justify-center"
+          className="flex flex-wrap gap-4 justify-center lg:justify-start"
         >
           <a
             href={`mailto:${portfolioData.personalInfo.email}`}
@@ -69,6 +70,12 @@ export default function ContactCTA() {
             WhatsApp
           </a>
         </motion.div>
+        </div>
+
+        {/* Right Content - Interactive Lanyard */}
+        <div className="w-full flex justify-center items-center lg:h-auto h-[500px]">
+          <Lanyard />
+        </div>
       </div>
     </section>
   );

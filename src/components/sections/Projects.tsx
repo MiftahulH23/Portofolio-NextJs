@@ -1,5 +1,6 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
+import { portfolioDataEn } from "@/lib/data";
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight, Github } from "lucide-react";
@@ -18,7 +19,7 @@ const fadeUp: Variants = {
   }),
 };
 
-type Project = (typeof portfolioData.projects)[number];
+type Project = (typeof portfolioDataEn.projects)[number];
 
 function FeaturedProjectCard({ project, index }: { project: Project; index: number }) {
   return (
@@ -173,6 +174,7 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
 }
 
 export default function Projects() {
+  const { data: portfolioData, t } = useLanguage();
   const featured = portfolioData.projects.filter((p) => p.featured);
   const rest = portfolioData.projects.filter((p) => !p.featured);
 
@@ -196,7 +198,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="section-label mb-4"
         >
-          06 — Projects
+          06 — {t.projects.title}
         </motion.p>
 
         <motion.h2

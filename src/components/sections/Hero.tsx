@@ -1,9 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { Mail, Phone, Github, Linkedin, Instagram } from "lucide-react";
 
 export default function Hero() {
+  const { data: portfolioData, t } = useLanguage();
   return (
     <section
       id="home"
@@ -44,7 +45,7 @@ export default function Hero() {
             <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
           </span>
           <span className="text-[10px] text-emerald-400 tracking-[0.2em] font-bold uppercase mt-0.5">
-            Available for work
+            {t.hero.available}
           </span>
         </motion.div>
 
@@ -55,9 +56,9 @@ export default function Hero() {
           transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
           className="font-display text-[clamp(3.5rem,11vw,9rem)] text-[#e8e8e8] mb-10 leading-[1.05]"
         >
-          Let&apos;s build
+          {t.hero.letsBuild}
           <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 animate-gradient-x">something</span><span className="text-[#303030]">.</span>
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 animate-gradient-x">{t.hero.something}</span><span className="text-[#303030]">.</span>
         </motion.h1>
 
         {/* Sub-label */}
@@ -82,7 +83,7 @@ export default function Hero() {
             className="btn-primary"
           >
             <Mail size={14} />
-            Send Email
+            {t.hero.sendEmail}
           </a>
           <a
             href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
@@ -91,7 +92,7 @@ export default function Hero() {
             className="btn-outline"
           >
             <Phone size={14} />
-            Book a Call
+            {t.hero.bookCall}
           </a>
         </motion.div>
 
@@ -128,7 +129,7 @@ export default function Hero() {
         transition={{ delay: 1.2, duration: 0.5 }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[9px] tracking-[0.25em] text-[#2a2a2a] uppercase font-bold">Scroll</span>
+        <span className="text-[9px] tracking-[0.25em] text-[#2a2a2a] uppercase font-bold">{t.hero.scroll}</span>
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}

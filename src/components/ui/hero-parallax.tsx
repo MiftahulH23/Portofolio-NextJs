@@ -13,7 +13,7 @@ import { FlipWords } from "./flip-words";
 import { TypeAnimation } from "react-type-animation";
 import { Button } from "@/components/ui/button"; // 1. Import Button
 import { Github, Instagram, Linkedin } from "lucide-react"; // 2. Import ikon-ikon
-import { portfolioData } from "@/lib/data"; // 3. Import data portofolio
+import { useLanguage } from "@/context/LanguageContext"; // 3. Import data portofolio
 
 export type Product = {
   title: string;
@@ -24,6 +24,7 @@ export type Product = {
 // ... (const firstRow, secondRow, thirdRow tetap sama) ...
 
 export const Header = () => {
+  const { data: portfolioData, t } = useLanguage();
   const words = ["Aplikasi Web", "Sistem Fungsional", "Produk Digital", "Solusi Inovatif"];
   const subheadlineText = 
     "Sebagai Full-Stack Web Developer, saya mengubah ide menjadi aplikasi web yang siap tumbuh—scalable, efisien, dan dirancang untuk pengalaman pengguna terbaik.";

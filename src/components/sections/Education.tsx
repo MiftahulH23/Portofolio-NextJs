@@ -1,5 +1,5 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, Variants } from "framer-motion";
 import { BackgroundBeams } from "../ui/background-beams";
 import { TiltCard } from "../ui/TiltCard";
@@ -18,6 +18,7 @@ const fadeUp: Variants = {
 };
 
 export default function Education() {
+  const { data: portfolioData, t } = useLanguage();
   const { education } = portfolioData;
 
   return (

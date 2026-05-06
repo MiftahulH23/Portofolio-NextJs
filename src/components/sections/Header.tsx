@@ -5,17 +5,18 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Experience", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-];
-
+import { useLanguage } from "@/context/LanguageContext";
 export default function Header() {
+  const { t, lang, toggleLanguage } = useLanguage();
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+
+  const navItems = [
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.about, href: "#about" },
+    { name: t.nav.services, href: "#services" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.projects, href: "#projects" },
+  ];
   const [mounted, setMounted] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
@@ -54,6 +55,15 @@ export default function Header() {
               </li>
             ))}
           </ul>
+          
+          <div className="pl-4 border-l border-white/10 ml-2">
+            <button
+              onClick={toggleLanguage}
+              className="text-[10px] font-black tracking-widest uppercase text-[#888] hover:text-white transition-colors py-1 px-2 rounded hover:bg-white/5"
+            >
+              {lang === "en" ? "ID" : "EN"}
+            </button>
+          </div>
         </motion.nav>
       </header>
     );
@@ -62,6 +72,12 @@ export default function Header() {
   // Tampilan Mobile
   return (
     <header className="fixed top-14 right-6 z-[60] flex items-center gap-2">
+        <button
+          onClick={toggleLanguage}
+          className="flex items-center justify-center w-9 h-9 rounded-full bg-card/70 backdrop-blur-sm border border-border shadow-sm text-xs font-bold text-muted-foreground hover:text-foreground"
+        >
+          {lang === "en" ? "ID" : "EN"}
+        </button>
         <MobileNav />
     </header>
   );

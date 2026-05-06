@@ -1,5 +1,5 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, Variants } from "framer-motion";
 import { TiltCard } from "../ui/TiltCard";
 
@@ -17,6 +17,7 @@ const fadeUp: Variants = {
 };
 
 export default function Experience() {
+  const { data: portfolioData, t } = useLanguage();
   return (
     <section id="experience" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       {/* Background elements */}
@@ -39,7 +40,7 @@ export default function Experience() {
           viewport={{ once: true }}
           className="section-label mb-4"
         >
-          05 — Experience
+          05 — {t.experience.title}
         </motion.p>
 
         <motion.h2

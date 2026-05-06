@@ -1,4 +1,4 @@
-export const portfolioData = {
+export const portfolioDataEn = {
   personalInfo: {
     name: "Miftahul Huda",
     headline: "Full-Stack Web Developer",
@@ -64,19 +64,11 @@ export const portfolioData = {
       title: "Student Achievement Information System",
       role: "Full-Stack Developer",
       image: "/thumbnails/sistem-informasi-prestasi-mahasiswa.png",
-      github:
-        "https://github.com/MiftahulH23/sistem-informasi-prestasi-mahasiswa",
+      github: "https://github.com/MiftahulH23/sistem-informasi-prestasi-mahasiswa",
       demo: "https://sipresma.pocari.id/",
       description:
         "An integrated information system to manage and document student achievements — from competition proposal submissions to final achievement records.",
-      technologies: [
-        "Laravel",
-        "Inertia.js",
-        "React.js",
-        "TailwindCSS",
-        "Shadcn/UI",
-        "MySQL",
-      ],
+      technologies: ["Laravel", "Inertia.js", "React.js", "TailwindCSS", "Shadcn/UI", "MySQL"],
       featured: true,
     },
     {
@@ -87,14 +79,7 @@ export const portfolioData = {
       demo: "https://silepaspku.pocari.id/",
       description:
         "A web application to help waste management institutions manage resident data, monthly fees, and waste collection records.",
-      technologies: [
-        "Laravel",
-        "Inertia.js",
-        "React.js",
-        "TypeScript",
-        "TailwindCSS",
-        "Shadcn/UI",
-      ],
+      technologies: ["Laravel", "Inertia.js", "React.js", "TypeScript", "TailwindCSS", "Shadcn/UI"],
       featured: false,
     },
     {
@@ -111,8 +96,7 @@ export const portfolioData = {
     {
       title: "Supply Chain Management — Es Teh Indonesia",
       role: "Full-Stack Developer",
-      image:
-        "/thumbnails/supply-chain-management-system---es-teh-indonesia.png",
+      image: "/thumbnails/supply-chain-management-system---es-teh-indonesia.png",
       github: "https://github.com/MiftahulH23/Capstone",
       demo: "https://github.com/MiftahulH23/Capstone",
       description:
@@ -125,55 +109,25 @@ export const portfolioData = {
     "Front-End": [
       { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB" },
       { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs/ffffff" },
-      {
-        name: "JavaScript",
-        icon: "https://cdn.simpleicons.org/javascript/F7DF1E",
-      },
-      {
-        name: "TypeScript",
-        icon: "https://cdn.simpleicons.org/typescript/3178C6",
-      },
-      {
-        name: "Inertia.js",
-        icon: "https://cdn.simpleicons.org/inertia/9553E9",
-      },
+      { name: "JavaScript", icon: "https://cdn.simpleicons.org/javascript/F7DF1E" },
+      { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript/3178C6" },
+      { name: "Inertia.js", icon: "https://cdn.simpleicons.org/inertia/9553E9" },
       { name: "HTML5", icon: "https://cdn.simpleicons.org/html5/E34F26" },
-      {
-        name: "CSS3",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
-      },
-      {
-        name: "TailwindCSS",
-        icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
-      },
+      { name: "CSS3", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+      { name: "TailwindCSS", icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4" },
     ],
     "Back-End": [
       { name: "PHP", icon: "https://cdn.simpleicons.org/php/777BB4" },
       { name: "Laravel", icon: "https://cdn.simpleicons.org/laravel/FF2D20" },
-      {
-        name: "Node.js",
-        icon: "https://cdn.simpleicons.org/nodedotjs/339933",
-      },
-      {
-        name: "Express.js",
-        icon: "https://cdn.simpleicons.org/express/ffffff",
-      },
-      {
-        name: "C#",
-        icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg",
-      },
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs/339933" },
+      { name: "Express.js", icon: "https://cdn.simpleicons.org/express/ffffff" },
+      { name: "C#", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" },
       { name: ".NET", icon: "https://cdn.simpleicons.org/dotnet/512BD4" },
-      {
-        name: "RESTful API",
-        icon: "https://cdn.simpleicons.org/postman/FF6C37",
-      },
+      { name: "RESTful API", icon: "https://cdn.simpleicons.org/postman/FF6C37" },
     ],
     Database: [
       { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql/4479A1" },
-      {
-        name: "PostgreSQL",
-        icon: "https://cdn.simpleicons.org/postgresql/4169E1",
-      },
+      { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql/4169E1" },
       { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb/47A248" },
     ],
     "Tools & Others": [
@@ -183,4 +137,182 @@ export const portfolioData = {
       { name: "Figma", icon: "https://cdn.simpleicons.org/figma/F24E1E" },
     ],
   },
+};
+
+export const portfolioDataId = {
+  ...portfolioDataEn,
+  personalInfo: {
+    ...portfolioDataEn.personalInfo,
+    summary: "Seorang Full-Stack Web Developer yang adaptif terhadap teknologi modern. Saya memiliki pengalaman profesional dalam merancang arsitektur sistem yang aman dan mudah digunakan — mulai dari proyek akademik hingga aplikasi korporat di industri perbankan.",
+  },
+  education: {
+    ...portfolioDataEn.education,
+    degree: "Sarjana Terapan Sistem Informasi",
+  },
+  services: [
+    {
+      number: "01",
+      title: "Pengembangan Frontend",
+      description: "Membangun antarmuka yang responsif dan sempurna (pixel-perfect) menggunakan React.js, Next.js, dan framework CSS modern. Setiap UI dibuat dengan mengutamakan performa dan aksesibilitas.",
+      tags: ["React.js", "Next.js", "TailwindCSS", "TypeScript"],
+    },
+    {
+      number: "02",
+      title: "Pengembangan Backend",
+      description: "Merancang arsitektur server-side yang skalabel dengan Laravel, Node.js, dan Express. Termasuk RESTful API, perancangan database, dan alur autentikasi yang aman.",
+      tags: ["Laravel", "Node.js", "Express.js", "MySQL"],
+    },
+    {
+      number: "03",
+      title: "Solusi Full-Stack",
+      description: "Pengembangan produk end-to-end mulai dari skema database hingga UI yang dipoles. Saya menjembatani desain dan teknis (engineering) untuk meluncurkan aplikasi yang siap rilis.",
+      tags: ["Full-Stack", "System Design", "API Integration", "Deployment"],
+    },
+    {
+      number: "04",
+      title: "Pengembangan Mobile",
+      description: "Membangun aplikasi seluler native dan cross-platform dengan animasi yang mulus dan performa tangguh untuk iOS maupun Android.",
+      tags: ["Flutter", "React Native", "Swift"],
+    },
+  ],
+  workExperience: [
+    {
+      company: "PT Bank Riau Kepri Syariah",
+      position: "Web Developer Intern",
+      duration: "Feb 2024 — Jun 2024",
+      achievements: [
+        "Merancang dan mengembangkan sistem absensi berbasis web dari awal untuk peserta pelatihan internal menggunakan Laravel & MySQL.",
+        "Meningkatkan pengalaman pengguna dengan mengimplementasikan antarmuka yang responsif dan intuitif menggunakan TailwindCSS.",
+        "Menerjemahkan kebutuhan bisnis dari divisi Human Resource Management (HRM) menjadi fitur fungsional yang efektif untuk manajemen pelatihan.",
+        "Memastikan performa aplikasi optimal di berbagai perangkat (desktop & seluler) melalui pengujian dan optimasi kode yang menyeluruh.",
+      ],
+    },
+  ],
+  projects: [
+    {
+      ...portfolioDataEn.projects[0],
+      title: "Sistem Informasi Prestasi Mahasiswa",
+      description: "Sistem informasi terintegrasi untuk mengelola dan mendokumentasikan prestasi mahasiswa — mulai dari pengajuan proposal lomba hingga pencatatan prestasi akhir.",
+    },
+    {
+      ...portfolioDataEn.projects[1],
+      title: "Sistem Lembaga Pengelola Sampah",
+      description: "Aplikasi web untuk membantu lembaga pengelola sampah mengelola data warga, iuran bulanan, dan catatan pengangkutan sampah harian.",
+    },
+    {
+      ...portfolioDataEn.projects[2],
+      description: "Proyek akademik yang berfokus pada desain ulang website dan pengembangan dashboard SCM untuk meningkatkan pengalaman pengguna dan efisiensi operasional.",
+    },
+    {
+      ...portfolioDataEn.projects[3],
+      description: "Sistem manajemen rantai pasok (Supply Chain) untuk membantu mitra dan manajemen pusat menangani permintaan, inventaris, dan distribusi produk.",
+    },
+  ],
+};
+
+export const translations = {
+  en: {
+    nav: {
+      home: "Home",
+      about: "About",
+      skills: "Skills",
+      services: "Services",
+      education: "Education",
+      experience: "Experience",
+      projects: "Projects",
+    },
+    hero: {
+      available: "Available for work",
+      letsBuild: "Let's build",
+      something: "something",
+      sendEmail: "Send Email",
+      bookCall: "Book a Call",
+      scroll: "Scroll",
+    },
+    about: {
+      title: "About Me",
+      description: "I am a passionate software engineer dedicated to building high-quality applications that solve real-world problems.",
+    },
+    skills: {
+      title: "My Skills",
+      subtitle: "Technologies I work with",
+    },
+    services: {
+      title: "What I Do",
+      subtitle: "Services & Solutions",
+    },
+    experience: {
+      title: "Experience",
+      subtitle: "My professional journey",
+    },
+    projects: {
+      title: "Projects",
+      subtitle: "Featured Work",
+      featured: "Featured",
+      demo: "Live Demo",
+      github: "Source Code",
+    },
+    contact: {
+      title: "Let's Talk",
+      heading: "Let's work together.",
+      desc: "Have a project in mind or looking for a developer to join your team? I'd love to hear from you.",
+    },
+    footer: {
+      rights: "All rights reserved",
+      builtWith: "Built with",
+      lotsOf: "& lots of",
+    }
+  },
+  id: {
+    nav: {
+      home: "Beranda",
+      about: "Tentang",
+      skills: "Keahlian",
+      services: "Layanan",
+      education: "Pendidikan",
+      experience: "Pengalaman",
+      projects: "Proyek",
+    },
+    hero: {
+      available: "Tersedia untuk bekerja",
+      letsBuild: "Mari bangun",
+      something: "sesuatu",
+      sendEmail: "Kirim Email",
+      bookCall: "Jadwalkan Panggilan",
+      scroll: "Gulir Ke Bawah",
+    },
+    about: {
+      title: "Tentang Saya",
+      description: "Saya adalah software engineer yang berdedikasi membangun aplikasi berkualitas tinggi untuk menyelesaikan masalah nyata.",
+    },
+    skills: {
+      title: "Keahlian Saya",
+      subtitle: "Teknologi yang saya gunakan",
+    },
+    services: {
+      title: "Apa yang Saya Lakukan",
+      subtitle: "Layanan & Solusi",
+    },
+    experience: {
+      title: "Pengalaman",
+      subtitle: "Perjalanan karir saya",
+    },
+    projects: {
+      title: "Proyek",
+      subtitle: "Karya Unggulan",
+      featured: "Unggulan",
+      demo: "Lihat Demo",
+      github: "Kode Sumber",
+    },
+    contact: {
+      title: "Mari Berbincang",
+      heading: "Mari bekerja sama.",
+      desc: "Punya ide proyek atau sedang mencari developer untuk bergabung dengan tim Anda? Saya sangat ingin mendengarnya dari Anda.",
+    },
+    footer: {
+      rights: "Hak Cipta Dilindungi",
+      builtWith: "Dibuat dengan",
+      lotsOf: "& banyak",
+    }
+  }
 };

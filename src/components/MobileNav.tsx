@@ -1,26 +1,27 @@
 "use client";
 
 import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 import Link from "next/link";
-import { motion, AnimatePresence, Variants } from "framer-motion"; // 1. Import 'Variants'
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import { Menu } from "lucide-react";
 
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "Skills", href: "#skills" },
-  { name: "Pendidikan", href: "#education" },
-  { name: "Pengalaman", href: "#experience" },
-  { name: "Projects", href: "#projects" },
-];
-
 export function MobileNav() {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
+
+  const navItems = [
+    { name: t.nav.home, href: "#home" },
+    { name: t.nav.skills, href: "#skills" },
+    { name: t.nav.education, href: "#education" },
+    { name: t.nav.experience, href: "#experience" },
+    { name: t.nav.projects, href: "#projects" },
+  ];
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  // 2. Terapkan tipe 'Variants' ke objek
   const wrapperVariants: Variants = {
     open: {
       scale: 1,
@@ -42,7 +43,6 @@ export function MobileNav() {
     },
   };
 
-  // 3. Terapkan tipe 'Variants' ke objek ini juga
   const itemVariants: Variants = {
     open: {
       opacity: 1,

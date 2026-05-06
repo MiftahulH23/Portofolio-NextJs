@@ -1,5 +1,5 @@
 "use client";
-import { portfolioData } from "@/lib/data";
+import { useLanguage } from "@/context/LanguageContext";
 import { motion, Variants } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { TiltCard } from "../ui/TiltCard";
@@ -18,6 +18,7 @@ const fadeUp: Variants = {
 };
 
 export default function Services() {
+  const { data: portfolioData, t } = useLanguage();
   return (
     <section id="services" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
       {/* Background elements */}
@@ -39,7 +40,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="section-label mb-4"
         >
-          03 — What I Do
+          03 — {t.services.title}
         </motion.p>
 
         <motion.h2
