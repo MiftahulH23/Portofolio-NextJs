@@ -4,7 +4,7 @@ import { MobileNav } from "@/components/MobileNav";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -16,12 +16,19 @@ const navItems = [
 
 export default function Header() {
   const [hoveredItem, setHoveredItem] = useState<string | null>(null);
+  const [mounted, setMounted] = useState(false);
   const isDesktop = useMediaQuery("(min-width: 768px)");
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return null;
 
   // Tampilan Desktop
   if (isDesktop) {
     return (
-      <header className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+      <header className="fixed top-14 left-1/2 -translate-x-1/2 z-[60]">
         <motion.nav
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -54,7 +61,7 @@ export default function Header() {
 
   // Tampilan Mobile
   return (
-    <header className="fixed top-6 right-6 z-50 flex items-center gap-2">
+    <header className="fixed top-14 right-6 z-[60] flex items-center gap-2">
         <MobileNav />
     </header>
   );
