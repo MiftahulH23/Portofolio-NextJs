@@ -109,8 +109,8 @@ export default function Lanyard() {
                   key={i}
                   className="h-full bg-[#555] rounded-full"
                   style={{
-                    width: `${Math.abs(Math.sin(i * 12.34)) * 3 + 1}px`,
-                    opacity: Math.abs(Math.cos(i * 43.21)) * 0.5 + 0.5,
+                    width: `${(Math.abs(Math.sin(i * 12.34)) * 3 + 1).toFixed(3)}px`,
+                    opacity: (Math.abs(Math.cos(i * 43.21)) * 0.5 + 0.5).toFixed(3),
                   }}
                 />
               ))}

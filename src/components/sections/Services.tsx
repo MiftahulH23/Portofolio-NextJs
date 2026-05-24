@@ -51,7 +51,7 @@ export default function Services() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-14"
         >
-          Services I provide.
+          {t.services.heading}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

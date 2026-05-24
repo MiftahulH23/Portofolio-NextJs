@@ -38,7 +38,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="section-label mb-4"
         >
-          02 — Tech Stack
+          02 — {t.skills.label}
         </motion.p>
 
         <motion.h2
@@ -49,7 +49,7 @@ export default function Skills() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-12"
         >
-          Tools I work with.
+          {t.skills.heading}
         </motion.h2>
 
         {/* 2-column layout for categories */}

@@ -48,6 +48,16 @@ export const portfolioDataEn = {
   ],
   workExperience: [
     {
+      company: "Politeknik Caltex Riau",
+      position: "Laboratory Teaching Assistant",
+      duration: "Mar 2026 — Present",
+      achievements: [
+        "Assisted lecturers in conducting practical laboratory sessions for Programming, Project Management, and Software Engineering courses.",
+        "Evaluated laboratory reports and provided regular feedback on student assignments to ensure learning standards were met.",
+        "Mentored students directly in the laboratory to help them understand technical concepts and troubleshoot programming tasks."
+      ],
+    },
+    {
       company: "PT Bank Riau Kepri Syariah",
       position: "Web Developer Intern",
       duration: "Feb 2024 — Jun 2024",
@@ -177,6 +187,16 @@ export const portfolioDataId = {
   ],
   workExperience: [
     {
+      company: "Politeknik Caltex Riau",
+      position: "Asisten Praktikum Laboratorium",
+      duration: "Mar 2026 — Sekarang",
+      achievements: [
+        "Membantu dosen dalam pelaksanaan praktikum untuk mata kuliah Pemrograman, Manajemen Proyek, dan Rekayasa Perangkat Lunak.",
+        "Mengevaluasi laporan praktikum dan memberikan umpan balik rutin pada tugas mahasiswa untuk memastikan standar pembelajaran terpenuhi.",
+        "Membimbing mahasiswa secara langsung di laboratorium untuk membantu mereka memahami konsep teknis dan memecahkan masalah pemrograman."
+      ],
+    },
+    {
       company: "PT Bank Riau Kepri Syariah",
       position: "Web Developer Intern",
       duration: "Feb 2024 — Jun 2024",
@@ -232,18 +252,43 @@ export const translations = {
     about: {
       title: "About Me",
       description: "I am a passionate software engineer dedicated to building high-quality applications that solve real-world problems.",
+      label: "About",
+      stats: {
+        years: "Years Learning",
+        projects: "Projects Built",
+        gpa: "GPA"
+      },
+      details: {
+        location: "Location",
+        education: "Education",
+        degree: "Degree",
+        availability: "Availability",
+        contact: "Contact",
+        details: "Details"
+      },
+      remote: "Remote / On-site"
     },
     skills: {
       title: "My Skills",
       subtitle: "Technologies I work with",
+      label: "Tech Stack",
+      heading: "Tools I work with."
     },
     services: {
       title: "What I Do",
       subtitle: "Services & Solutions",
+      heading: "Services I provide."
+    },
+    education: {
+      title: "Education",
+      bachelors: "Bachelor's Degree",
+      duration: "Duration",
+      gpa: "GPA"
     },
     experience: {
       title: "Experience",
       subtitle: "My professional journey",
+      heading: "Where I've worked."
     },
     projects: {
       title: "Projects",
@@ -251,16 +296,18 @@ export const translations = {
       featured: "Featured",
       demo: "Live Demo",
       github: "Source Code",
+      heading: "Selected work.",
+      noPreview: "No Preview"
     },
     contact: {
       title: "Let's Talk",
       heading: "Let's work together.",
-      desc: "Have a project in mind or looking for a developer to join your team? I'd love to hear from you.",
+      desc: "Have a project in mind or looking for a developer to join your team? I'd love to hear from you."
     },
     footer: {
       rights: "All rights reserved",
       builtWith: "Built with",
-      lotsOf: "& lots of",
+      lotsOf: "& lots of"
     }
   },
   id: {
@@ -284,18 +331,43 @@ export const translations = {
     about: {
       title: "Tentang Saya",
       description: "Saya adalah software engineer yang berdedikasi membangun aplikasi berkualitas tinggi untuk menyelesaikan masalah nyata.",
+      label: "Tentang",
+      stats: {
+        years: "Tahun Belajar",
+        projects: "Proyek Dibuat",
+        gpa: "IPK"
+      },
+      details: {
+        location: "Lokasi",
+        education: "Pendidikan",
+        degree: "Gelar",
+        availability: "Ketersediaan",
+        contact: "Kontak",
+        details: "Detail"
+      },
+      remote: "Remote / Di Tempat"
     },
     skills: {
       title: "Keahlian Saya",
       subtitle: "Teknologi yang saya gunakan",
+      label: "Tech Stack",
+      heading: "Alat yang saya gunakan."
     },
     services: {
       title: "Apa yang Saya Lakukan",
       subtitle: "Layanan & Solusi",
+      heading: "Layanan yang saya berikan."
+    },
+    education: {
+      title: "Pendidikan",
+      bachelors: "Gelar Sarjana",
+      duration: "Durasi",
+      gpa: "IPK"
     },
     experience: {
       title: "Pengalaman",
       subtitle: "Perjalanan karir saya",
+      heading: "Tempat saya bekerja."
     },
     projects: {
       title: "Proyek",
@@ -303,16 +375,18 @@ export const translations = {
       featured: "Unggulan",
       demo: "Lihat Demo",
       github: "Kode Sumber",
+      heading: "Karya terpilih.",
+      noPreview: "Tidak Ada Pratinjau"
     },
     contact: {
       title: "Mari Berbincang",
       heading: "Mari bekerja sama.",
-      desc: "Punya ide proyek atau sedang mencari developer untuk bergabung dengan tim Anda? Saya sangat ingin mendengarnya dari Anda.",
+      desc: "Punya ide proyek atau sedang mencari developer untuk bergabung dengan tim Anda? Saya sangat ingin mendengarnya dari Anda."
     },
     footer: {
       rights: "Hak Cipta Dilindungi",
       builtWith: "Dibuat dengan",
-      lotsOf: "& banyak",
+      lotsOf: "& banyak"
     }
   }
 };

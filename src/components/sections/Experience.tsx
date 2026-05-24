@@ -51,7 +51,7 @@ export default function Experience() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-14"
         >
-          Where I&apos;ve worked.
+          {t.experience.heading}
         </motion.h2>
 
         <div>

@@ -22,6 +22,7 @@ const fadeUp: Variants = {
 type Project = (typeof portfolioDataEn.projects)[number];
 
 function FeaturedProjectCard({ project, index }: { project: Project; index: number }) {
+  const { t } = useLanguage();
   return (
     <motion.div
       custom={index + 2}
@@ -43,7 +44,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">No Preview</span>
+            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
           </div>
         )}
         {/* Overlay gradient */}
@@ -52,7 +53,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
         {/* Featured Badge */}
         <div className="absolute top-4 left-4 z-20 pointer-events-none">
           <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-[9px] font-bold tracking-[0.2em] text-white uppercase shadow-lg">
-            Featured
+            {t.projects.featured}
           </span>
         </div>
       </div>
@@ -99,6 +100,7 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
 }
 
 function SmallProjectCard({ project, index }: { project: Project; index: number }) {
+  const { t } = useLanguage();
   return (
     <motion.div
       custom={index + 2}
@@ -119,7 +121,7 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
           />
         ) : (
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">No Preview</span>
+            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
           </div>
         )}
         <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
@@ -209,7 +211,7 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-14"
         >
-          Selected work.
+          {t.projects.heading}
         </motion.h2>
 
         {/* Featured project — full width */}

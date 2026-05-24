@@ -29,16 +29,16 @@ export default function About() {
   };
 
   const stats = [
-    { label: "Years Learning", value: "4+" },
-    { label: "Projects Built", value: `${portfolioData.projects.length}` },
-    { label: "GPA", value: portfolioData.education.gpa.split("/")[0] },
+    { label: t.about.stats.years, value: "4+" },
+    { label: t.about.stats.projects, value: `${portfolioData.projects.length}` },
+    { label: t.about.stats.gpa, value: portfolioData.education.gpa.split("/")[0] },
   ];
 
   const details = [
-    { Icon: MapPin, label: "Location", value: "Riau, Indonesia" },
-    { Icon: GraduationCap, label: "Education", value: portfolioData.education.institution },
-    { Icon: Monitor, label: "Degree", value: portfolioData.education.degree },
-    { Icon: Globe, label: "Availability", value: "Remote / On-site" },
+    { Icon: MapPin, label: t.about.details.location, value: "Riau, Indonesia" },
+    { Icon: GraduationCap, label: t.about.details.education, value: portfolioData.education.institution },
+    { Icon: Monitor, label: t.about.details.degree, value: portfolioData.education.degree },
+    { Icon: Globe, label: t.about.details.availability, value: t.about.remote },
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function About() {
           viewport={{ once: true }}
           className="section-label mb-14"
         >
-          01 — About
+          01 — {t.about.label}
         </motion.p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
@@ -123,7 +123,7 @@ export default function About() {
             >
               <TiltCard className="card-dark p-6 group relative w-full h-full">
               <div className="relative z-10">
-                <p className="section-label mb-5">Contact</p>
+                <p className="section-label mb-5">{t.about.details.contact}</p>
               <div className="space-y-4">
                 {/* Email */}
                 <div className="flex items-center justify-between gap-4">
@@ -175,7 +175,7 @@ export default function About() {
             >
               <TiltCard className="card-dark p-6 group relative w-full h-full">
               <div className="relative z-10">
-                <p className="section-label mb-5">Details</p>
+                <p className="section-label mb-5">{t.about.details.details}</p>
               <div className="space-y-3">
                 {details.map(({ Icon, label, value }) => (
                   <div key={label} className="flex items-center justify-between gap-4 text-sm">

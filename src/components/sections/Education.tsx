@@ -41,7 +41,7 @@ export default function Education() {
           viewport={{ once: true }}
           className="section-label mb-14"
         >
-          04 — Education
+          04 — {t.education.title}
         </motion.p>
 
         {/* Tambahkan "relative" (dan letakkan elemen lain di atas z-index jika perlu) */}
@@ -57,7 +57,7 @@ export default function Education() {
           {/* Bungkus konten aslinya di div relative agar teks tidak tertimpa efek glow */}
           <div className="relative z-10 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
             <div>
-              <p className="section-label mb-5">Bachelor&apos;s Degree</p>
+              <p className="section-label mb-5">{t.education.bachelors}</p>
               <h3 className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-2">
                 {education.institution}
               </h3>
@@ -66,11 +66,11 @@ export default function Education() {
 
             <div className="flex gap-10 md:text-right flex-shrink-0">
               <div>
-                <p className="section-label mb-2">Duration</p>
+                <p className="section-label mb-2">{t.education.duration}</p>
                 <p className="text-sm text-[#5a5a5a]">{education.duration}</p>
               </div>
               <div>
-                <p className="section-label mb-2">GPA</p>
+                <p className="section-label mb-2">{t.education.gpa}</p>
                 <p className="text-sm font-bold text-[#e8e8e8]">{education.gpa}</p>
               </div>
             </div>
