@@ -1,141 +1,92 @@
 "use client";
 import { motion } from "framer-motion";
-import { useLanguage } from "@/context/LanguageContext";
-import { Mail, Phone, Github, Linkedin, Instagram } from "lucide-react";
+
+import { GeometricArt } from "@/components/ui/GeometricArt";
 
 export default function Hero() {
-  const { data: portfolioData, t } = useLanguage();
   return (
     <section
       id="home"
-      className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden pt-10"
+      className="relative min-h-screen pt-24 pb-12 flex items-center justify-center overflow-hidden bg-background"
     >
-      {/* Bottom glow */}
-      <div className="hero-glow" />
-
-      {/* Ambient top-left glow */}
-      <div
-        className="absolute pointer-events-none"
-        style={{
-          top: "-200px",
-          left: "-200px",
-          width: "600px",
-          height: "600px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(255,255,255,0.025) 0%, transparent 70%)",
-        }}
-      />
-
-      {/* Background Large Text */}
-      <div className="bg-text opacity-20" aria-hidden="true">
-        <span>PORTFOLIO</span>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 w-full max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
-        {/* Availability Badge */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-emerald-500/20 bg-emerald-500/10 mb-8 backdrop-blur-sm"
-        >
-          <span className="relative flex h-2.5 w-2.5">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-          </span>
-          <span className="text-[10px] text-emerald-400 tracking-[0.2em] font-bold uppercase mt-0.5">
-            {t.hero.available}
-          </span>
-        </motion.div>
-
-        {/* Main Heading */}
-        <motion.h1
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(3.5rem,11vw,9rem)] text-[#e8e8e8] mb-10 leading-[1.05]"
-        >
-          {t.hero.letsBuild}
-          <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-blue-400 to-emerald-400 animate-gradient-x">{t.hero.something}</span><span className="text-[#303030]">.</span>
-        </motion.h1>
-
-        {/* Sub-label */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="text-[#9a9a9a] text-sm font-bold tracking-[0.2em] uppercase mb-10"
-        >
-          {portfolioData.personalInfo.headline}
-        </motion.p>
-
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-wrap gap-3 justify-center mb-16"
-        >
-          <a
-            href={`mailto:${portfolioData.personalInfo.email}`}
-            className="btn-primary"
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-4 relative z-10">
+        
+        {/* Left Content */}
+        <div className="lg:col-span-4 flex flex-col justify-center items-start z-20 order-2 lg:order-1 mt-8 lg:mt-0">
+          <motion.h1 
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-6 text-foreground tracking-tight"
           >
-            <Mail size={14} />
-            {t.hero.sendEmail}
-          </a>
-          <a
-            href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn-outline"
+            Hey There,<br />I'm Miftahul
+          </motion.h1>
+          <motion.a 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
+            href="mailto:miftahul@email.com" 
+            className="text-accent font-semibold hover:underline underline-offset-4 mb-16 lg:mb-32 tracking-wide"
           >
-            <Phone size={14} />
-            {t.hero.bookCall}
-          </a>
-        </motion.div>
+            miftahulh942@gmail.com
+          </motion.a>
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+            className="flex items-center gap-3 mt-auto"
+          >
+            <span className="text-5xl font-bold text-foreground">1</span>
+            <span className="text-xs font-bold text-muted-foreground uppercase leading-[1.2] w-24 tracking-widest">
+              YEARS<br/>EXPERIENCE
+            </span>
+          </motion.div>
+        </div>
 
-        {/* Social Links */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, delay: 0.6 }}
-          className="flex items-center gap-2"
-        >
-          {[
-            { href: portfolioData.personalInfo.github, label: "GitHub", Icon: Github },
-            { href: portfolioData.personalInfo.linkedin, label: "LinkedIn", Icon: Linkedin },
-            { href: portfolioData.personalInfo.instagram, label: "Instagram", Icon: Instagram },
-          ].map(({ href, label, Icon }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 text-[11px] font-semibold text-[#333333] border border-[#171717] rounded-full hover:text-[#777777] hover:border-[#2a2a2a] transition-all duration-300 tracking-wider"
-            >
-              <Icon size={12} />
-              {label}
-            </a>
-          ))}
-        </motion.div>
+        {/* Center Interactive Globe */}
+        <div className="lg:col-span-5 flex justify-center items-center relative z-10 order-1 lg:order-2 h-[50vh] lg:h-[75vh]">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            className="w-full h-full relative cursor-grab active:cursor-grabbing"
+          >
+             <div className="absolute inset-0 flex items-center justify-center">
+                <GeometricArt />
+             </div>
+          </motion.div>
+        </div>
+
+        {/* Right Content */}
+        <div className="lg:col-span-3 flex flex-col justify-between items-end text-right z-20 order-3 lg:pt-24 lg:pb-16">
+          <motion.p 
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.2, duration: 0.8 }}
+            className="text-muted-foreground font-medium text-sm leading-relaxed max-w-[200px]"
+          >
+            I design beautifully simple things, And I love what I do.
+          </motion.p>
+          
+          <motion.div 
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.8, duration: 0.6, type: "spring" }}
+            className="relative w-36 h-36 flex flex-col items-center justify-center rounded-full mt-12 lg:mt-auto"
+          >
+            <div className="absolute inset-0 rounded-full border border-border animate-[spin_20s_linear_infinite] border-dashed"></div>
+            <div className="absolute inset-2 rounded-full border border-border/50"></div>
+            <div className="w-8 h-8 rounded-full bg-foreground flex items-center justify-center mb-2">
+                <span className="text-background text-[10px]">✨</span>
+            </div>
+            <span className="text-center font-bold text-[8px] uppercase tracking-widest text-foreground">
+               CERTIFIED<br/>PROFESSIONAL<br/>DEVELOPER
+            </span>
+          </motion.div>
+        </div>
+        
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 0.5 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
-        <span className="text-[9px] tracking-[0.25em] text-[#2a2a2a] uppercase font-bold">{t.hero.scroll}</span>
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="w-px h-10 bg-gradient-to-b from-[#2a2a2a] to-transparent"
-        />
-      </motion.div>
     </section>
   );
 }

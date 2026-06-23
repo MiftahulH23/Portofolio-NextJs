@@ -1,9 +1,4 @@
 import "./globals.css";
-import CursorSpotlight from "@/components/ui/CursorSpotlight";
-import ScrollProgress from "@/components/ui/ScrollProgress";
-import Ticker from "@/components/sections/Ticker";
-import Header from "@/components/sections/Header";
-import { LanguageProvider } from "@/context/LanguageContext";
 
 export const metadata = {
   title: "Miftahul Huda — Full-Stack Developer",
@@ -16,15 +11,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="min-h-screen bg-[#080808] text-[#f0f0f0] antialiased grain">
-        <LanguageProvider>
-          <ScrollProgress />
-          <CursorSpotlight />
-          <Ticker />
-          <Header />
-          {children}
-        </LanguageProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className="min-h-screen bg-background text-foreground antialiased grain">
+        {children}
       </body>
     </html>
   );

@@ -32,68 +32,66 @@ function FeaturedProjectCard({ project, index }: { project: Project; index: numb
       viewport={{ once: true }}
       className="col-span-1 md:col-span-2"
     >
-      <TiltCard className="project-card group relative w-full h-full">
-      {/* Image */}
-      <div className="relative w-full h-72 overflow-hidden bg-[#0a0a0a]">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover grayscale group-hover:grayscale-0 opacity-65 group-hover:opacity-100 transition-all duration-700 scale-100 group-hover:scale-110"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
-          </div>
-        )}
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
-        
-        {/* Featured Badge */}
-        <div className="absolute top-4 left-4 z-20 pointer-events-none">
-          <span className="px-3 py-1.5 rounded-full border border-white/10 bg-black/50 backdrop-blur-md text-[9px] font-bold tracking-[0.2em] text-white uppercase shadow-lg">
-            {t.projects.featured}
-          </span>
-        </div>
-      </div>
-
-      {/* Content */}
-      <div className="p-7 flex flex-col flex-1 relative z-10">
-        <div className="flex justify-between items-start gap-4 mb-3">
-          <h3 className="text-lg font-bold text-[#e8e8e8] tracking-tight group-hover:text-white transition-colors leading-tight">
-            {project.title}
-          </h3>
-          <div className="flex gap-1 flex-shrink-0">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-[#444444] hover:text-[#aaaaaa] transition-colors"
-              aria-label="Source code"
-            >
-              <Github size={15} />
-            </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-2 text-[#444444] hover:text-[#aaaaaa] transition-colors"
-              aria-label="Live demo"
-            >
-              <ArrowUpRight size={15} />
-            </a>
-          </div>
-        </div>
-        <p className="text-sm text-[#5a5a5a] leading-relaxed mb-6">{project.description}</p>
-        <div className="flex flex-wrap gap-x-3 gap-y-1 mt-auto">
-          {project.technologies.map((tech) => (
-            <span key={tech} className="text-[10px] font-bold tracking-widest text-[#3e3e3e] uppercase">
-              {tech}
+      <TiltCard className="bg-white rounded-3xl p-6 border border-border shadow-sm group relative w-full h-full hover:shadow-md transition-shadow duration-300">
+        {/* Image */}
+        <div className="relative w-full h-64 md:h-80 overflow-hidden rounded-2xl bg-background mb-6 border border-border/50">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-700 scale-100 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-muted-foreground text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
+            </div>
+          )}
+          
+          {/* Featured Badge */}
+          <div className="absolute top-4 left-4 z-20 pointer-events-none">
+            <span className="px-4 py-2 rounded-full border border-border/50 bg-white/90 backdrop-blur-md text-[10px] font-bold tracking-[0.2em] text-primary uppercase shadow-sm">
+              {t.projects.featured}
             </span>
-          ))}
+          </div>
         </div>
-      </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 px-2">
+          <div className="flex justify-between items-start gap-4 mb-4">
+            <h3 className="text-2xl font-bold text-foreground tracking-tight group-hover:text-primary transition-colors leading-tight">
+              {project.title}
+            </h3>
+            <div className="flex gap-2 flex-shrink-0">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-background hover:text-foreground transition-all"
+                aria-label="Source code"
+              >
+                <Github size={16} />
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-background hover:text-foreground transition-all"
+                aria-label="Live demo"
+              >
+                <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </div>
+          <p className="text-base text-muted-foreground leading-relaxed mb-6 max-w-3xl">{project.description}</p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.technologies.map((tech) => (
+              <span key={tech} className="text-[11px] font-bold tracking-widest text-foreground/70 uppercase px-3 py-1.5 bg-background border border-border rounded-full">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
       </TiltCard>
     </motion.div>
   );
@@ -109,67 +107,66 @@ function SmallProjectCard({ project, index }: { project: Project; index: number 
       whileInView="visible"
       viewport={{ once: true }}
     >
-      <TiltCard className="project-card group relative w-full h-full">
-      {/* Image */}
-      <div className="relative w-full h-44 overflow-hidden bg-[#0a0a0a]">
-        {project.image ? (
-          <Image
-            src={project.image}
-            alt={project.title}
-            fill
-            className="object-cover grayscale group-hover:grayscale-0 opacity-55 group-hover:opacity-100 transition-all duration-700 scale-100 group-hover:scale-110"
-          />
-        ) : (
-          <div className="absolute inset-0 flex items-center justify-center">
-            <span className="text-[#2a2a2a] text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
-          </div>
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#0d0d0d] via-[#0d0d0d]/20 to-transparent" />
-      </div>
-
-      {/* Content */}
-      <div className="p-5 flex flex-col flex-1 relative z-10">
-        <div className="flex justify-between items-start gap-4 mb-2">
-          <h3 className="text-base font-bold text-[#d8d8d8] tracking-tight group-hover:text-white transition-colors leading-tight">
-            {project.title}
-          </h3>
-          <div className="flex gap-1 flex-shrink-0">
-            <a
-              href={project.github}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-[#404040] hover:text-[#888888] transition-colors"
-              aria-label="Source code"
-            >
-              <Github size={13} />
-            </a>
-            <a
-              href={project.demo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="p-1.5 text-[#404040] hover:text-[#888888] transition-colors"
-              aria-label="Live demo"
-            >
-              <ArrowUpRight size={13} />
-            </a>
-          </div>
-        </div>
-        <p className="text-xs text-[#505050] leading-relaxed mb-4 line-clamp-2">
-          {project.description}
-        </p>
-        <div className="flex flex-wrap gap-x-2 gap-y-1 mt-auto">
-          {project.technologies.slice(0, 3).map((tech) => (
-            <span key={tech} className="text-[9px] font-bold tracking-widest text-[#3d3d3d] uppercase">
-              {tech}
-            </span>
-          ))}
-          {project.technologies.length > 3 && (
-            <span className="text-[9px] font-bold text-[#333333] uppercase">
-              +{project.technologies.length - 3}
-            </span>
+      <TiltCard className="bg-white rounded-3xl p-5 border border-border shadow-sm group relative w-full h-full hover:shadow-md transition-shadow duration-300 flex flex-col">
+        {/* Image */}
+        <div className="relative w-full h-48 overflow-hidden rounded-2xl bg-background mb-5 border border-border/50">
+          {project.image ? (
+            <Image
+              src={project.image}
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-700 scale-100 group-hover:scale-105"
+            />
+          ) : (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-muted-foreground text-xs tracking-widest uppercase">{t.projects.noPreview}</span>
+            </div>
           )}
         </div>
-      </div>
+
+        {/* Content */}
+        <div className="flex flex-col flex-1 px-1">
+          <div className="flex justify-between items-start gap-3 mb-3">
+            <h3 className="text-lg font-bold text-foreground tracking-tight group-hover:text-primary transition-colors leading-tight line-clamp-2">
+              {project.title}
+            </h3>
+            <div className="flex gap-1.5 flex-shrink-0">
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-background hover:text-foreground transition-all"
+                aria-label="Source code"
+              >
+                <Github size={14} />
+              </a>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-8 h-8 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-background hover:text-foreground transition-all"
+                aria-label="Live demo"
+              >
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+          </div>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 line-clamp-3">
+            {project.description}
+          </p>
+          <div className="flex flex-wrap gap-2 mt-auto">
+            {project.technologies.slice(0, 3).map((tech) => (
+              <span key={tech} className="text-[10px] font-bold tracking-widest text-foreground/70 uppercase px-2.5 py-1 bg-background border border-border rounded-full">
+                {tech}
+              </span>
+            ))}
+            {project.technologies.length > 3 && (
+              <span className="text-[10px] font-bold text-muted-foreground uppercase flex items-center px-1">
+                +{project.technologies.length - 3}
+              </span>
+            )}
+          </div>
+        </div>
       </TiltCard>
     </motion.div>
   );
@@ -181,42 +178,38 @@ export default function Projects() {
   const rest = portfolioData.projects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="relative py-32 overflow-hidden bg-[#0b0c10]">
-      {/* Background elements */}
-      <div className="bg-dot-pattern" />
-      <div className="bg-text opacity-15">
-        <span>PROJECTS</span>
-      </div>
+    <section id="projects" className="relative py-24 lg:py-32 overflow-hidden bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        
+        {/* HEADER SECTION */}
+        <div className="mb-16">
+          <motion.p
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-accent font-bold tracking-widest text-sm uppercase mb-6 flex items-center gap-4"
+          >
+            <span className="w-8 h-[2px] bg-accent"></span>
+            {t.projects.title}
+          </motion.p>
 
-      <div className="divider-glow" />
-      <div className="section-glow-right" />
-
-      <div className="max-w-5xl mx-auto px-6">
-        <motion.p
-          custom={0}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="section-label mb-4"
-        >
-          06 — {t.projects.title}
-        </motion.p>
-
-        <motion.h2
-          custom={1}
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-bold text-[#e8e8e8] tracking-tight mb-14"
-        >
-          {t.projects.heading}
-        </motion.h2>
+          <motion.h2
+            custom={1}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground tracking-tight leading-tight mb-6"
+          >
+            {t.projects.heading}
+          </motion.h2>
+        </div>
 
         {/* Featured project — full width */}
         {featured.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 mb-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
             {featured.map((project, i) => (
               <FeaturedProjectCard key={project.title} project={project} index={i} />
             ))}
@@ -224,11 +217,12 @@ export default function Projects() {
         )}
 
         {/* Remaining projects — 3 column grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {rest.map((project, i) => (
             <SmallProjectCard key={project.title} project={project} index={i} />
           ))}
         </div>
+        
       </div>
     </section>
   );

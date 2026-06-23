@@ -7,27 +7,27 @@
 
 :root {
   --radius: 0.5rem;
-  --background: #080808;
-  --foreground: #e8e8e8;
-  --card: #0e0e0e;
-  --card-foreground: #e8e8e8;
-  --muted: #141414;
-  --muted-foreground: #4a4a4a;
-  --border: #1c1c1c;
-  --primary: #e8e8e8;
-  --primary-foreground: #080808;
-  --secondary: #141414;
-  --secondary-foreground: #e8e8e8;
-  --accent: #ffffff;
-  --popover: #0e0e0e;
-  --popover-foreground: #e8e8e8;
-  --input: #141414;
-  --ring: #3a3a3a;
-  --destructive: #e53e3e;
+  --background: #F8F6F0;
+  --foreground: #1A1A1A;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A1A;
+  --muted: #EAE6D9;
+  --muted-foreground: #666666;
+  --border: #E0DCD0;
+  --primary: #F4A261;
+  --primary-foreground: #FFFFFF;
+  --secondary: #2A9D8F;
+  --secondary-foreground: #FFFFFF;
+  --accent: #E76F51;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A1A;
+  --input: #EAE6D9;
+  --ring: #D1CDBC;
+  --destructive: #E76F51;
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
   scroll-behavior: smooth;
 }
 
@@ -46,8 +46,8 @@ html {
   }
 
   ::selection {
-    background: rgba(130, 80, 255, 0.3);
-    color: #ffffff;
+    background: rgba(42, 157, 143, 0.3);
+    color: #1A1A1A;
   }
 }
 
@@ -58,14 +58,14 @@ html {
   width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #080808;
+  background: #F8F6F0;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2a2a2a;
+  background: #D1CDBC;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #444444;
+  background: #A09C8A;
 }
 
 /* ==============================

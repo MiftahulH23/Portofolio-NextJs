@@ -6,18 +6,20 @@ import Services from "@/components/sections/Services";
 import Education from "@/components/sections/Education";
 import Experience from "@/components/sections/Experience";
 import Projects from "@/components/sections/Projects";
+import Templates from "@/components/sections/Templates";
 import ContactCTA from "@/components/sections/ContactCTA";
 
 export default function Home() {
   return (
     <>
       <Hero />
+      <Services />
+      <Projects />
+      <Templates />
       <About />
       <Skills />
-      <Services />
-      <Education />
       <Experience />
-      <Projects />
+      <Education />
       <ContactCTA />
       <Footer />
     </>

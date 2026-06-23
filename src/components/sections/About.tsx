@@ -42,40 +42,30 @@ export default function About() {
   ];
 
   return (
-    <section id="about" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
-      {/* Background elements */}
-      <div className="bg-dot-pattern opacity-40" />
-      <div className="bg-text opacity-15">
-        <span>ABOUT</span>
-      </div>
-
-      {/* Divider */}
-      <div className="divider-glow" />
-      {/* Ambient glow */}
-      <div className="section-glow-left" />
-
-      <div className="max-w-5xl mx-auto px-6 pt-2">
+    <section id="about" className="relative py-24 lg:py-32 overflow-hidden bg-background">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.p
           custom={0}
           variants={fadeUp}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="section-label mb-14"
+          className="text-accent font-bold tracking-widest text-sm uppercase mb-12 flex items-center gap-4"
         >
-          01 — {t.about.label}
+          <span className="w-8 h-[2px] bg-accent"></span>
+          {t.about.label}
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
-          {/* LEFT */}
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* LEFT CONTENT */}
+          <div className="lg:col-span-7">
             <motion.h2
               custom={1}
               variants={fadeUp}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-3xl md:text-4xl font-bold text-[#e8e8e8] tracking-tight leading-tight mb-6"
+              className="text-4xl md:text-5xl font-bold text-foreground tracking-tight leading-tight mb-8"
             >
               {portfolioData.personalInfo.name}
             </motion.h2>
@@ -86,7 +76,7 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="text-[#484848] leading-relaxed text-[0.95rem]"
+              className="text-muted-foreground leading-relaxed text-lg"
             >
               {portfolioData.personalInfo.summary}
             </motion.p>
@@ -98,12 +88,12 @@ export default function About() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex gap-10 mt-12"
+              className="flex gap-12 mt-12 pt-10 border-t border-border/50"
             >
               {stats.map((s) => (
                 <div key={s.label}>
-                  <p className="text-2xl font-bold text-[#e8e8e8] tracking-tight">{s.value}</p>
-                  <p className="text-[11px] text-[#383838] mt-1 tracking-widest uppercase font-semibold">
+                  <p className="text-4xl font-bold text-foreground tracking-tight mb-2">{s.value}</p>
+                  <p className="text-xs text-muted-foreground tracking-widest uppercase font-semibold">
                     {s.label}
                   </p>
                 </div>
@@ -111,8 +101,8 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* RIGHT */}
-          <div className="flex flex-col gap-5">
+          {/* RIGHT CONTENT */}
+          <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Contact card */}
             <motion.div
               custom={2}
@@ -121,47 +111,51 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <TiltCard className="card-dark p-6 group relative w-full h-full">
-              <div className="relative z-10">
-                <p className="section-label mb-5">{t.about.details.contact}</p>
-              <div className="space-y-4">
-                {/* Email */}
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3">
-                    <Mail size={13} className="text-[#383838] flex-shrink-0" />
-                    <a
-                      href={`mailto:${portfolioData.personalInfo.email}`}
-                      className="text-sm text-[#5a5a5a] hover:text-[#e8e8e8] transition-colors"
-                    >
-                      {portfolioData.personalInfo.email}
-                    </a>
+              <TiltCard className="bg-background p-8 rounded-3xl border border-border shadow-sm group relative w-full h-full">
+                <div className="relative z-10">
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6">{t.about.details.contact}</p>
+                  <div className="space-y-5">
+                    {/* Email */}
+                    <div className="flex items-center justify-between gap-4">
+                      <div className="flex items-center gap-4">
+                        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-border/50 flex-shrink-0">
+                            <Mail size={16} className="text-primary" />
+                        </div>
+                        <a
+                          href={`mailto:${portfolioData.personalInfo.email}`}
+                          className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                        >
+                          {portfolioData.personalInfo.email}
+                        </a>
+                      </div>
+                      <button
+                        onClick={handleCopy}
+                        className="w-8 h-8 flex items-center justify-center rounded-full hover:bg-black/5 text-muted-foreground hover:text-foreground transition-colors flex-shrink-0"
+                        aria-label="Copy email"
+                      >
+                        {copied ? (
+                          <Check size={14} className="text-secondary" />
+                        ) : (
+                          <Copy size={14} />
+                        )}
+                      </button>
+                    </div>
+                    {/* Phone */}
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm border border-border/50 flex-shrink-0">
+                          <Phone size={16} className="text-primary" />
+                      </div>
+                      <a
+                        href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-sm font-semibold text-foreground hover:text-primary transition-colors"
+                      >
+                        {portfolioData.personalInfo.phone}
+                      </a>
+                    </div>
                   </div>
-                  <button
-                    onClick={handleCopy}
-                    className="text-[#2a2a2a] hover:text-[#666666] transition-colors flex-shrink-0"
-                    aria-label="Copy email"
-                  >
-                    {copied ? (
-                      <Check size={13} className="text-green-600" />
-                    ) : (
-                      <Copy size={13} />
-                    )}
-                  </button>
                 </div>
-                {/* Phone */}
-                <div className="flex items-center gap-3">
-                  <Phone size={13} className="text-[#383838] flex-shrink-0" />
-                  <a
-                    href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-sm text-[#5a5a5a] hover:text-[#e8e8e8] transition-colors"
-                  >
-                    {portfolioData.personalInfo.phone}
-                  </a>
-                </div>
-                </div>
-              </div>
               </TiltCard>
             </motion.div>
 
@@ -173,21 +167,21 @@ export default function About() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <TiltCard className="card-dark p-6 group relative w-full h-full">
-              <div className="relative z-10">
-                <p className="section-label mb-5">{t.about.details.details}</p>
-              <div className="space-y-3">
-                {details.map(({ Icon, label, value }) => (
-                  <div key={label} className="flex items-center justify-between gap-4 text-sm">
-                    <div className="flex items-center gap-2.5 text-[#2e2e2e]">
-                      <Icon size={12} />
-                      <span>{label}</span>
-                    </div>
-                    <span className="text-[#5a5a5a] text-right">{value}</span>
+              <TiltCard className="bg-background p-8 rounded-3xl border border-border shadow-sm group relative w-full h-full">
+                <div className="relative z-10">
+                  <p className="text-xs font-bold uppercase tracking-widest text-muted-foreground mb-6">{t.about.details.details}</p>
+                  <div className="space-y-4">
+                    {details.map(({ Icon, label, value }) => (
+                      <div key={label} className="flex items-center justify-between gap-4 text-sm font-medium">
+                        <div className="flex items-center gap-3 text-muted-foreground">
+                          <Icon size={16} />
+                          <span>{label}</span>
+                        </div>
+                        <span className="text-foreground text-right">{value}</span>
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-              </div>
+                </div>
               </TiltCard>
             </motion.div>
           </div>

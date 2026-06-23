@@ -5,14 +5,13 @@ import { useLanguage } from "@/context/LanguageContext";
 export default function Footer() {
   const { data: portfolioData, t } = useLanguage();
   return (
-    <footer className="relative border-t border-[#0e0e0e] py-10">
-      <div className="divider-glow" />
-      <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
-        <p className="text-[10px] text-[#222222] tracking-[0.15em] uppercase font-semibold">
+    <footer className="relative border-t border-border py-12 bg-white">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <p className="text-xs text-muted-foreground tracking-wider uppercase font-bold">
           &copy; 2025 {portfolioData.personalInfo.name}. {t.footer.rights}.
         </p>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           {[
             { href: portfolioData.personalInfo.github, Icon: Github, label: "GitHub" },
             { href: portfolioData.personalInfo.linkedin, Icon: Linkedin, label: "LinkedIn" },
@@ -24,18 +23,18 @@ export default function Footer() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={label}
-              className="text-[#1e1e1e] hover:text-[#444444] transition-colors"
+              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:bg-foreground hover:text-background transition-all duration-300"
             >
-              <Icon size={14} />
+              <Icon size={16} />
             </a>
           ))}
         </div>
 
-        <p className="text-[10px] text-[#1e1e1e] flex items-center gap-1.5 tracking-wide">
+        <p className="text-xs font-bold text-muted-foreground flex items-center gap-2 tracking-wide uppercase">
           {t.footer.builtWith}{" "}
-          <Heart size={9} className="text-[#252525]" />
+          <Heart size={12} className="text-red-500 fill-red-500" />
           {" "}{t.footer.lotsOf}{" "}
-          <Coffee size={9} className="text-[#252525]" />
+          <Coffee size={12} className="text-amber-700 fill-amber-700" />
         </p>
       </div>
     </footer>

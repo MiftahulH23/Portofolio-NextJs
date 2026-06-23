@@ -115,6 +115,22 @@ export const portfolioDataEn = {
       featured: false,
     },
   ],
+  templates: [
+    {
+      title: "Mabro Coffee",
+      description: "A premium coffee shop landing page with an elegant, modern, and clean editorial design. Adapted from a digital agency concept.",
+      image: "https://images.unsplash.com/photo-1497935586351-b67a49e012bf?q=80&w=800&auto=format&fit=crop",
+      link: "/temacoffe",
+      tags: ["Landing Page", "Next.js", "Framer Motion"],
+    },
+    {
+      title: "Mabro Hospital",
+      description: "A state-of-the-art healthcare landing page featuring a highly complex, organic layout with overlapping elements and sophisticated dark sections.",
+      image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=800&auto=format&fit=crop",
+      link: "/temahospital",
+      tags: ["Complex UI", "Healthcare", "Next.js"],
+    }
+  ],
   skills: {
     "Front-End": [
       { name: "React.js", icon: "https://cdn.simpleicons.org/react/61DAFB" },
@@ -228,6 +244,16 @@ export const portfolioDataId = {
       description: "Sistem manajemen rantai pasok (Supply Chain) untuk membantu mitra dan manajemen pusat menangani permintaan, inventaris, dan distribusi produk.",
     },
   ],
+  templates: [
+    {
+      ...portfolioDataEn.templates[0],
+      description: "Halaman pendaratan (*landing page*) kedai kopi premium dengan desain editorial yang elegan, modern, dan bersih.",
+    },
+    {
+      ...portfolioDataEn.templates[1],
+      description: "Halaman pendaratan fasilitas kesehatan mutakhir dengan tata letak organik yang kompleks, elemen tumpang-tindih, dan bagian gelap yang elegan.",
+    }
+  ],
 };
 
 export const translations = {
@@ -240,6 +266,7 @@ export const translations = {
       education: "Education",
       experience: "Experience",
       projects: "Projects",
+      templates: "Templates",
     },
     hero: {
       available: "Available for work",
@@ -299,6 +326,12 @@ export const translations = {
       heading: "Selected work.",
       noPreview: "No Preview"
     },
+    templates: {
+      title: "Templates",
+      subtitle: "Frontend Templates",
+      heading: "Products & templates.",
+      viewDemo: "View Demo"
+    },
     contact: {
       title: "Let's Talk",
       heading: "Let's work together.",
@@ -319,6 +352,7 @@ export const translations = {
       education: "Pendidikan",
       experience: "Pengalaman",
       projects: "Proyek",
+      templates: "Template",
     },
     hero: {
       available: "Tersedia untuk bekerja",
@@ -377,6 +411,12 @@ export const translations = {
       github: "Kode Sumber",
       heading: "Karya terpilih.",
       noPreview: "Tidak Ada Pratinjau"
+    },
+    templates: {
+      title: "Template",
+      subtitle: "Template Frontend",
+      heading: "Produk & template.",
+      viewDemo: "Lihat Demo"
     },
     contact: {
       title: "Mari Berbincang",

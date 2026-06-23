@@ -2,37 +2,36 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { motion } from "framer-motion";
 import { Mail, Phone, ArrowUpRight } from "lucide-react";
-import Lanyard from "../ui/Lanyard";
 
 export default function ContactCTA() {
   const { data: portfolioData, t } = useLanguage();
   return (
-    <section id="contact" className="relative py-32 overflow-hidden bg-[#0a0a0c]">
-      <div className="divider-glow" />
-      {/* Center glow */}
-      <div className="contact-cta-glow" />
-
-      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-        {/* Left Content */}
-        <div className="text-center lg:text-left flex flex-col items-center lg:items-start z-10">
-        <motion.p
+    <section id="contact" className="py-24 lg:py-32 bg-background border-t border-border/50">
+      <div className="max-w-4xl mx-auto px-6 text-center">
+        
+        <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="section-label mb-8"
+          className="flex items-center gap-4 mb-8"
         >
-          07 — {t.contact.title}
-        </motion.p>
+          <span className="w-8 h-[2px] bg-accent"></span>
+          <p className="text-accent font-bold tracking-widest text-sm uppercase">
+            {t.contact.title}
+          </p>
+          <span className="w-8 h-[2px] bg-accent"></span>
+        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-[clamp(3rem,9vw,7rem)] text-[#e8e8e8] mb-10"
+          className="text-5xl md:text-6xl lg:text-8xl font-bold text-foreground tracking-tight leading-[1.05] mb-10"
         >
-          {t.contact.heading}
+          Let's make something <br className="hidden md:block" />
+          <span className="text-primary italic font-serif pr-2">amazing</span> together.
         </motion.h2>
 
         <motion.p
@@ -40,7 +39,7 @@ export default function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.25 }}
-          className="text-[#404040] text-base max-w-md mb-12 leading-relaxed"
+          className="text-muted-foreground text-lg md:text-xl max-w-2xl mb-14 leading-relaxed"
         >
           {t.contact.desc}
         </motion.p>
@@ -50,32 +49,26 @@ export default function ContactCTA() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.35 }}
-          className="flex flex-wrap gap-4 justify-center lg:justify-start"
+          className="flex flex-col sm:flex-row gap-5 justify-center w-full sm:w-auto"
         >
           <a
             href={`mailto:${portfolioData.personalInfo.email}`}
-            className="btn-primary"
+            className="px-10 py-5 bg-foreground text-background font-bold rounded-full hover:bg-primary transition-all duration-300 shadow-xl hover:shadow-primary/25 hover:-translate-y-1 flex items-center justify-center gap-3 text-lg"
           >
-            <Mail size={14} />
-            {portfolioData.personalInfo.email}
-            <ArrowUpRight size={14} />
+            <Mail size={20} />
+            Email Me
+            <ArrowUpRight size={20} className="ml-1" />
           </a>
           <a
             href={`https://wa.me/${portfolioData.personalInfo.phone.replace(/[^0-9]/g, "")}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-outline"
+            className="px-10 py-5 bg-white text-foreground border border-border font-bold rounded-full hover:border-foreground transition-all duration-300 flex items-center justify-center gap-3 text-lg"
           >
-            <Phone size={14} />
+            <Phone size={20} />
             WhatsApp
           </a>
         </motion.div>
-        </div>
-
-        {/* Right Content - Interactive Lanyard */}
-        <div className="w-full flex justify-center items-center lg:h-auto h-[500px]">
-          <Lanyard />
-        </div>
       </div>
     </section>
   );

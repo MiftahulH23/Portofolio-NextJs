@@ -30,10 +30,10 @@ const World: React.FC<WorldProps> = ({ data }) => {
       .hexPolygonResolution(3)
       .hexPolygonMargin(0.7)
       .showAtmosphere(true)
-      .atmosphereColor("#3a228a")
+      .atmosphereColor("#2A9D8F")
       .atmosphereAltitude(0.25)
       // 2. Hapus parameter '_' yang tidak terpakai
-      .hexPolygonColor(() => "#1b63c4");
+      .hexPolygonColor(() => "#F4A261");
 
     globe.rotateY(-Math.PI * (5 / 9));
     globe.rotateZ(-Math.PI / 6);
@@ -44,10 +44,10 @@ const World: React.FC<WorldProps> = ({ data }) => {
       emissiveIntensity: number;
       shininess: number;
     };
-    globeMaterial.color = new Color(0x3a228a);
-    globeMaterial.emissive = new Color(0x220038);
+    globeMaterial.color = new Color(0xffffff);
+    globeMaterial.emissive = new Color(0x2A9D8F);
     globeMaterial.emissiveIntensity = 0.1;
-    globeMaterial.shininess = 0.7;
+    globeMaterial.shininess = 0.9;
 
     scene.add(globe);
 
@@ -74,11 +74,11 @@ export function GlobeDemo() {
         gl={{ antialias: true }}
         camera={{ position: [0, 0, 3], fov: 75 }}
       >
-        <ambientLight color={0xbbbbbb} intensity={0.3} />
+        <ambientLight color={0xffffff} intensity={0.6} />
         <directionalLight
           color={0xffffff}
           position={[-100, -100, -100]}
-          intensity={0.8}
+          intensity={0.4}
         />
         <World data={countries.features} />
         <OrbitControls
