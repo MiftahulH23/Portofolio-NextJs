@@ -33,6 +33,14 @@ describe("ContactForm", () => {
     expect(screen.getByLabelText("Name")).toHaveValue("");
   });
 
+  it("honeypot gives browser autofill nothing to recognise (no company/organization semantics)", () => {
+    renderWithLanguage(<ContactForm />);
+    expect(screen.queryByLabelText(/company|organi[sz]ation|perusahaan/i)).not.toBeInTheDocument();
+    const trap = screen.getByLabelText("Leave this field empty");
+    expect(trap).toHaveAttribute("tabindex", "-1");
+    expect(trap.getAttribute("name") ?? "").not.toMatch(/company|org/i);
+  });
+
   it("validates on the client without calling the action", async () => {
     renderWithLanguage(<ContactForm />);
     await userEvent.type(screen.getByLabelText("Name"), "Ana");

@@ -62,7 +62,13 @@ function Cube({ faces, fontFamily }: { faces: string[]; fontFamily: string }) {
   );
 }
 
-export default function StackCube({ faces, active }: { faces: string[]; active: boolean }) {
+interface StackCubeProps {
+  faces: string[];
+  active: boolean;
+  onContextLost?: () => void;
+}
+
+export default function StackCube({ faces, active, onContextLost }: StackCubeProps) {
   const [fontFamily, setFontFamily] = useState("monospace");
 
   useEffect(() => {
@@ -84,6 +90,12 @@ export default function StackCube({ faces, active }: { faces: string[]; active: 
       frameloop={active ? "always" : "never"}
       gl={{ antialias: true, alpha: true }}
       aria-hidden="true"
+      onCreated={({ gl }) => {
+        gl.domElement.addEventListener("webglcontextlost", (event) => {
+          event.preventDefault();
+          onContextLost?.();
+        });
+      }}
     >
       <ambientLight intensity={0.8} />
       <directionalLight position={[3, 4, 5]} intensity={1.4} />

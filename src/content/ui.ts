@@ -75,7 +75,7 @@ export const uiEn = {
       successTitle: "Message sent, {name}.",
       successBody: "Thanks for reaching out — I'll reply to {email} within 24 hours.",
       again: "Send another",
-      honeypot: "Company",
+      honeypot: "Leave this field empty",
       errors: {
         name_invalid: "Please enter your name (2–80 characters).",
         email_invalid: "Please enter a valid email address.",
@@ -210,7 +210,7 @@ export const uiId: UiStrings = {
       successTitle: "Pesan terkirim, {name}.",
       successBody: "Terima kasih — saya akan membalas ke {email} dalam 24 jam.",
       again: "Kirim lagi",
-      honeypot: "Perusahaan",
+      honeypot: "Biarkan kolom ini kosong",
       errors: {
         name_invalid: "Masukkan nama Anda (2–80 karakter).",
         email_invalid: "Masukkan alamat email yang valid.",

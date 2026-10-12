@@ -70,7 +70,7 @@ export default function CommandPaletteDialog({ open, setOpen }: { open: boolean;
           <Command.Input placeholder={p.placeholder} className="min-h-8 flex-1 bg-transparent text-lg font-medium outline-none placeholder:text-ink-400 focus-visible:outline-none" />
           <kbd className="rounded-md border border-ink-500 px-2 py-0.5 font-mono text-xs text-ink-300">ESC</kbd>
         </div>
-        <Command.List className="max-h-[460px] overflow-y-auto p-2">
+        <Command.List data-lenis-prevent className="max-h-[460px] overflow-y-auto p-2">
           <Command.Empty className="px-3 py-10 text-center text-[15px] text-ink-300">{p.empty}</Command.Empty>
           <Command.Group heading={p.groups.navigation} className={GROUP}>
             <Item icon="#" onSelect={() => run(() => goSection("work"))}>{p.goWork}</Item>

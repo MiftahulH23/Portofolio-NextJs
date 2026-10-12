@@ -78,3 +78,24 @@ test("sitemap and robots are served", async ({ request }) => {
   expect(await sitemap.text()).toContain("https://miftahulhuda.vercel.app/projects/sipresma");
   expect((await request.get("/robots.txt")).ok()).toBe(true);
 });
+
+test("mouse wheel scrolls nested areas (palette list, contact textarea) instead of the page", async ({ page }) => {
+  await page.goto("/");
+  await page.keyboard.press("Control+K");
+  const list = page.locator("[cmdk-list]");
+  await expect(list).toBeVisible();
+  const box = await list.boundingBox();
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  await page.mouse.wheel(0, 400);
+  await expect.poll(() => list.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+  await page.keyboard.press("Escape");
+
+  await page.goto("/#contact");
+  const textarea = page.getByLabel("Message");
+  await textarea.fill(Array.from({ length: 40 }, (_, i) => `line ${i + 1}`).join("\n"));
+  await textarea.evaluate((el) => (el.scrollTop = 0));
+  const t = await textarea.boundingBox();
+  await page.mouse.move(t!.x + t!.width / 2, t!.y + t!.height / 2);
+  await page.mouse.wheel(0, 300);
+  await expect.poll(() => textarea.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
+});

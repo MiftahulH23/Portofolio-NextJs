@@ -41,7 +41,14 @@ export function ContactForm() {
     inFlight.current = true;
     const payload = { name, email, topic, message, company };
     // Loaded on first submit so zod stays out of the initial page bundle.
-    const { validateContact } = await import("@/lib/contact-schema");
+    let validateContact: typeof import("@/lib/contact-schema").validateContact;
+    try {
+      ({ validateContact } = await import("@/lib/contact-schema"));
+    } catch {
+      inFlight.current = false;
+      setStatus({ kind: "error", code: "send_failed" });
+      return;
+    }
     const local = validateContact(payload);
     if (!local.ok) {
       inFlight.current = false;
@@ -128,6 +135,7 @@ export function ContactForm() {
       <label className="flex flex-1 flex-col gap-2 font-mono text-xs text-ink-200">
         {f.message}
         <textarea
+          data-lenis-prevent
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           placeholder={f.messagePh}
@@ -139,7 +147,7 @@ export function ContactForm() {
       <div aria-hidden="true" className="absolute -left-[9999px] top-0 h-px w-px overflow-hidden">
         <label>
           {f.honeypot}
-          <input tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} />
+          <input name="hp_trap" tabIndex={-1} autoComplete="off" value={company} onChange={(e) => setCompany(e.target.value)} />
         </label>
       </div>
 
