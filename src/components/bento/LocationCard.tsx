@@ -10,7 +10,7 @@ export function LocationCard() {
   const time = useLocalTime(p.timezone);
 
   return (
-    <BentoCard cols={3} rows={2} delay={0.1} className="flex flex-col justify-between">
+    <BentoCard cols={3} rows={2} reveal={false} className="flex flex-col justify-between">
       <span className="font-mono text-xs text-ink-300">{ui.location.label}</span>
       <div aria-hidden="true" className="absolute -right-10 -top-10 size-[180px] overflow-hidden rounded-full border border-ink-600">
         <div className="absolute inset-0 animate-spin-slow [animation-duration:6s]">

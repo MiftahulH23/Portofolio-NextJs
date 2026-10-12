@@ -1,14 +1,16 @@
-import { z } from "zod";
+// zod/mini: same validation, tree-shakable — this schema also ships to the browser for instant form feedback.
+import * as z from "zod/mini";
 
-export const TOPICS = ["freelance", "fulltime", "collaboration", "hi"] as const;
-export type Topic = (typeof TOPICS)[number];
+import { TOPICS } from "./contact-topics";
+
+export { TOPICS, type Topic } from "./contact-topics";
 
 export const contactSchema = z.object({
-  name: z.string().trim().min(2).max(80),
-  email: z.string().trim().max(200).pipe(z.email()),
+  name: z.string().check(z.trim(), z.minLength(2), z.maxLength(80)),
+  email: z.pipe(z.string().check(z.trim(), z.maxLength(200)), z.email()),
   topic: z.enum(TOPICS),
-  message: z.string().trim().min(10).max(2000),
-  company: z.string().max(200).optional(),
+  message: z.string().check(z.trim(), z.minLength(10), z.maxLength(2000)),
+  company: z.optional(z.string().check(z.maxLength(200))),
 });
 
 export type ContactInput = z.infer<typeof contactSchema>;

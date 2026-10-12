@@ -17,7 +17,7 @@ export function GpaCard() {
   const label = fmt(ui.gpa.aria, { value: gpa.toFixed(2), max: gpaMax.toFixed(2) });
 
   return (
-    <BentoCard cols={3} rows={2} delay={0.15} className="flex items-center gap-5">
+    <BentoCard cols={3} rows={2} reveal={false} className="flex items-center gap-5">
       <div role="img" aria-label={label} className="relative size-[120px] shrink-0">
         <svg viewBox="0 0 120 120" className="size-full -rotate-90" aria-hidden="true">
           <circle cx="60" cy="60" r={R} fill="none" stroke="#27272A" strokeWidth="10" />

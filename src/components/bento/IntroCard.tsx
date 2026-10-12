@@ -16,7 +16,7 @@ export function IntroCard() {
   const words = p.name.split(" ");
 
   return (
-    <BentoCard cols={8} rows={3} aria-label={ui.intro.aria} className="flex flex-col justify-between gap-8 p-8 bento:p-10">
+    <BentoCard cols={8} rows={3} reveal={false} aria-label={ui.intro.aria} className="flex flex-col justify-between gap-8 p-8 bento:p-10">
       <div className="flex flex-wrap items-center gap-3">
         <span className="relative flex size-2.5">
           <span className="absolute inset-0 animate-ping rounded-full bg-lime" />
@@ -33,8 +33,8 @@ export function IntroCard() {
             <motion.span
               key={`${w}-${i}`}
               className="inline-block"
-              initial={reduce ? false : { opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={reduce ? false : { y: 24 }}
+              animate={{ y: 0 }}
               transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             >
               {w}

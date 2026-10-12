@@ -17,6 +17,13 @@ describe("bento cards part 1", () => {
     expect(screen.queryByRole("link", { name: /download cv/i })).not.toBeInTheDocument();
   });
 
+  it("IntroCard name is never painted at opacity 0 (keeps LCP on the server paint)", () => {
+    renderWithLanguage(<IntroCard />);
+    const words = screen.getByRole("heading", { level: 1 }).querySelectorAll("span.inline-block");
+    expect(words.length).toBeGreaterThan(0);
+    words.forEach((w) => expect((w as HTMLElement).style.opacity).not.toBe("0"));
+  });
+
   it("GpaCard exposes an accessible GPA label", () => {
     renderWithLanguage(<GpaCard />);
     expect(screen.getByRole("img", { name: "GPA 3.80 out of 4.00" })).toBeInTheDocument();

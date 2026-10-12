@@ -16,6 +16,24 @@ describe("BentoCard", () => {
     expect(section.className).toContain("bento:row-span-3");
   });
 
+  it("starts hidden for the scroll reveal by default", () => {
+    render(
+      <BentoCard cols={4} rows={2} aria-label="Lazy">
+        x
+      </BentoCard>,
+    );
+    expect(screen.getByRole("region", { name: "Lazy" }).style.opacity).toBe("0");
+  });
+
+  it("renders visible from the server when reveal is off (above-the-fold / LCP)", () => {
+    render(
+      <BentoCard cols={8} rows={3} reveal={false} aria-label="Hero">
+        x
+      </BentoCard>,
+    );
+    expect(screen.getByRole("region", { name: "Hero" }).style.opacity).toBe("");
+  });
+
   it("bentoSpan returns static class names", () => {
     expect(bentoSpan(12, 1)).toBe("bento:col-span-12 bento:row-span-1");
   });

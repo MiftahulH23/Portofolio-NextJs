@@ -33,17 +33,19 @@ interface BentoCardProps {
   id?: string;
   className?: string;
   delay?: number;
+  /** false for above-the-fold cards: render visible from the server so they do not delay LCP. */
+  reveal?: boolean;
   children: React.ReactNode;
   "aria-label"?: string;
 }
 
-export function BentoCard({ cols, rows, id, className, delay = 0, children, ...rest }: BentoCardProps) {
+export function BentoCard({ cols, rows, id, className, delay = 0, reveal = true, children, ...rest }: BentoCardProps) {
   const reduce = useReducedMotion();
   return (
     <motion.section
       id={id}
       aria-label={rest["aria-label"]}
-      initial={reduce ? false : { opacity: 0, y: 32 }}
+      initial={reduce || !reveal ? false : { opacity: 0, y: 32 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}

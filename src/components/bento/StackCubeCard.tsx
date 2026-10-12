@@ -18,7 +18,7 @@ export function StackCubeCard() {
   const visible = useInView(ref);
 
   return (
-    <BentoCard cols={4} rows={3} delay={0.1} className="flex items-center justify-center bg-ink-900">
+    <BentoCard cols={4} rows={3} reveal={false} className="flex items-center justify-center bg-ink-900">
       <span className="absolute left-6 top-[22px] font-mono text-xs text-ink-300">{ui.cube.file}</span>
       {webgl && <span className="absolute bottom-[22px] right-6 font-mono text-xs text-ink-300">{ui.cube.drag}</span>}
       <div aria-hidden="true" className="absolute size-[330px] animate-spin-slow rounded-full border border-dashed border-ink-500">

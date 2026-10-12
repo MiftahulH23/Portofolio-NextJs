@@ -4,7 +4,8 @@ import { useRef, useState, useTransition } from "react";
 import { Check, Loader2, Send } from "lucide-react";
 import { sendContact } from "@/app/actions/contact";
 import { useLanguage } from "@/context/LanguageContext";
-import { TOPICS, validateContact, type ContactErrorCode, type Topic } from "@/lib/contact-schema";
+import type { ContactErrorCode } from "@/lib/contact-schema";
+import { TOPICS, type Topic } from "@/lib/contact-topics";
 import { fmt } from "@/lib/format";
 import { cn } from "@/lib/utils";
 
@@ -34,16 +35,19 @@ export function ContactForm() {
     setStatus({ kind: "idle" });
   }
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (inFlight.current) return;
+    inFlight.current = true;
     const payload = { name, email, topic, message, company };
+    // Loaded on first submit so zod stays out of the initial page bundle.
+    const { validateContact } = await import("@/lib/contact-schema");
     const local = validateContact(payload);
     if (!local.ok) {
+      inFlight.current = false;
       setStatus({ kind: "error", code: local.error });
       return;
     }
-    inFlight.current = true;
     startTransition(async () => {
       try {
         const res = await sendContact(payload);
