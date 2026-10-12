@@ -1,4 +1,5 @@
 import { BentoGrid } from "@/components/bento/BentoGrid";
+import { ContactSection } from "@/components/bento/ContactSection";
 import { ContributionsCard } from "@/components/bento/ContributionsCard";
 import { EducationRow } from "@/components/bento/EducationRow";
 import { ExperienceCard } from "@/components/bento/ExperienceCard";
@@ -38,7 +39,7 @@ export default async function Home() {
         <TerminalCard />
         <ContributionsCard data={contributions} login={login} />
         <EducationRow />
-        {/* Task 8: <ContactSection /> */}
+        <ContactSection />
       </BentoGrid>
     </main>
   );

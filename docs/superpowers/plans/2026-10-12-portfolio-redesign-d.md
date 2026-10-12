@@ -3842,7 +3842,9 @@ async function fill() {
   await userEvent.type(screen.getByLabelText("Message"), "I need a dashboard built.");
 }
 
-beforeEach(() => sendContact.mockReset());
+beforeEach(() => {
+  sendContact.mockReset();
+});
 
 describe("ContactForm", () => {
   it("submits and shows the success state", async () => {
