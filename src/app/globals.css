@@ -73,9 +73,11 @@ html:has(.theme-d) {
   color: var(--color-ink-50);
 }
 
-.theme-d :focus-visible {
-  outline: 2px solid var(--color-lime);
-  outline-offset: 3px;
+@layer base {
+  .theme-d :focus-visible {
+    outline: 2px solid var(--color-lime);
+    outline-offset: 3px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
