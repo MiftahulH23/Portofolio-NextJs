@@ -8,6 +8,7 @@ import { LocationCard } from "@/components/bento/LocationCard";
 import { ProcessCard } from "@/components/bento/ProcessCard";
 import { ProjectList } from "@/components/bento/ProjectList";
 import { ServicesSection } from "@/components/bento/ServicesSection";
+import { StackCubeCard } from "@/components/bento/StackCubeCard";
 import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
 
@@ -16,7 +17,7 @@ export default function Home() {
     <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
       <BentoGrid>
         <IntroCard />
-        {/* Task 6: <StackCubeCard /> */}
+        <StackCubeCard />
         <LocationCard />
         <GpaCard />
         <ExperienceCard />
