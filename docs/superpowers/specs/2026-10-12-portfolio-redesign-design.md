@@ -1,7 +1,9 @@
 # Portfolio Redesign — Desain D "Command Center"
 
 - **Tanggal:** 2026-10-12
-- **Status:** Menunggu review
+- **Status:** Disetujui (2026-10-12)
+- **Production:** https://miftahulhuda.vercel.app
+- **Input konten:** `docs/content-input.md`
 - **Mockup:** https://claude.ai/artifact/QTjDHQgoQEgyVJaTispwd6 (halaman "Round 2": frame *D — Command Center*, *D — Case study*, *D — Command palette*)
 
 ## 1. Tujuan
@@ -188,7 +190,7 @@ src/hooks/ useReducedMotion.ts, useLocalTime.ts
 | `RESEND_API_KEY` | Ya (production) | Kirim email form kontak |
 | `CONTACT_TO_EMAIL` | Ya | Penerima, default `miftahulh942@gmail.com`. **Harus sama dengan email akun Resend** selama belum memakai domain sendiri. |
 | `GITHUB_TOKEN` | Tidak | Grafik kontribusi asli. Kalau kosong → pola statis. Fine-grained token tanpa permission tambahan cukup. |
-| `NEXT_PUBLIC_SITE_URL` | Tidak | URL absolut untuk OG/sitemap; default `http://localhost:3000`. |
+| `NEXT_PUBLIC_SITE_URL` | Tidak | URL absolut untuk OG/sitemap; default `https://miftahulhuda.vercel.app`. |
 
 `.env.example` dibuat berisi daftar ini. `.gitignore` saat ini mengabaikan `.env*`, jadi perlu ditambah `!.env.example`. Nilai asli hanya ada di `.env.local` (lokal) dan di **Vercel → Project Settings → Environment Variables** (Production + Preview).
 
