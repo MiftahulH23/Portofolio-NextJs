@@ -190,7 +190,15 @@ src/hooks/ useReducedMotion.ts, useLocalTime.ts
 | `GITHUB_TOKEN` | Tidak | Grafik kontribusi asli. Kalau kosong → pola statis. Fine-grained token tanpa permission tambahan cukup. |
 | `NEXT_PUBLIC_SITE_URL` | Tidak | URL absolut untuk OG/sitemap; default `http://localhost:3000`. |
 
-`.env.example` dibuat berisi daftar ini. Nilai asli hanya ada di `.env.local` (sudah di-ignore git; ditambahkan ke `.gitignore` bila belum).
+`.env.example` dibuat berisi daftar ini. `.gitignore` saat ini mengabaikan `.env*`, jadi perlu ditambah `!.env.example`. Nilai asli hanya ada di `.env.local` (lokal) dan di **Vercel → Project Settings → Environment Variables** (Production + Preview).
+
+### Deploy
+
+Project sudah terhubung ke Vercel dengan auto-deploy:
+- **Push ke `main`** → deploy production.
+- **Push ke branch lain** (misalnya `feat/redesign-d`) → deploy preview dengan URL sendiri.
+
+Rencananya, branch `feat/redesign-d` di-push **hanya setelah pemilik setuju**, dicek di URL preview, lalu di-merge ke `main`. `NEXT_PUBLIC_SITE_URL` diisi dengan domain production Vercel.
 
 ## 8. Strategi pengujian
 
