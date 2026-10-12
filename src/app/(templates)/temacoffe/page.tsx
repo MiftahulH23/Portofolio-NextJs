@@ -133,7 +133,7 @@ export default function TemaCoffee() {
            <div>
               <h3 className="text-3xl font-bold mb-6">Who are we</h3>
               <p className="text-gray-500 leading-relaxed mb-8">
-                We're a team of passionate baristas and roasters helping coffee lovers find their perfect cup. We conduct a thorough review of our beans against a variety of best practices and quality criteria to ensure every drop satisfies your cravings.
+                We&apos;re a team of passionate baristas and roasters helping coffee lovers find their perfect cup. We conduct a thorough review of our beans against a variety of best practices and quality criteria to ensure every drop satisfies your cravings.
               </p>
               <a href="#" className="font-bold text-sm flex items-center gap-2 hover:gap-3 transition-all">Learn More <ArrowRight size={16} /></a>
            </div>
@@ -174,7 +174,7 @@ export default function TemaCoffee() {
                Premium Beans<br/>& Exceptional Service
             </h2>
             <p className="text-gray-500 leading-relaxed mb-8">
-               If it doesn't exist already, we'll recommend an assessment of the factors outside your daily routine that might impact your mood. Our coffee shop is the best career option and it provides long-term opportunities in comparison to some other shops which are boring.
+               If it doesn&apos;t exist already, we&apos;ll recommend an assessment of the factors outside your daily routine that might impact your mood. Our coffee shop is the best career option and it provides long-term opportunities in comparison to some other shops which are boring.
             </p>
             <button className="bg-[#111827] text-white px-8 py-4 rounded-full font-semibold hover:bg-gray-800 transition-colors">
                Schedule A Tasting
@@ -186,7 +186,7 @@ export default function TemaCoffee() {
                <Coffee size={40} className="mb-6 text-[#111827]" />
                <h4 className="font-bold text-lg mb-4 uppercase tracking-wide">Quality Beans</h4>
                <p className="text-gray-500 text-sm leading-relaxed">
-                 Customer analytics use to capture and analyze customer data to make better decisions. These insights power businesses' sales.
+                 Customer analytics use to capture and analyze customer data to make better decisions. These insights power businesses&apos; sales.
                </p>
             </div>
             <div className="bg-white border border-gray-100 shadow-xl shadow-gray-200/50 p-8 rounded-2xl">
@@ -208,7 +208,7 @@ export default function TemaCoffee() {
                  MabroCoffee
                </div>
                <p className="text-gray-400 text-sm max-w-sm leading-relaxed">
-                 We're a team of passionate baristas and roasters helping coffee lovers find their perfect cup.
+                 We&apos;re a team of passionate baristas and roasters helping coffee lovers find their perfect cup.
                </p>
             </div>
             <div>

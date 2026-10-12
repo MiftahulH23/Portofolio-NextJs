@@ -247,7 +247,7 @@ export default function TemaHospital() {
             </div>
 
             <h2 className="text-4xl md:text-5xl font-black tracking-tight mb-6">Ready To Prioritize<br/>Your Health?</h2>
-            <p className="text-gray-500 text-sm max-w-sm mx-auto mb-10 leading-relaxed">Let's discuss how we can help you achieve optimal wellness today.</p>
+            <p className="text-gray-500 text-sm max-w-sm mx-auto mb-10 leading-relaxed">Let&apos;s discuss how we can help you achieve optimal wellness today.</p>
             <button className="bg-blue-600 text-white px-8 py-4 rounded-full font-bold inline-flex items-center gap-3 hover:bg-blue-700 shadow-xl shadow-blue-600/30 transition-all">
                Book Appointment <div className="w-6 h-6 rounded-full bg-white text-blue-600 flex items-center justify-center"><ArrowRight size={14} /></div>
             </button>
@@ -258,7 +258,7 @@ export default function TemaHospital() {
       <footer className="bg-white pt-24 pb-8 overflow-hidden relative">
          <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-32 relative z-10">
             <h2 className="text-4xl md:text-[44px] font-black tracking-tight leading-tight max-w-sm">
-               Building Tomorrow's Healthy Stories
+               Building Tomorrow&apos;s Healthy Stories
             </h2>
             <div className="bg-white p-2 rounded-full border border-gray-200 shadow-sm flex items-center justify-between max-w-md ml-auto w-full">
                <input type="email" placeholder="Enter your email" className="bg-transparent border-none outline-none pl-6 text-sm w-full" />
