@@ -1,4 +1,5 @@
 import { BentoGrid } from "@/components/bento/BentoGrid";
+import { ContributionsCard } from "@/components/bento/ContributionsCard";
 import { EducationRow } from "@/components/bento/EducationRow";
 import { ExperienceCard } from "@/components/bento/ExperienceCard";
 import { FeaturedProject } from "@/components/bento/FeaturedProject";
@@ -11,8 +12,16 @@ import { ServicesSection } from "@/components/bento/ServicesSection";
 import { StackCubeCard } from "@/components/bento/StackCubeCard";
 import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
+import { getContent } from "@/content";
+import { getContributions } from "@/lib/github";
 
-export default function Home() {
+export const revalidate = 86400;
+
+export default async function Home() {
+  const c = getContent("en");
+  const login = c.personal.githubLogin;
+  const contributions = await getContributions(login);
+
   return (
     <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
       <BentoGrid>
@@ -27,7 +36,7 @@ export default function Home() {
         <ProjectList />
         <ProcessCard />
         <TerminalCard />
-        {/* Task 7: <ContributionsCard data={contributions} /> */}
+        <ContributionsCard data={contributions} login={login} />
         <EducationRow />
         {/* Task 8: <ContactSection /> */}
       </BentoGrid>
