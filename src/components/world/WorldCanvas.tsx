@@ -40,7 +40,7 @@ export default function WorldCanvas({ onReady, sounds, children }: { onReady?: (
       onCreated={({ gl }) => {
         gl.domElement.addEventListener("webglcontextlost", (e) => {
           e.preventDefault();
-          worldStore.setContextLost(true);
+          worldStore.reportContextLost();
         });
         onReady?.();
       }}

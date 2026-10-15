@@ -9,6 +9,7 @@ import type { Building, SkylineBox } from "@/world/city";
 import { LIGHT } from "./lighting";
 import { windowTexture } from "./painters/windows";
 import { signTexture } from "./painters/signs";
+import { useDisposeOnChange } from "./useDisposeOnChange";
 
 const BODY_COLORS = [0x17143a, 0x1d1236, 0x101a33, 0x1a1a2e];
 
@@ -85,6 +86,8 @@ export function RoofSigns({ buildings, texts, family }: { buildings: Building[];
         .map((b, k) => ({ b, key: k, tex: signTexture(texts[b.sign!.text % texts.length], b.sign!.color, family) })),
     [buildings, texts, family],
   );
+  const textures = useMemo(() => signs.map((s) => s.tex), [signs]);
+  useDisposeOnChange(textures);
   const refs = useRef<(Group | null)[]>([]);
   useFrame(({ clock }) => {
     if (reduce) return;

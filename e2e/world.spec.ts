@@ -85,3 +85,29 @@ test("compact version link goes to /ringkas", async ({ page }) => {
   await expect(page).toHaveURL(/\/ringkas$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Miftahul");
 });
+
+test("leaving for /ringkas and coming back starts a fresh ride", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await start(page);
+  await page.getByRole("link", { name: "Compact version" }).click();
+  await expect(page).toHaveURL(/\/ringkas$/);
+  await page.waitForTimeout(1500); // R3F forces a context loss ~500 ms after the canvas unmounts
+  await page.getByRole("link", { name: "miftahul.dev" }).first().click();
+  await expect(page).toHaveURL(/\/$/);
+  await expect(page.getByRole("alertdialog")).toHaveCount(0);
+  await start(page);
+  await rideThroughProfileGate(page);
+  expect(errors).toEqual([]);
+});
+
+test("reduced motion hydrates without errors", async ({ page }) => {
+  const errors: string[] = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  page.on("console", (m) => m.type() === "error" && errors.push(m.text()));
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  await page.goto("/");
+  await expect(page.getByText(/Reduced motion is enabled/)).toBeVisible();
+  await page.waitForTimeout(1000);
+  expect(errors).toEqual([]);
+});

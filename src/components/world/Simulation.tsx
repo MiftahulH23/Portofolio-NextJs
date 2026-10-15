@@ -6,7 +6,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { kmh } from "@/world/bike";
 import { nearestUnvisited } from "@/world/gates";
 import { getRuntime, stepWorld } from "@/world/runtime";
-import { worldStore } from "@/world/store";
+import { canRide, worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
 import { useKeyboardInput } from "./useKeyboardInput";
 
@@ -23,10 +23,10 @@ export function Simulation({ onBell, onChime, onHorn, onBump }: SoundHooks) {
   useEffect(() => {
     hud.current = ui.world.hud;
   }, [ui]);
-  const phase = useWorld((s) => s.phase);
+  const riding = useWorld(canRide);
 
   const handlers = useMemo(() => ({ onBell: () => onBell?.(), onEscape: () => worldStore.closeCard() }), [onBell]);
-  useKeyboardInput(getRuntime().input, handlers, phase === "running");
+  useKeyboardInput(getRuntime().input, handlers, riding);
 
   useEffect(() => {
     if (process.env.NODE_ENV === "production" && process.env.NEXT_PUBLIC_E2E !== "1") return;
@@ -44,7 +44,7 @@ export function Simulation({ onBell, onChime, onHorn, onBump }: SoundHooks) {
   useFrame((_, dt) => {
     const rt = getRuntime();
     const s = worldStore.getState();
-    const ev = stepWorld(rt, dt, s.phase === "running" && !s.contextLost);
+    const ev = stepWorld(rt, dt, canRide(s));
     for (const key of ev.entered) if (worldStore.enterGate(key).first) onChime?.();
     if (ev.bump) {
       onBump?.();

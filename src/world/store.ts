@@ -79,8 +79,17 @@ export function createWorldStore() {
     },
     clearToast: () => set({ toast: null }),
     setContextLost: (contextLost: boolean) => set({ contextLost }),
+    /** From the canvas' webglcontextlost listener; ignored once the world has been torn down (R3F forces a loss on unmount). */
+    reportContextLost() {
+      if (state.phase === "running") set({ contextLost: true });
+    },
+    /** Called when the world UI unmounts (navigation away): progress survives, the session state does not. */
+    endSession: () => set({ phase: "intro", contextLost: false, card: null, nav: null, kmh: 0, toast: null }),
   };
 }
 
 export type WorldStore = ReturnType<typeof createWorldStore>;
+
+/** The rider may move only while the world runs and no modal dialog covers it. */
+export const canRide = (s: WorldState) => s.phase === "running" && !s.finished && !s.contextLost;
 export const worldStore = createWorldStore();

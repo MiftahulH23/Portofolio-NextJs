@@ -6,7 +6,7 @@ import { worldStore } from "@/world/store";
 
 const env = vi.hoisted(() => ({ webgl: true, reduce: false }));
 vi.mock("@/hooks/useWebGLSupport", () => ({ useWebGLSupport: () => env.webgl }));
-vi.mock("motion/react", async (orig) => ({ ...(await orig<typeof import("motion/react")>()), useReducedMotion: () => env.reduce }));
+vi.mock("@/hooks/usePrefersReducedMotion", () => ({ usePrefersReducedMotion: () => env.reduce }));
 
 import { Intro } from "./Intro";
 

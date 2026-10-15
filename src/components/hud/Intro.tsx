@@ -2,8 +2,8 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useReducedMotion } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
+import { usePrefersReducedMotion } from "@/hooks/usePrefersReducedMotion";
 import { useWebGLSupport } from "@/hooks/useWebGLSupport";
 import { RINGKAS } from "@/lib/site";
 import { cn } from "@/lib/utils";
@@ -17,7 +17,7 @@ export function Intro({ hidden }: { hidden: boolean }) {
   const { content, ui, toggleLanguage } = useLanguage();
   const w = ui.world.intro;
   const webgl = useWebGLSupport();
-  const reduce = useReducedMotion() ?? false;
+  const reduce = usePrefersReducedMotion();
   const phase = useWorld((s) => s.phase);
 
   const start = webgl ? (

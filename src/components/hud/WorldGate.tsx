@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { useEffect, useMemo } from "react";
-import { createAudio } from "@/components/world/audio";
+import { getAudio } from "@/components/world/audio";
 import { useWebGLSupport } from "@/hooks/useWebGLSupport";
 import { getRuntime } from "@/world/runtime";
 import { worldStore, type Tier } from "@/world/store";
@@ -22,7 +22,7 @@ export function WorldGate() {
   const attempts = useWorld((s) => s.attempts);
   const contextLost = useWorld((s) => s.contextLost);
   const webgl = useWebGLSupport();
-  const audio = useMemo(() => createAudio(), []);
+  const audio = getAudio();
   const running = phase === "running";
 
   // Warm the world chunk while the visitor reads the intro (desktop only).
@@ -36,6 +36,9 @@ export function WorldGate() {
     const t = window.setTimeout(warm, 1500);
     return () => window.clearTimeout(t);
   }, [webgl]);
+
+  // Leaving `/` unmounts the canvas; reset the session so a return starts from the intro.
+  useEffect(() => () => worldStore.endSession(), []);
 
   useEffect(() => {
     if (phase !== "loading") return;

@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useMemo } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { BOARDS, placeBoard } from "@/world/billboards";
 import { canvasFonts } from "./fonts";
 import { glowSprite } from "./models/bike";
 import { boardTexture } from "./painters/billboard";
+import { useDisposeOnChange } from "./useDisposeOnChange";
 
 const POLE = 0x2a2840;
 
@@ -16,7 +17,8 @@ export function Billboards({ fontsReady }: { fontsReady: boolean }) {
     const f = canvasFonts();
     return BOARDS.map((b) => ({ front: boardTexture(b.front, b, content, ui, f), back: boardTexture(b.back, b, content, ui, f) }));
   }, [fontsReady, content, ui]);
-  useEffect(() => () => textures?.forEach((t) => (t.front.dispose(), t.back.dispose())), [textures]);
+  const flat = useMemo(() => textures?.flatMap((t) => [t.front, t.back]) ?? null, [textures]);
+  useDisposeOnChange(flat);
   const halos = useMemo(() => BOARDS.map((b) => [glowSprite(b.color, b.form === "tall" ? 15 : 24, 0.13), glowSprite(b.color, b.form === "tall" ? 15 : 24, 0.13)]), []);
   if (!textures) return null;
 

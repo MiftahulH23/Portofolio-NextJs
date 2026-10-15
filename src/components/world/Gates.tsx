@@ -13,6 +13,7 @@ import { useWorld } from "@/world/useWorld";
 import { canvasFonts } from "./fonts";
 import { LIGHT } from "./lighting";
 import { signTexture } from "./painters/signs";
+import { useDisposeOnChange } from "./useDisposeOnChange";
 
 function paintGate(m: { neon: MeshBasicMaterial; beam: MeshBasicMaterial }, color: number, done: boolean) {
   m.neon.color.set(done ? NEON.lime : color);
@@ -35,6 +36,7 @@ export function Gates({ fontsReady }: { fontsReady: boolean }) {
     () => (fontsReady ? GATES.map((g, i) => signTexture(`${pad(i + 1)} · ${ui.world.gates[g.key].toUpperCase()}`, g.color, canvasFonts().display, 1024, 192)) : []),
     [fontsReady, ui.world.gates],
   );
+  useDisposeOnChange(plates);
   const rings = useRef<(Mesh | null)[]>([]);
   const lights = useRef<(PointLight | null)[]>([]);
 

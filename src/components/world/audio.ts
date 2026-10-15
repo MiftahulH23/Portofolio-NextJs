@@ -36,3 +36,7 @@ export function createAudio() {
 }
 
 export type WorldAudio = ReturnType<typeof createAudio>;
+
+let shared: WorldAudio | null = null;
+/** One AudioContext for the whole visit, so sound keeps working after leaving and returning to `/`. */
+export const getAudio = (): WorldAudio => (shared ??= createAudio());

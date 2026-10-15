@@ -12,7 +12,17 @@ export function FinishDialog() {
   const finished = useWorld((s) => s.finished);
   const first = useRef<HTMLButtonElement>(null);
   useEffect(() => {
-    if (finished) first.current?.focus();
+    if (!finished) return;
+    const previous = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    first.current?.focus();
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") worldStore.stayFree();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      if (previous?.isConnected) previous.focus();
+    };
   }, [finished]);
   if (!finished) return null;
   const f = ui.world.finish;

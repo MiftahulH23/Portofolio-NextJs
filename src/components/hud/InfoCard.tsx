@@ -23,13 +23,11 @@ export function InfoCard() {
       aria-labelledby={id}
       className="fixed right-4 top-[110px] z-30 flex max-h-[calc(100dvh-220px)] w-[min(400px,calc(100%-32px))] flex-col gap-3 overflow-y-auto rounded-[18px] border border-white/15 bg-[#0d0c1a]/90 p-[22px] backdrop-blur-md [@media(pointer:coarse)]:bottom-[calc(96px+env(safe-area-inset-bottom))] [@media(pointer:coarse)]:top-auto [@media(pointer:coarse)]:max-h-[40dvh]"
     >
-      <div aria-live="polite" className="contents">
         <span className="font-mono text-[11px] uppercase tracking-[.14em] text-lime">
           {fmt(lang.ui.world.cards.eyebrow, { n: gate.index + 1, name: lang.ui.world.gates[card] })}
         </span>
         <h2 id={id} className="pr-10 text-2xl font-bold leading-tight text-balance">{gateTitle(card, lang)}</h2>
         <GateContent gate={card} />
-      </div>
       <button
         type="button"
         onClick={() => worldStore.closeCard()}

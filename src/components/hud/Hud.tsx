@@ -1,6 +1,8 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { useWorld } from "@/world/useWorld";
+import { CardAnnouncer } from "./CardAnnouncer";
 import { FinishDialog } from "./FinishDialog";
 import { HudControls } from "./HudControls";
 import { InfoCard } from "./InfoCard";
@@ -13,8 +15,10 @@ import { TouchControls } from "./TouchControls";
 
 export function Hud({ onBell }: { onBell?: () => void }) {
   const { ui } = useLanguage();
+  const modal = useWorld((s) => s.finished || s.contextLost);
   return (
     <>
+      <div inert={modal} className="contents">
       <div className="pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top)] z-20 flex flex-col items-center gap-2 px-4 pb-0 pt-[58px] sm:pt-3.5">
         <RouteBar />
         <NavPill />
@@ -27,8 +31,10 @@ export function Hud({ onBell }: { onBell?: () => void }) {
       </p>
       <Toast />
       <InfoCard />
-      <FinishDialog />
       <TouchControls onBell={onBell} />
+      </div>
+      <CardAnnouncer />
+      <FinishDialog />
     </>
   );
 }

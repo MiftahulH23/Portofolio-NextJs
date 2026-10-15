@@ -23,6 +23,8 @@ export function useKeyboardInput(input: BikeInput, handlers: { onBell(): void; o
         input[k] = true;
         e.preventDefault();
       } else if (e.code === "Space") {
+        // A focused control keeps its own Space activation (buttons, links, form fields).
+        if (e.target instanceof Element && e.target.closest("button, a, input, textarea, select, [role='button']")) return;
         e.preventDefault();
         if (!e.repeat) handlers.onBell();
       } else if (e.code === "Escape") handlers.onEscape();
