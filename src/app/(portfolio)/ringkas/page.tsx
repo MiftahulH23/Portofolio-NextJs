@@ -10,7 +10,7 @@ import { LocationCard } from "@/components/bento/LocationCard";
 import { ProcessCard } from "@/components/bento/ProcessCard";
 import { ProjectList } from "@/components/bento/ProjectList";
 import { ServicesSection } from "@/components/bento/ServicesSection";
-import { StackCubeCard } from "@/components/bento/StackCubeCard";
+import { FloatingIconsCard } from "@/components/bento/FloatingIconsCard";
 import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
 import { getContent } from "@/content";
@@ -33,7 +33,7 @@ export default async function Home() {
     <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
       <BentoGrid>
         <IntroCard />
-        <StackCubeCard />
+        <FloatingIconsCard />
         <LocationCard />
         <GpaCard />
         <ExperienceCard />

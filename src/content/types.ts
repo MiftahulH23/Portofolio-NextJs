@@ -96,7 +96,8 @@ export interface PortfolioContent {
   projects: Project[];
   templates: Template[];
   skills: SkillGroup[];
-  cubeFaces: string[];
+  /** Eight headline technologies (each must exist in `skills`), used on billboards. */
+  highlightStack: string[];
   process: ProcessStep[];
   certifications: Certification[];
 }

@@ -56,6 +56,15 @@ describe("content integrity", () => {
     expect(text).not.toMatch(/\[[A-Z][^\]]*\]/);
   });
 
+  it("highlightStack has 8 items that all appear in skills", () => {
+    for (const lang of ["en", "id"] as const) {
+      const c = getContent(lang);
+      const all = c.skills.flatMap((g) => g.items);
+      expect(c.highlightStack).toHaveLength(8);
+      for (const s of c.highlightStack) expect(all).toContain(s);
+    }
+  });
+
   it("getProject finds by slug", () => {
     expect(getProject("id", "sipresma")?.title).toBe("Sistem Informasi Prestasi Mahasiswa");
     expect(getProject("en", "nope")).toBeUndefined();

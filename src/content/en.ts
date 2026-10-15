@@ -194,7 +194,7 @@ export const en: PortfolioContent = {
     { group: "Database", items: ["MySQL", "PostgreSQL", "MongoDB"] },
     { group: "Tools & Others", items: ["Git", "GitHub", "Postman", "Figma"] },
   ],
-  cubeFaces: ["React", "Laravel", "Next.js", "Node.js", "TypeScript", "MySQL"],
+  highlightStack: ["Laravel", "React.js", "Next.js", "TypeScript", "Node.js", "Inertia.js", "TailwindCSS", "MySQL"],
   process: [
     { title: "Discover", description: "Understand the business goal, users and constraints." },
     { title: "Design", description: "Data model, architecture and UI flow before code." },
