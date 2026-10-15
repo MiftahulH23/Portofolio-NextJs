@@ -14,8 +14,10 @@ import { GuideArrow } from "./GuideArrow";
 import { Lamps } from "./Lamps";
 import { LIGHT } from "./lighting";
 import { Park } from "./Park";
+import { Pedestrians } from "./Pedestrians";
 import { Roads } from "./Roads";
 import { Simulation } from "./Simulation";
+import { Traffic } from "./Traffic";
 
 export default function WorldCanvas({ onReady, children }: { onReady?: () => void; children?: React.ReactNode }) {
   const { ui } = useLanguage();
@@ -42,6 +44,8 @@ export default function WorldCanvas({ onReady, children }: { onReady?: () => voi
       <Lamps spots={city.lamps} />
       <Gates fontsReady={fontsReady} />
       <GuideArrow />
+      <Traffic />
+      <Pedestrians />
       <Atmosphere />
       <Simulation />
       <Bike />
