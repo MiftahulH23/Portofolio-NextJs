@@ -31,8 +31,12 @@ export interface Project {
   caseStudy?: CaseStudy;
 }
 
+export type ServiceIcon = "frontend" | "backend" | "fullstack" | "mobile";
+
 export interface Service {
   number: string;
+  /** Picks the 3D icon shown on the service card. */
+  icon: ServiceIcon;
   title: string;
   description: string;
   tags: string[];

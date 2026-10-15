@@ -34,6 +34,7 @@ export const en: PortfolioContent = {
   services: [
     {
       number: "01",
+      icon: "frontend",
       title: "Frontend Development",
       description:
         "Building pixel-perfect, responsive interfaces with React.js, Next.js, and modern CSS frameworks. Every UI is crafted for performance and accessibility.",
@@ -41,6 +42,7 @@ export const en: PortfolioContent = {
     },
     {
       number: "02",
+      icon: "backend",
       title: "Backend Development",
       description:
         "Designing scalable server-side architectures with Laravel, Node.js, and Express. RESTful APIs, database design, and secure authentication flows.",
@@ -48,6 +50,7 @@ export const en: PortfolioContent = {
     },
     {
       number: "03",
+      icon: "fullstack",
       title: "Full-Stack Solutions",
       description:
         "End-to-end product development from database schema to polished UI. I bridge the gap between design and engineering to ship complete, production-ready apps.",
@@ -55,6 +58,7 @@ export const en: PortfolioContent = {
     },
     {
       number: "04",
+      icon: "mobile",
       title: "Mobile Development",
       description:
         "Building native and cross-platform mobile applications with smooth animations and robust performance for both iOS and Android.",

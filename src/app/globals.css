@@ -47,7 +47,7 @@
   --animate-caret: caret 1s step-end infinite;
   --animate-flow: flow 1s linear infinite;
   --animate-spin-slow: spin-slow 18s linear infinite;
-  --animate-cube: cube 12s linear infinite;
+  --animate-sway: sway 7s ease-in-out infinite;
   --animate-type: type 1.4s steps(24) 0.4s both;
 
   @keyframes marquee { to { transform: translateX(-50%); } }
@@ -56,9 +56,9 @@
   @keyframes caret { 50% { opacity: 0; } }
   @keyframes spin-slow { to { transform: rotate(360deg); } }
   @keyframes flow { to { background-position: 24px 0; } }
-  @keyframes cube {
-    from { transform: rotateX(-22deg) rotateY(0deg); }
-    to { transform: rotateX(-22deg) rotateY(360deg); }
+  @keyframes sway {
+    0%, 100% { transform: rotateX(-14deg) rotateY(-32deg); }
+    50% { transform: rotateX(-6deg) rotateY(32deg); }
   }
   @keyframes type { from { width: 0; } to { width: var(--type-ch, 24ch); } }
 }
