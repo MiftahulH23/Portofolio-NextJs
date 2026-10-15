@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { FOG, SKY } from "@/world/palette";
 import { getRuntime } from "@/world/runtime";
 import { Atmosphere } from "./Atmosphere";
+import { Bike } from "./Bike";
 import { CameraRig } from "./CameraRig";
 import { City, RoofSigns } from "./City";
 import { canvasFonts, useFontsReady } from "./fonts";
@@ -12,6 +13,7 @@ import { Lamps } from "./Lamps";
 import { LIGHT } from "./lighting";
 import { Park } from "./Park";
 import { Roads } from "./Roads";
+import { Simulation } from "./Simulation";
 
 export default function WorldCanvas({ onReady, children }: { onReady?: () => void; children?: React.ReactNode }) {
   const { ui } = useLanguage();
@@ -37,6 +39,8 @@ export default function WorldCanvas({ onReady, children }: { onReady?: () => voi
       <Park layout={city.park} />
       <Lamps spots={city.lamps} />
       <Atmosphere />
+      <Simulation />
+      <Bike />
       <CameraRig />
       {children}
     </Canvas>
