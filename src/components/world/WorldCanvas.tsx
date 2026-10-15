@@ -9,6 +9,8 @@ import { Bike } from "./Bike";
 import { CameraRig } from "./CameraRig";
 import { City, RoofSigns } from "./City";
 import { canvasFonts, useFontsReady } from "./fonts";
+import { Gates } from "./Gates";
+import { GuideArrow } from "./GuideArrow";
 import { Lamps } from "./Lamps";
 import { LIGHT } from "./lighting";
 import { Park } from "./Park";
@@ -38,6 +40,8 @@ export default function WorldCanvas({ onReady, children }: { onReady?: () => voi
       {fontsReady && <RoofSigns buildings={city.buildings} texts={ui.world.roofSigns} family={canvasFonts().display} />}
       <Park layout={city.park} />
       <Lamps spots={city.lamps} />
+      <Gates fontsReady={fontsReady} />
+      <GuideArrow />
       <Atmosphere />
       <Simulation />
       <Bike />
