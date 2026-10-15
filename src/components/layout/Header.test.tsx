@@ -9,8 +9,8 @@ describe("Header", () => {
   it("renders primary nav links pointing at home anchors", () => {
     renderWithLanguage(<Header />);
     const nav = screen.getByRole("navigation", { name: "Primary" });
-    expect(nav.querySelector('a[href="/#work"]')).toHaveTextContent("/work");
-    expect(nav.querySelector('a[href="/#contact"]')).toHaveTextContent("/contact");
+    expect(nav.querySelector('a[href="/ringkas#work"]')).toHaveTextContent("/work");
+    expect(nav.querySelector('a[href="/ringkas#contact"]')).toHaveTextContent("/contact");
   });
 
   it("switches language", async () => {

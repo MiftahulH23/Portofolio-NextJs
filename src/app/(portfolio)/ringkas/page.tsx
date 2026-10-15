@@ -15,7 +15,12 @@ import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
 import { getContent } from "@/content";
 import { getContributions } from "@/lib/github";
-import { SITE_URL } from "@/lib/site";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Portfolio",
+  alternates: { canonical: "/ringkas" },
+};
 
 export const revalidate = 86400;
 
@@ -23,21 +28,9 @@ export default async function Home() {
   const c = getContent("en");
   const login = c.personal.githubLogin;
   const contributions = await getContributions(login);
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    name: c.personal.name,
-    jobTitle: c.personal.headline,
-    email: `mailto:${c.personal.email}`,
-    url: SITE_URL,
-    sameAs: [c.personal.socials.github, c.personal.socials.linkedin, c.personal.socials.instagram],
-    alumniOf: { "@type": "CollegeOrUniversity", name: c.education.institution },
-    address: { "@type": "PostalAddress", addressRegion: "Riau", addressCountry: "ID" },
-  };
 
   return (
     <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c") }} />
       <BentoGrid>
         <IntroCard />
         <StackCubeCard />

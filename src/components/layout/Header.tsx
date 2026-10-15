@@ -14,10 +14,10 @@ export function Header() {
   const [open, setOpen] = useState(false);
   const cv = content.personal.cvUrl;
   const links = [
-    { href: "/#work", label: ui.nav.work },
-    { href: "/#about", label: ui.nav.about },
-    { href: "/#stack", label: ui.nav.stack },
-    { href: "/#contact", label: ui.nav.contact },
+    { href: "/ringkas#work", label: ui.nav.work },
+    { href: "/ringkas#about", label: ui.nav.about },
+    { href: "/ringkas#stack", label: ui.nav.stack },
+    { href: "/ringkas#contact", label: ui.nav.contact },
   ];
 
   return (
@@ -50,7 +50,7 @@ export function Header() {
               {ui.nav.resume}
             </a>
           )}
-          <Link href="/#contact" className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] text-[15px] font-bold text-ink-950">
+          <Link href="/ringkas#contact" className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] text-[15px] font-bold text-ink-950">
             {ui.nav.hire}
           </Link>
         </div>
@@ -91,7 +91,7 @@ export function Header() {
                 {ui.nav.resume}
               </a>
             )}
-            <Link href="/#contact" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] font-bold text-ink-950">
+            <Link href="/ringkas#contact" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] font-bold text-ink-950">
               {ui.nav.hire}
             </Link>
           </div>

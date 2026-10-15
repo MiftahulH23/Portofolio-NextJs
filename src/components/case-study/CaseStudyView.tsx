@@ -32,7 +32,7 @@ export function CaseStudyView({ project, index, total, next, nextIndex }: Props)
   return (
     <main className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
       <div className="flex items-center justify-between gap-4 py-4">
-        <Link href="/#work" className="inline-flex min-h-11 items-center gap-2.5 font-mono text-sm text-ink-200 hover:text-ink-50">
+        <Link href="/ringkas#work" className="inline-flex min-h-11 items-center gap-2.5 font-mono text-sm text-ink-200 hover:text-ink-50">
           <ArrowLeft className="size-[18px]" aria-hidden="true" />
           {c.back}
         </Link>

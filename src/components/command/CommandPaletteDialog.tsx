@@ -45,8 +45,8 @@ export default function CommandPaletteDialog({ open, setOpen }: { open: boolean;
   }
 
   function goSection(id: string) {
-    if (pathname === "/") document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-    else router.push(`/#${id}`);
+    if (pathname === "/ringkas") document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    else router.push(`/ringkas#${id}`);
   }
 
   function copyEmail() {
@@ -73,6 +73,7 @@ export default function CommandPaletteDialog({ open, setOpen }: { open: boolean;
         <Command.List data-lenis-prevent className="max-h-[460px] overflow-y-auto p-2">
           <Command.Empty className="px-3 py-10 text-center text-[15px] text-ink-300">{p.empty}</Command.Empty>
           <Command.Group heading={p.groups.navigation} className={GROUP}>
+            <Item icon="◎" onSelect={() => run(() => router.push("/"))}>{p.exploreCity}</Item>
             <Item icon="#" onSelect={() => run(() => goSection("work"))}>{p.goWork}</Item>
             <Item icon="#" onSelect={() => run(() => goSection("services"))}>{p.goServices}</Item>
             <Item icon="#" onSelect={() => run(() => goSection("about"))}>{p.goExperience}</Item>

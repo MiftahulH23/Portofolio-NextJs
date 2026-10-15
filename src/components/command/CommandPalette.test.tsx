@@ -32,7 +32,14 @@ describe("CommandPalette", () => {
     renderWithLanguage(<CommandPalette />);
     act(() => openCommandPalette());
     await userEvent.click(await screen.findByText("Go to Contact"));
-    expect(push).toHaveBeenCalledWith("/#contact");
+    expect(push).toHaveBeenCalledWith("/ringkas#contact");
+  });
+
+  it("offers the 3D city and routes to /", async () => {
+    renderWithLanguage(<CommandPalette />);
+    act(() => openCommandPalette());
+    await userEvent.click(await screen.findByText("Explore the 3D city"));
+    expect(push).toHaveBeenCalledWith("/");
   });
 
   it("lists case studies and templates", async () => {

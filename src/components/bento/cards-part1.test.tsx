@@ -12,7 +12,7 @@ describe("bento cards part 1", () => {
   it("IntroCard shows the name as h1, CTAs, and no CV link when cvUrl is unset", () => {
     renderWithLanguage(<IntroCard />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("Miftahul Huda");
-    expect(screen.getByRole("link", { name: /explore work/i })).toHaveAttribute("href", "/#work");
+    expect(screen.getByRole("link", { name: /explore work/i })).toHaveAttribute("href", "/ringkas#work");
     expect(screen.getByRole("link", { name: /github/i })).toHaveAttribute("href", "https://github.com/MiftahulH23");
     expect(screen.queryByRole("link", { name: /download cv/i })).not.toBeInTheDocument();
   });

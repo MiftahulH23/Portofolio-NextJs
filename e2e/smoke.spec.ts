@@ -6,7 +6,7 @@ test("home renders without console or page errors", async ({ page }) => {
     if (m.type() === "error") errors.push(m.text());
   });
   page.on("pageerror", (e) => errors.push(e.message));
-  await page.goto("/");
+  await page.goto("/ringkas");
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Miftahul");
   await expect(page.getByRole("heading", { name: "Services", level: 2 })).toBeVisible();
   await page.mouse.wheel(0, 4000);
@@ -15,12 +15,12 @@ test("home renders without console or page errors", async ({ page }) => {
 });
 
 test("featured project opens its case study and goes back", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/ringkas");
   await page.getByRole("link", { name: /read case study/i }).click();
   await expect(page).toHaveURL(/\/projects\/sipresma$/);
   await expect(page.getByRole("heading", { level: 1 })).toHaveText("Student Achievement Information System");
   await page.getByRole("link", { name: /back to work/i }).click();
-  await expect(page).toHaveURL(/\/#work$/);
+  await expect(page).toHaveURL(/\/ringkas#work$/);
 });
 
 test("unknown case study returns 404", async ({ page }) => {
@@ -29,7 +29,7 @@ test("unknown case study returns 404", async ({ page }) => {
 });
 
 test("command palette opens with Ctrl+K and filters", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/ringkas");
   await page.keyboard.press("Control+K");
   const dialog = page.getByRole("dialog");
   await expect(dialog).toBeVisible();
@@ -40,7 +40,7 @@ test("command palette opens with Ctrl+K and filters", async ({ page }) => {
 });
 
 test("contact form submits (dry run)", async ({ page }) => {
-  await page.goto("/#contact");
+  await page.goto("/ringkas#contact");
   await page.getByLabel("Name").fill("Test Person");
   await page.getByLabel("Email").fill("test@example.com");
   await page.getByLabel("Message").fill("This is an automated smoke test.");
@@ -49,7 +49,7 @@ test("contact form submits (dry run)", async ({ page }) => {
 });
 
 test("language choice persists across reloads", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/ringkas");
   await page.getByRole("button", { name: "Switch language to Indonesian" }).click();
   await expect(page.getByRole("navigation", { name: "Utama" })).toContainText("/karya");
   await page.reload();
@@ -59,7 +59,7 @@ test("language choice persists across reloads", async ({ page }) => {
 
 test("no horizontal scroll at 390px", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const path of ["/", "/projects/sipresma"]) {
+  for (const path of ["/", "/ringkas", "/projects/sipresma"]) {
     await page.goto(path);
     const width = await page.evaluate(() => document.documentElement.scrollWidth);
     expect(width, path).toBeLessThanOrEqual(390);
@@ -80,7 +80,7 @@ test("sitemap and robots are served", async ({ request }) => {
 });
 
 test("mouse wheel scrolls nested areas (palette list, contact textarea) instead of the page", async ({ page }) => {
-  await page.goto("/");
+  await page.goto("/ringkas");
   await page.keyboard.press("Control+K");
   const list = page.locator("[cmdk-list]");
   await expect(list).toBeVisible();
@@ -90,7 +90,7 @@ test("mouse wheel scrolls nested areas (palette list, contact textarea) instead 
   await expect.poll(() => list.evaluate((el) => el.scrollTop)).toBeGreaterThan(0);
   await page.keyboard.press("Escape");
 
-  await page.goto("/#contact");
+  await page.goto("/ringkas#contact");
   const textarea = page.getByLabel("Message");
   await textarea.fill(Array.from({ length: 40 }, (_, i) => `line ${i + 1}`).join("\n"));
   await textarea.evaluate((el) => (el.scrollTop = 0));

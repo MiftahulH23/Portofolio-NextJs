@@ -54,6 +54,6 @@ describe("CaseStudyView", () => {
     }
     expect(screen.getByRole("link", { name: "Live ↗" })).toHaveAttribute("href", "https://example.com");
     expect(screen.getByAltText("Form")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /back to work/i })).toHaveAttribute("href", "/#work");
+    expect(screen.getByRole("link", { name: /back to work/i })).toHaveAttribute("href", "/ringkas#work");
   });
 });

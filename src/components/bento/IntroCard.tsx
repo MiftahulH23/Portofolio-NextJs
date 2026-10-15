@@ -51,7 +51,7 @@ export function IntroCard() {
       </div>
 
       <div className="flex flex-wrap gap-3">
-        <Link href="/#work" className="inline-flex min-h-[52px] items-center gap-2.5 rounded-[14px] bg-ink-50 px-6 font-bold text-ink-950">
+        <Link href="/ringkas#work" className="inline-flex min-h-[52px] items-center gap-2.5 rounded-[14px] bg-ink-50 px-6 font-bold text-ink-950">
           {ui.intro.explore}
           <ArrowUpRight className="size-[18px]" aria-hidden="true" />
         </Link>
