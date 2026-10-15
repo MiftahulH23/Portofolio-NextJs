@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useReducedMotion } from "motion/react";
 import { useLanguage } from "@/context/LanguageContext";
@@ -36,11 +37,16 @@ export function Intro({ hidden }: { hidden: boolean }) {
       aria-hidden={hidden || undefined}
       inert={hidden}
       className={cn(
-        "fixed inset-0 z-40 grid place-items-center overflow-y-auto px-4 py-8 transition-opacity duration-500",
+        "fixed inset-0 isolate z-40 grid place-items-center overflow-y-auto px-4 py-8 transition-opacity duration-500",
         hidden && "pointer-events-none opacity-0",
       )}
-      style={{ background: "radial-gradient(ellipse at 50% 120%, rgba(255,61,168,.22), transparent 60%), linear-gradient(to bottom, rgba(7,7,15,.35), rgba(7,7,15,.9))" }}
     >
+      <Image src="/world/intro-bg.jpg" alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 -z-10"
+        style={{ background: "radial-gradient(ellipse at 50% 120%, rgba(255,61,168,.22), transparent 60%), linear-gradient(to bottom, rgba(7,7,15,.62), rgba(7,7,15,.94))" }}
+      />
       <div className="flex max-w-[660px] flex-col gap-5">
         <div className="flex items-center justify-between gap-4">
           <span className="rounded-full border border-[#ff3da8]/50 px-3 py-1 font-mono text-[11px] uppercase tracking-[.14em] text-[#ff3da8]">{w.tag}</span>
