@@ -5,6 +5,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { FOG, SKY } from "@/world/palette";
 import { getRuntime } from "@/world/runtime";
 import { Atmosphere } from "./Atmosphere";
+import { Billboards } from "./Billboards";
 import { Bike } from "./Bike";
 import { CameraRig } from "./CameraRig";
 import { City, RoofSigns } from "./City";
@@ -43,6 +44,7 @@ export default function WorldCanvas({ onReady, children }: { onReady?: () => voi
       <Park layout={city.park} />
       <Lamps spots={city.lamps} />
       <Gates fontsReady={fontsReady} />
+      <Billboards fontsReady={fontsReady} />
       <GuideArrow />
       <Traffic />
       <Pedestrians />
