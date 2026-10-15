@@ -41,7 +41,7 @@ export function Intro({ hidden }: { hidden: boolean }) {
         hidden && "pointer-events-none opacity-0",
       )}
     >
-      <Image src="/world/intro-bg.jpg" alt="" fill priority sizes="100vw" className="-z-10 object-cover" />
+      <Image src="/world/intro-bg.jpg" alt="" fill fetchPriority="low" sizes="100vw" className="-z-10 object-cover" />
       <div
         aria-hidden="true"
         className="absolute inset-0 -z-10"
