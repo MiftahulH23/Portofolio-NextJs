@@ -81,7 +81,7 @@ export function Minimap() {
       width={MINIMAP_PX}
       height={MINIMAP_PX}
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-[calc(52px+env(safe-area-inset-bottom))] left-[18px] z-20 size-[168px] rounded-[18px] border border-white/15 bg-[#0d0c1a]/85 [@media(pointer:coarse)]:bottom-auto [@media(pointer:coarse)]:left-4 [@media(pointer:coarse)]:top-[calc(118px+env(safe-area-inset-top))] [@media(pointer:coarse)]:size-28"
+      className="pointer-events-none fixed bottom-[calc(52px+env(safe-area-inset-bottom))] left-[18px] z-20 size-[168px] rounded-[18px] border border-white/15 bg-[#0d0c1a]/85 [@media(pointer:coarse)]:bottom-auto [@media(pointer:coarse)]:left-auto [@media(pointer:coarse)]:right-4 [@media(pointer:coarse)]:top-[calc(68px+env(safe-area-inset-top))] [@media(pointer:coarse)]:size-20 [@media(pointer:coarse)]:rounded-xl [@media(pointer:coarse)]:opacity-85"
     />
   );
 }

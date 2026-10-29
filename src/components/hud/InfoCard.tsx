@@ -32,7 +32,7 @@ function Card({ card }: { card: GateKey }) {
       aria-labelledby={id}
       className={cn(
         "fixed right-4 top-[110px] z-30 flex max-h-[calc(100dvh-220px)] w-[min(400px,calc(100%-32px))] flex-col gap-3 overflow-y-auto rounded-[18px] border border-white/15 bg-[#0d0c1a]/90 p-[22px] backdrop-blur-md",
-        "[@media(pointer:coarse)]:bottom-[calc(96px+env(safe-area-inset-bottom))] [@media(pointer:coarse)]:top-auto [@media(pointer:coarse)]:gap-2 [@media(pointer:coarse)]:p-4",
+        "[@media(pointer:coarse)]:bottom-[calc(84px+env(safe-area-inset-bottom))] [@media(pointer:coarse)]:top-auto [@media(pointer:coarse)]:gap-2 [@media(pointer:coarse)]:p-4",
         open ? "[@media(pointer:coarse)]:max-h-[42dvh]" : "[@media(pointer:coarse)]:overflow-hidden",
       )}
     >

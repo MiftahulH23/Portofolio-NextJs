@@ -19,7 +19,7 @@ export function Hud({ onBell }: { onBell?: () => void }) {
   return (
     <>
       <div inert={modal} className="contents">
-      <div className="pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top)] z-20 flex flex-col items-center gap-2 px-4 pb-0 pt-[58px] sm:pt-3.5">
+      <div className="pointer-events-none fixed inset-x-0 top-[env(safe-area-inset-top)] z-20 flex flex-col items-center gap-2 px-4 pb-0 pt-[58px] sm:pt-3.5 [@media(pointer:coarse)]:items-start [@media(pointer:coarse)]:gap-1.5 [@media(pointer:coarse)]:pr-[72px] [@media(pointer:coarse)]:pt-3.5">
         <RouteBar />
         <NavPill />
       </div>

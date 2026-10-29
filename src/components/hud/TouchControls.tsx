@@ -1,11 +1,12 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/lib/utils";
 import type { BikeInput } from "@/world/bike";
 import { getRuntime } from "@/world/runtime";
 
 const btn =
-  "size-16 select-none touch-none rounded-[18px] border border-white/15 bg-[#0d0c1a]/85 font-mono text-[13px] font-bold text-ink-50 backdrop-blur data-[on=true]:border-lime data-[on=true]:text-lime";
+  "size-[54px] select-none touch-none rounded-2xl border border-white/15 bg-[#0d0c1a]/80 font-mono text-[15px] font-bold text-ink-50 backdrop-blur data-[on=true]:border-lime data-[on=true]:text-lime";
 
 function Hold({ k, label, children }: { k: keyof BikeInput; label: string; children: React.ReactNode }) {
   const set = (on: boolean) => (e: React.PointerEvent<HTMLButtonElement>) => {
@@ -29,12 +30,12 @@ export function TouchControls({ onBell }: { onBell?: () => void }) {
         <Hold k="left" label={t.left}>◀</Hold>
         <Hold k="right" label={t.right}>▶</Hold>
       </div>
-      <div className="pointer-events-auto flex gap-2.5">
-        <button type="button" aria-label={t.bell} className={btn} onPointerDown={() => onBell?.()}>
+      <div className="pointer-events-auto flex gap-2">
+        <button type="button" aria-label={t.bell} className={cn(btn, "size-11 self-end rounded-xl text-[13px]")} onPointerDown={() => onBell?.()}>
           🔔
         </button>
-        <Hold k="brake" label={t.brake}>{t.brake.toUpperCase().slice(0, 4)}</Hold>
-        <Hold k="gas" label={t.gas}>{t.gas.toUpperCase().slice(0, 4)}</Hold>
+        <Hold k="brake" label={t.brake}>▼</Hold>
+        <Hold k="gas" label={t.gas}>▲</Hold>
       </div>
     </div>
   );
