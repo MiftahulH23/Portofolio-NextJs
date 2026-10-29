@@ -1,7 +1,6 @@
 "use client";
 
 import { useLanguage } from "@/context/LanguageContext";
-import { cn } from "@/lib/utils";
 import type { BikeInput } from "@/world/bike";
 import { getRuntime } from "@/world/runtime";
 
@@ -31,7 +30,7 @@ export function TouchControls({ onBell }: { onBell?: () => void }) {
         <Hold k="right" label={t.right}>▶</Hold>
       </div>
       <div className="pointer-events-auto flex gap-2">
-        <button type="button" aria-label={t.bell} className={cn(btn, "size-11 self-end rounded-xl text-[13px]")} onPointerDown={() => onBell?.()}>
+        <button type="button" aria-label={t.bell} className={btn} onPointerDown={() => onBell?.()}>
           🔔
         </button>
         <Hold k="brake" label={t.brake}>▼</Hold>
