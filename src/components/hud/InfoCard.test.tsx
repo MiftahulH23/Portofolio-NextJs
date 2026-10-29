@@ -28,6 +28,17 @@ describe("InfoCard", () => {
     expect(worldStore.getState().card).toBeNull();
   });
 
+  it("toggles the details and starts collapsed for each new gate", async () => {
+    renderWithLanguage(<InfoCard />);
+    act(() => worldStore.openCard("profile"));
+    const toggle = screen.getByRole("button", { name: "Show details" });
+    expect(toggle).toHaveAttribute("aria-expanded", "false");
+    await userEvent.click(toggle);
+    expect(screen.getByRole("button", { name: "Hide details" })).toHaveAttribute("aria-expanded", "true");
+    act(() => worldStore.openCard("skills"));
+    expect(screen.getByRole("button", { name: "Show details" })).toHaveAttribute("aria-expanded", "false");
+  });
+
   it("follows language", async () => {
     renderWithLanguage(
       <>
