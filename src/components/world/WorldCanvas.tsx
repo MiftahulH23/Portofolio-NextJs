@@ -2,6 +2,7 @@
 
 import { PerformanceMonitor } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { useState } from "react";
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { useLanguage } from "@/context/LanguageContext";
 import { FOG, SKY } from "@/world/palette";
@@ -29,13 +30,15 @@ export default function WorldCanvas({ onReady, sounds, children }: { onReady?: (
   const tier = useWorld((s) => s.tier);
   const fontsReady = useFontsReady();
   const city = getRuntime().city;
+  // Phones start in the low tier but still get a sharp canvas; it drops to 1.25 only if frames suffer.
+  const [lowDpr, setLowDpr] = useState(2);
   return (
     <Canvas
       role="img"
       aria-label={ui.world.hud.canvas}
       style={{ position: "fixed", inset: 0 }}
-      dpr={tier === "high" ? [1, 2] : [1, 1.25]}
-      gl={{ antialias: tier === "high", powerPreference: "high-performance" }}
+      dpr={tier === "high" ? [1, 2] : [1, lowDpr]}
+      gl={{ antialias: true, powerPreference: "high-performance" }}
       camera={{ fov: 62, near: 0.1, far: 1000, position: [140, 4, 118] }}
       onCreated={({ gl }) => {
         gl.domElement.addEventListener("webglcontextlost", (e) => {
@@ -51,6 +54,7 @@ export default function WorldCanvas({ onReady, sounds, children }: { onReady?: (
       <directionalLight position={LIGHT.moon.position} color={LIGHT.moon.color} intensity={LIGHT.moon.intensity} />
       <PerformanceMonitor
         onDecline={() => {
+          setLowDpr(1.25);
           if (worldStore.getState().tier === "low") return;
           resetRuntime(getRuntime(), "low", true);
           worldStore.setTier("low");
