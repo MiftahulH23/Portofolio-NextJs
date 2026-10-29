@@ -12,6 +12,7 @@ import { RouteBar } from "./RouteBar";
 import { Speedo } from "./Speedo";
 import { Toast } from "./Toast";
 import { TouchControls } from "./TouchControls";
+import { TouchTips } from "./TouchTips";
 
 export function Hud({ onBell }: { onBell?: () => void }) {
   const { ui } = useLanguage();
@@ -32,6 +33,7 @@ export function Hud({ onBell }: { onBell?: () => void }) {
       <Toast />
       <InfoCard />
       <TouchControls onBell={onBell} />
+      <TouchTips />
       </div>
       <CardAnnouncer />
       <FinishDialog />
