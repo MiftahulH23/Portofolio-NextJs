@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 import { Smartphone, X } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
+import { cn } from "@/lib/utils";
 import { useWorld } from "@/world/useWorld";
 
 type Tip = "controls" | "rotate";
@@ -27,7 +28,8 @@ function markSeen(tip: Tip) {
   }
 }
 
-const bubble = "rounded-full bg-lime px-3 py-1.5 font-mono text-[11px] font-semibold text-ink-950 shadow-[0_0_18px_rgba(163,230,53,.35)]";
+const plate = "rounded-[4px] border-l-4 border-lime bg-[#05050a]/90 text-ink-50";
+const bubble = `${plate} max-w-[46%] px-3 py-1.5 text-[13px] font-semibold leading-snug`;
 
 /** First-visit tips on touch screens: how to ride, then a nudge to rotate to landscape. */
 export function TouchTips() {
@@ -67,15 +69,15 @@ export function TouchTips() {
       <AnimatePresence>
         {tip === "controls" && !card && (
           <motion.div key="controls" {...motionProps} className="flex items-end justify-between">
-            <span className={bubble}>◀ ▶ {t.steer}</span>
-            <span className={bubble}>{t.ride}</span>
+            <span className={bubble}>{t.steer}</span>
+            <span className={cn(bubble, "border-l-0 border-r-4 text-right")}>{t.ride}</span>
           </motion.div>
         )}
         {tip === "rotate" && !card && (
           <motion.div
             key="rotate"
             {...motionProps}
-            className="pointer-events-auto mx-auto flex w-fit max-w-full items-center gap-2.5 rounded-2xl border border-white/10 bg-[#0d0c1a]/95 py-1.5 pl-3 pr-1.5 text-sm text-ink-50 shadow-[0_18px_40px_rgba(0,0,0,.55)] backdrop-blur-xl"
+            className={cn(plate, "pointer-events-auto mx-auto flex w-fit max-w-full items-center gap-2.5 py-1.5 pl-3 pr-1.5 text-sm")}
           >
             <motion.span
               aria-hidden="true"
