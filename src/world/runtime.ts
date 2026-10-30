@@ -1,5 +1,5 @@
 import { BOARDS, boardPole } from "./billboards";
-import { createBike, stepBike, type BikeInput, type BikeState } from "./bike";
+import { createBike, kmh, stepBike, type BikeInput, type BikeState } from "./bike";
 import { BOUNDS, START, buildCity, type CityLayout, type Circle, type Rect } from "./city";
 import { resolveCollisions } from "./collision";
 import { GATES, GateTracker, gatePillars, type GateKey } from "./gates";
@@ -18,7 +18,12 @@ export interface Runtime {
   rand: Rand;
   shake: number;
   tracker: GateTracker;
+  trip: Trip;
 }
+
+/** What the rider has done since the last start: shown on the speedometer and the finish ticket. */
+export interface Trip { meters: number; seconds: number; topKmh: number; bells: number }
+export const newTrip = (): Trip => ({ meters: 0, seconds: 0, topKmh: 0, bells: 0 });
 
 export interface StepEvents { bump: boolean; honk: boolean; nearMiss: boolean; entered: GateKey[] }
 
@@ -38,12 +43,16 @@ export function createRuntime(tier: Tier, seed = 7): Runtime {
     rand,
     shake: 0,
     tracker: new GateTracker(),
+    trip: newTrip(),
   };
 }
 
 /** `keepBike` is for a mid-ride tier drop: respawn agents without teleporting the rider. */
 export function resetRuntime(rt: Runtime, tier: Tier, keepBike = false) {
-  if (!keepBike) rt.bike = createBike(START.x, START.z, START.heading);
+  if (!keepBike) {
+    rt.bike = createBike(START.x, START.z, START.heading);
+    rt.trip = newTrip();
+  }
   rt.cars = spawnCars(AGENTS[tier].cars, rt.rand);
   rt.peds = spawnPeds(AGENTS[tier].peds, rt.rand);
   rt.tracker.reset();
@@ -76,7 +85,12 @@ export function stepWorld(rt: Runtime, rawDt: number, started: boolean): StepEve
     rt.bike = { ...rt.bike, v: rt.bike.v * 0.6 };
     ev.nearMiss = true;
   }
-  if (started) ev.entered = rt.tracker.update(rt.bike.x, rt.bike.z);
+  if (started) {
+    ev.entered = rt.tracker.update(rt.bike.x, rt.bike.z);
+    rt.trip.meters += Math.abs(rt.bike.v) * dt;
+    rt.trip.seconds += dt;
+    rt.trip.topKmh = Math.max(rt.trip.topKmh, kmh(rt.bike.v));
+  }
   if (ev.bump) rt.shake = 0.35;
   rt.shake = Math.max(0, rt.shake - dt * 1.5);
   return ev;

@@ -24,7 +24,7 @@ describe("WorldGate", () => {
   it("mounts the world only after start, and hides the intro once it is ready", async () => {
     const { container } = renderWithLanguage(<WorldGate />);
     expect(screen.queryByText("fake-world")).not.toBeInTheDocument();
-    await userEvent.click(screen.getByRole("button", { name: "Start exploring →" }));
+    await userEvent.click(screen.getByRole("button", { name: "Start riding" }));
     await userEvent.click(screen.getByText("fake-world"));
     expect(worldStore.getState().phase).toBe("running");
     expect(container.querySelector("section[aria-label='Introduction']")).toHaveAttribute("inert");

@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { getAudio } from "@/components/world/audio";
 import { useWebGLSupport } from "@/hooks/useWebGLSupport";
 import { getRuntime } from "@/world/runtime";
@@ -48,7 +48,11 @@ export function WorldGate() {
     audio.unlock();
   }, [phase, audio]);
 
-  const sounds = useMemo(() => ({ onBell: audio.bell, onChime: audio.chime, onHorn: audio.horn, onBump: audio.bump }), [audio]);
+  const bell = useCallback(() => {
+    getRuntime().trip.bells++;
+    audio.bell();
+  }, [audio]);
+  const sounds = useMemo(() => ({ onBell: bell, onChime: audio.chime, onHorn: audio.horn, onBump: audio.bump }), [audio, bell]);
 
   return (
     <>
@@ -57,7 +61,7 @@ export function WorldGate() {
           <WorldCanvas onReady={() => worldStore.setPhase("running")} sounds={sounds} />
         </WorldErrorBoundary>
       )}
-      {running && <Hud onBell={audio.bell} />}
+      {running && <Hud onBell={bell} />}
       {running && contextLost && <ContextLost />}
       <Intro hidden={running} />
     </>

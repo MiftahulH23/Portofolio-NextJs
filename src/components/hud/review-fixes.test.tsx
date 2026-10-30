@@ -38,13 +38,13 @@ afterEach(() => vi.restoreAllMocks());
 describe("Critical: leaving / and coming back", () => {
   it("unmounting the world gate resets the session so a return starts cleanly", async () => {
     const view = renderWithLanguage(<WorldGate />);
-    await userEvent.click(screen.getByRole("button", { name: "Start exploring →" }));
+    await userEvent.click(screen.getByRole("button", { name: "Start riding" }));
     await userEvent.click(screen.getByText("fake-world"));
     expect(worldStore.getState().phase).toBe("running");
     view.unmount();
     expect(worldStore.getState()).toMatchObject({ phase: "intro", contextLost: false, card: null });
     renderWithLanguage(<WorldGate />);
-    expect(screen.getByRole("button", { name: "Start exploring →" })).toBeEnabled();
+    expect(screen.getByRole("button", { name: "Start riding" })).toBeEnabled();
     expect(screen.queryByRole("alertdialog")).not.toBeInTheDocument();
   });
 
@@ -126,7 +126,7 @@ describe("Important: card announcements", () => {
     expect(live).toBeInTheDocument();
     expect(live).toHaveTextContent("");
     act(() => worldStore.openCard("profile"));
-    expect(live).toHaveTextContent("Gate 1 · Profile: Miftahul Huda");
+    expect(live).toHaveTextContent("Gate 1, Profile: Miftahul Huda");
     expect(screen.getByRole("dialog").querySelector("[aria-live]")).toBeNull();
   });
 });
@@ -178,6 +178,6 @@ describe("Important: modal dialogs are modal", () => {
     worldStore.setPhase("running");
     renderWithLanguage(<FinishDialog />);
     act(() => GATE_KEYS.forEach((k) => worldStore.enterGate(k)));
-    expect(screen.getByRole("dialog", { name: "Exploration complete" })).toBeInTheDocument();
+    expect(screen.getByRole("dialog", { name: "All six gates visited" })).toBeInTheDocument();
   });
 });

@@ -9,9 +9,10 @@ import { RINGKAS } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
+import { KeyHints } from "./KeyHints";
 
-const primary = "inline-flex min-h-[52px] items-center gap-2 rounded-[14px] bg-lime px-6 font-bold text-ink-950 shadow-[0_0_30px_rgba(163,230,53,.35)] disabled:opacity-70";
-const ghost = "inline-flex min-h-[52px] items-center gap-2 rounded-[14px] border border-white/15 px-6 font-bold text-ink-50 hover:border-white/30";
+const primary = "inline-flex min-h-[52px] items-center gap-2 rounded-full bg-lime px-7 font-bold text-ink-950 disabled:opacity-70";
+const ghost = "inline-flex min-h-[52px] items-center gap-2 rounded-full px-5 font-bold text-ink-50 underline decoration-white/30 underline-offset-[6px] hover:decoration-white";
 
 export function Intro({ hidden }: { hidden: boolean }) {
   const { content, ui, toggleLanguage } = useLanguage();
@@ -47,19 +48,22 @@ export function Intro({ hidden }: { hidden: boolean }) {
         className="absolute inset-0 -z-10"
         style={{ background: "radial-gradient(ellipse at 50% 120%, rgba(255,61,168,.22), transparent 60%), linear-gradient(to bottom, rgba(7,7,15,.62), rgba(7,7,15,.94))" }}
       />
-      <div className="flex max-w-[660px] flex-col gap-5">
-        <div className="flex items-center justify-between gap-4">
-          <span className="rounded-full border border-[#ff3da8]/50 px-3 py-1 font-mono text-[11px] uppercase tracking-[.14em] text-[#ff3da8]">{w.tag}</span>
-          <button type="button" onClick={toggleLanguage} aria-label={ui.world.hud.switchLang} className="min-h-11 rounded-xl border border-white/15 px-3 font-mono text-xs text-ink-200">
-            {ui.world.hud.langLabel}
-          </button>
+      <button
+        type="button"
+        onClick={toggleLanguage}
+        aria-label={ui.world.hud.switchLang}
+        className="absolute right-4 top-[calc(16px+env(safe-area-inset-top))] min-h-11 rounded-full border border-white/15 px-4 text-sm font-semibold text-ink-200 hover:text-ink-50"
+      >
+        {ui.world.hud.langLabel}
+      </button>
+      <div className="flex w-full max-w-[640px] flex-col gap-6">
+        <div>
+          <h1 className="text-[clamp(48px,10vw,104px)] font-extrabold leading-[.88] tracking-[-0.04em] text-balance">{content.personal.name}</h1>
+          <p className="mt-3 text-[clamp(18px,2.4vw,22px)] font-semibold text-ink-200">{w.role}</p>
         </div>
-        <h1 className="text-[clamp(40px,8vw,84px)] font-extrabold leading-[.92] tracking-[-0.03em] text-balance">
-          {w.titleLead} <em className="not-italic text-lime [text-shadow:0_0_28px_rgba(163,230,53,.55)]">{content.personal.name}</em>
-        </h1>
-        <p className="max-w-[54ch] text-[17px] leading-relaxed text-ink-200">{w.summary}</p>
-        {!webgl && <p className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-ink-200">{w.noWebgl}</p>}
-        {webgl && reduce && <p className="rounded-xl border border-white/10 bg-white/5 p-3 text-sm text-ink-200">{w.reducedMotion}</p>}
+        <p className="max-w-[52ch] text-[17px] leading-relaxed text-ink-300">{w.summary}</p>
+        {!webgl && <p className="rounded-md border-l-[3px] border-[#ffb020] bg-white/5 p-3 text-sm text-ink-200">{w.noWebgl}</p>}
+        {webgl && reduce && <p className="rounded-md border-l-[3px] border-[#ffb020] bg-white/5 p-3 text-sm text-ink-200">{w.reducedMotion}</p>}
         <div className="flex flex-wrap gap-3">
           {reduce || !webgl ? (
             <>
@@ -73,11 +77,12 @@ export function Intro({ hidden }: { hidden: boolean }) {
             </>
           )}
         </div>
-        <p className="font-mono text-xs leading-[1.8] text-ink-300">
-          {w.keys}
-          <br />
-          {w.touch}
-        </p>
+        {webgl && (
+          <div className="flex flex-col gap-3 border-t border-white/10 pt-5">
+            <KeyHints className="[@media(pointer:coarse)]:hidden" />
+            <p className="text-sm text-ink-300">{w.touch}</p>
+          </div>
+        )}
       </div>
     </section>
   );

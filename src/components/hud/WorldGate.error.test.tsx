@@ -25,10 +25,10 @@ describe("WorldGate failures", () => {
   it("a chunk that fails to load returns to the intro with a retry that works", async () => {
     const spy = vi.spyOn(console, "error").mockImplementation(() => {});
     renderWithLanguage(<WorldGate />);
-    await userEvent.click(screen.getByRole("button", { name: "Start exploring →" }));
+    await userEvent.click(screen.getByRole("button", { name: "Start riding" }));
     expect(worldStore.getState().phase).toBe("failed");
     mode.fail = false;
-    await userEvent.click(screen.getByRole("button", { name: "The city could not be loaded. Try again →" }));
+    await userEvent.click(screen.getByRole("button", { name: "The city could not be loaded. Try again" }));
     expect(screen.getByText("fake-world")).toBeInTheDocument();
     spy.mockRestore();
   });

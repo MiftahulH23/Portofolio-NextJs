@@ -1,11 +1,11 @@
 "use client";
 
-import { useLanguage } from "@/context/LanguageContext";
 import { useWorld } from "@/world/useWorld";
 import { CardAnnouncer } from "./CardAnnouncer";
 import { FinishDialog } from "./FinishDialog";
 import { HudControls } from "./HudControls";
 import { InfoCard } from "./InfoCard";
+import { KeyHints } from "./KeyHints";
 import { Minimap } from "./Minimap";
 import { NavPill } from "./NavPill";
 import { RouteBar } from "./RouteBar";
@@ -15,7 +15,6 @@ import { TouchControls } from "./TouchControls";
 import { TouchTips } from "./TouchTips";
 
 export function Hud({ onBell }: { onBell?: () => void }) {
-  const { ui } = useLanguage();
   const modal = useWorld((s) => s.finished || s.contextLost);
   return (
     <>
@@ -27,9 +26,9 @@ export function Hud({ onBell }: { onBell?: () => void }) {
       <HudControls />
       <Minimap />
       <Speedo />
-      <p aria-hidden="true" className="pointer-events-none fixed bottom-[calc(14px+env(safe-area-inset-bottom))] left-[18px] z-20 font-mono text-xs text-ink-300 [@media(pointer:coarse)]:hidden">
-        {ui.world.hud.keys}
-      </p>
+      <div aria-hidden="true" className="pointer-events-none fixed bottom-[calc(14px+env(safe-area-inset-bottom))] left-[18px] z-20 [@media(pointer:coarse)]:hidden">
+        <KeyHints compact />
+      </div>
       <Toast />
       <InfoCard />
       <TouchControls onBell={onBell} />

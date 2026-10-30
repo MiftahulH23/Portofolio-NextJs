@@ -14,6 +14,21 @@ describe("runtime", () => {
     expect(rt.bike.z).toBeGreaterThan(175);
   });
 
+  it("logs the trip while riding and clears it on a full reset", () => {
+    const rt = createRuntime("low");
+    rt.cars = [];
+    rt.peds = [];
+    rt.input.gas = true;
+    for (let t = 0; t < 3; t += 1 / 60) stepWorld(rt, 1 / 60, true);
+    expect(rt.trip.meters).toBeCloseTo(rt.bike.z - 128, 0);
+    expect(rt.trip.seconds).toBeCloseTo(3, 1);
+    expect(rt.trip.topKmh).toBeGreaterThan(0);
+    resetRuntime(rt, "low", true);
+    expect(rt.trip.meters).toBeGreaterThan(0);
+    resetRuntime(rt, "low");
+    expect(rt.trip).toEqual({ meters: 0, seconds: 0, topKmh: 0, bells: 0 });
+  });
+
   it("does not move the bike before the ride starts", () => {
     const rt = createRuntime("low");
     rt.input.gas = true;
