@@ -3,7 +3,7 @@
 import { useLanguage } from "@/context/LanguageContext";
 import { fmt } from "@/lib/format";
 import { useWorld } from "@/world/useWorld";
-import { gateStyle } from "./gate-color";
+import { gateStyle } from "@/lib/gate-color";
 
 /** A street-sign plate in the colour of the gate it points to. */
 export function NavPill() {

@@ -51,9 +51,9 @@ test("contact form submits (dry run)", async ({ page }) => {
 test("language choice persists across reloads", async ({ page }) => {
   await page.goto("/ringkas");
   await page.getByRole("button", { name: "Switch language to Indonesian" }).click();
-  await expect(page.getByRole("navigation", { name: "Utama" })).toContainText("/karya");
+  await expect(page.getByRole("navigation", { name: "Utama" })).toContainText("Karya");
   await page.reload();
-  await expect(page.getByRole("navigation", { name: "Utama" })).toContainText("/karya");
+  await expect(page.getByRole("navigation", { name: "Utama" })).toContainText("Karya");
   await expect(page.locator("html")).toHaveAttribute("lang", "id");
 });
 

@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { useCanUseWebGL } from "@/hooks/useCanUseWebGL";
 import { CubeErrorBoundary } from "@/components/three/CubeErrorBoundary";
 import { FloatingIconsCss } from "@/components/three/FloatingIconsCss";
-import { BentoCard } from "./BentoCard";
+import { BentoCard, CardLabel } from "./BentoCard";
 
 const FloatingIcons = dynamic(() => import("@/components/three/FloatingIcons"), { ssr: false, loading: () => null });
 
@@ -22,10 +22,9 @@ export function FloatingIconsCard() {
   const use3d = webgl && seen && !contextLost;
 
   return (
-    <BentoCard cols={4} rows={3} reveal={false} className="relative flex items-center justify-center overflow-hidden bg-ink-900">
-      <span className="absolute left-6 top-[22px] z-10 font-mono text-xs text-ink-300">{ui.icons.file}</span>
-      {use3d && <span className="absolute bottom-[22px] right-6 z-10 font-mono text-xs text-ink-300">{ui.icons.hint}</span>}
-      <div aria-hidden="true" className="pointer-events-none absolute size-[330px] animate-spin-slow rounded-full border border-dashed border-ink-500" />
+    <BentoCard cols={4} rows={3} gate="skills" className="relative flex items-center justify-center overflow-hidden bg-ink-900">
+      <CardLabel className="absolute left-7 top-6 z-10">{ui.icons.file}</CardLabel>
+      {use3d && <span className="absolute bottom-6 right-7 z-10 text-sm text-ink-300">{ui.icons.hint}</span>}
       <div ref={ref} aria-hidden="true" className="absolute inset-0">
         {use3d ? (
           <CubeErrorBoundary fallback={css}>

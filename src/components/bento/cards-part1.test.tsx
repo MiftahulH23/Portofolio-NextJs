@@ -51,13 +51,13 @@ describe("bento cards part 1", () => {
     expect(screen.getByText("Mobile Development")).toBeInTheDocument();
   });
 
-  it("ServicesSection gives each service its own 3D icon instead of the wire cube", () => {
+  it("ServicesSection gives each service its own icon", () => {
     const { container } = renderWithLanguage(<ServicesSection />);
     const icons = [...container.querySelectorAll("[data-service-icon]")].map((el) => el.getAttribute("data-service-icon"));
     expect(icons).toEqual(["frontend", "backend", "fullstack", "mobile"]);
     for (const el of container.querySelectorAll("[data-service-icon]")) {
       expect(el).toHaveAttribute("aria-hidden", "true");
-      expect(el.querySelectorAll("svg").length).toBeGreaterThan(3);
+      expect(el.querySelectorAll("svg")).toHaveLength(1);
     }
     expect(container.querySelector("[data-wire-cube]")).toBeNull();
   });

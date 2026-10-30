@@ -12,9 +12,8 @@ describe("ContributionsCard", () => {
     expect(screen.getByRole("link", { name: "github.com/MiftahulH23" })).toHaveAttribute("href", "https://github.com/MiftahulH23");
   });
 
-  it("labels fallback data as sample and hides the total", () => {
-    renderWithLanguage(<ContributionsCard login="MiftahulH23" data={fallbackContributions()} />);
-    expect(screen.getByText("sample activity")).toBeInTheDocument();
-    expect(screen.queryByText(/contributions in the last year/)).not.toBeInTheDocument();
+  it("renders nothing for the offline sample, so fake activity is never shown", () => {
+    const { container } = renderWithLanguage(<ContributionsCard login="MiftahulH23" data={fallbackContributions()} />);
+    expect(container).toBeEmptyDOMElement();
   });
 });

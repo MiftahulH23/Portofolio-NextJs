@@ -42,7 +42,8 @@ export default async function Home() {
         <FeaturedProject />
         <ProjectList />
         <ProcessCard />
-        <TerminalCard />
+        {/* The graph renders only with real GitHub data; the terminal then fills the row. */}
+        <TerminalCard wide={contributions.source !== "github"} />
         <ContributionsCard data={contributions} login={login} />
         <EducationRow />
         <ContactSection />

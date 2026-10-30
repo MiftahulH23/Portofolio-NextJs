@@ -7,7 +7,7 @@ import { useLanguage } from "@/context/LanguageContext";
 import { openCommandPalette } from "@/lib/events";
 
 const pill =
-  "inline-flex min-h-11 items-center gap-2 rounded-xl border border-ink-600 bg-ink-850 px-3.5 font-mono text-[13px] text-ink-200 transition-colors hover:border-ink-500 hover:text-ink-50";
+  "inline-flex min-h-11 items-center gap-2 rounded-full px-3.5 text-sm font-semibold text-ink-200 transition-colors hover:bg-white/[.06] hover:text-ink-50";
 
 export function Header() {
   const { ui, content, toggleLanguage } = useLanguage();
@@ -27,7 +27,7 @@ export function Header() {
           miftahul<span className="text-lime">.dev</span>
         </Link>
 
-        <nav aria-label={ui.nav.primary} className="hidden gap-7 font-mono text-[13px] bento:flex">
+        <nav aria-label={ui.nav.primary} className="hidden gap-7 text-[15px] font-semibold bento:flex">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className="text-ink-300 transition-colors hover:text-ink-50">
               {l.label}
@@ -39,18 +39,18 @@ export function Header() {
           <button type="button" onClick={openCommandPalette} className={pill} aria-keyshortcuts="Control+K Meta+K">
             <Search className="size-[15px]" aria-hidden="true" />
             {ui.nav.search}
-            <kbd className="rounded-md border border-ink-500 px-1.5 py-0.5 text-ink-200">⌘K</kbd>
+            <kbd className="rounded-[5px] border border-b-2 border-ink-500 px-1.5 py-0.5 text-xs text-ink-200">⌘K</kbd>
           </button>
           <button type="button" onClick={toggleLanguage} aria-label={ui.nav.switchLang} className={pill}>
             {ui.nav.langLabel}
           </button>
           {cv && (
-            <a href={cv} download className={`${pill} font-display text-[15px] font-semibold`}>
+            <a href={cv} download className={pill}>
               <Download className="size-4" aria-hidden="true" />
               {ui.nav.resume}
             </a>
           )}
-          <Link href="/ringkas#contact" className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] text-[15px] font-bold text-ink-950">
+          <Link href="/ringkas#contact" className="inline-flex min-h-11 items-center rounded-full bg-lime px-[18px] text-[15px] font-bold text-ink-950">
             {ui.nav.hire}
           </Link>
         </div>
@@ -79,7 +79,7 @@ export function Header() {
         <div id="mobile-menu" className="border-t border-ink-700 bg-ink-950 px-4 pb-6 pt-2 bento:hidden">
           <nav aria-label="Mobile" className="flex flex-col">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center border-b border-ink-700 font-mono text-base text-ink-200">
+              <Link key={l.href} href={l.href} onClick={() => setOpen(false)} className="flex min-h-12 items-center border-b border-ink-700 text-base font-semibold text-ink-200">
                 {l.label}
               </Link>
             ))}
@@ -91,7 +91,7 @@ export function Header() {
                 {ui.nav.resume}
               </a>
             )}
-            <Link href="/ringkas#contact" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-xl bg-lime px-[18px] font-bold text-ink-950">
+            <Link href="/ringkas#contact" onClick={() => setOpen(false)} className="inline-flex min-h-11 items-center rounded-full bg-lime px-[18px] font-bold text-ink-950">
               {ui.nav.hire}
             </Link>
           </div>

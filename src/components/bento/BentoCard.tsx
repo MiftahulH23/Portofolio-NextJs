@@ -1,7 +1,6 @@
-"use client";
-
-import { motion, useReducedMotion } from "motion/react";
+import { gateStyle } from "@/lib/gate-color";
 import { cn } from "@/lib/utils";
+import type { GateKey } from "@/world/gates";
 
 const COLS = {
   3: "bento:col-span-3",
@@ -30,33 +29,28 @@ export function bentoSpan(cols: BentoCols, rows: BentoRows): string {
 interface BentoCardProps {
   cols: BentoCols;
   rows: BentoRows;
+  /** Which city gate this card belongs to: its neon colours the label and accents, as in the 3D city. */
+  gate?: GateKey;
   id?: string;
   className?: string;
-  delay?: number;
-  /** false for above-the-fold cards: render visible from the server so they do not delay LCP. */
-  reveal?: boolean;
   children: React.ReactNode;
   "aria-label"?: string;
 }
 
-export function BentoCard({ cols, rows, id, className, delay = 0, reveal = true, children, ...rest }: BentoCardProps) {
-  const reduce = useReducedMotion();
+export function BentoCard({ cols, rows, gate, id, className, children, ...rest }: BentoCardProps) {
   return (
-    <motion.section
+    <section
       id={id}
       aria-label={rest["aria-label"]}
-      initial={reduce || !reveal ? false : { opacity: 0, y: 32 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay }}
-      className={cn(
-        "relative min-h-[220px] scroll-mt-24 overflow-hidden rounded-3xl border border-ink-700 bg-ink-850 p-7",
-        "transition-[translate,border-color] duration-500 hover:-translate-y-1 hover:border-ink-500 bento:min-h-0",
-        bentoSpan(cols, rows),
-        className,
-      )}
+      style={gate ? gateStyle(gate) : undefined}
+      className={cn("relative min-h-[220px] scroll-mt-24 overflow-hidden rounded-xl bg-ink-850 p-7 bento:min-h-0", bentoSpan(cols, rows), className)}
     >
       {children}
-    </motion.section>
+    </section>
   );
+}
+
+/** The small heading that names a card, in its gate colour. */
+export function CardLabel({ children, className }: { children: React.ReactNode; className?: string }) {
+  return <span className={cn("text-sm font-semibold text-[var(--gate,#a1a1aa)]", className)}>{children}</span>;
 }

@@ -21,13 +21,13 @@ describe("LanguageProvider", () => {
   it("defaults to English", () => {
     render(<LanguageProvider><Probe /></LanguageProvider>);
     expect(screen.getByTestId("lang")).toHaveTextContent("en");
-    expect(screen.getByTestId("nav")).toHaveTextContent("/work");
+    expect(screen.getByTestId("nav")).toHaveTextContent("Work");
   });
 
   it("toggles to Indonesian, persists, and sets <html lang>", async () => {
     render(<LanguageProvider><Probe /></LanguageProvider>);
     await userEvent.click(screen.getByRole("button", { name: "toggle" }));
-    expect(screen.getByTestId("nav")).toHaveTextContent("/karya");
+    expect(screen.getByTestId("nav")).toHaveTextContent("Karya");
     expect(screen.getByTestId("degree")).toHaveTextContent("Sarjana Terapan Sistem Informasi");
     expect(window.localStorage.getItem("portfolio-lang")).toBe("id");
     expect(document.documentElement.lang).toBe("id");

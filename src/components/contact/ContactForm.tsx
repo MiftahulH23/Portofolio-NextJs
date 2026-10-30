@@ -12,7 +12,7 @@ import { cn } from "@/lib/utils";
 type Status = { kind: "idle" } | { kind: "success"; name: string; email: string } | { kind: "error"; code: ContactErrorCode };
 
 const field =
-  "min-h-[50px] rounded-xl border bg-ink-900 px-4 font-display text-base text-ink-50 placeholder:text-ink-400 outline-none focus-visible:border-lime";
+  "min-h-[50px] rounded-lg border bg-ink-900 px-4 font-display text-base font-normal text-ink-50 placeholder:text-ink-400 outline-none focus-visible:border-lime";
 
 export function ContactForm() {
   const { ui } = useLanguage();
@@ -87,7 +87,7 @@ export function ContactForm() {
   return (
     <form onSubmit={onSubmit} noValidate className="relative flex h-full flex-col gap-4">
       <div className="flex flex-wrap gap-3.5">
-        <label className="flex min-w-[200px] flex-1 flex-col gap-2 font-mono text-xs text-ink-200">
+        <label className="flex min-w-[200px] flex-1 flex-col gap-2 text-sm font-semibold text-ink-200">
           {f.name}
           <input
             value={name}
@@ -98,7 +98,7 @@ export function ContactForm() {
             className={cn(field, err === "name_invalid" ? "border-danger" : "border-ink-600")}
           />
         </label>
-        <label className="flex min-w-[200px] flex-1 flex-col gap-2 font-mono text-xs text-ink-200">
+        <label className="flex min-w-[200px] flex-1 flex-col gap-2 text-sm font-semibold text-ink-200">
           {f.email}
           <input
             type="email"
@@ -113,7 +113,7 @@ export function ContactForm() {
       </div>
 
       <fieldset className="flex flex-col gap-2">
-        <legend className="mb-2 font-mono text-xs text-ink-200">{f.topicLabel}</legend>
+        <legend className="mb-2 text-sm font-semibold text-ink-200">{f.topicLabel}</legend>
         <div className="flex flex-wrap gap-2">
           {TOPICS.map((t) => (
             <button
@@ -132,7 +132,7 @@ export function ContactForm() {
         </div>
       </fieldset>
 
-      <label className="flex flex-1 flex-col gap-2 font-mono text-xs text-ink-200">
+      <label className="flex flex-1 flex-col gap-2 text-sm font-semibold text-ink-200">
         {f.message}
         <textarea
           data-lenis-prevent
@@ -152,17 +152,17 @@ export function ContactForm() {
       </div>
 
       {err && (
-        <p role="alert" className="font-mono text-[13px] text-danger">
+        <p role="alert" className="text-sm text-danger">
           {f.errors[err]}
         </p>
       )}
 
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <span className="font-mono text-xs text-ink-300">{f.privacy}</span>
+        <span className="text-[13px] text-ink-300">{f.privacy}</span>
         <button
           type="submit"
           disabled={pending}
-          className="inline-flex min-h-[52px] items-center gap-2.5 rounded-[14px] bg-lime px-[26px] text-base font-bold text-ink-950 disabled:opacity-70"
+          className="inline-flex min-h-[52px] items-center gap-2.5 rounded-full bg-lime px-[26px] text-base font-bold text-ink-950 disabled:opacity-70"
         >
           {pending ? (
             <>

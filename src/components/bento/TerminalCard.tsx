@@ -5,7 +5,8 @@ import { useLanguage } from "@/context/LanguageContext";
 import { fmt } from "@/lib/format";
 import { BentoCard } from "./BentoCard";
 
-export function TerminalCard() {
+/** Spans the full row when there is no live GitHub graph beside it. */
+export function TerminalCard({ wide = false }: { wide?: boolean }) {
   const { content, ui } = useLanguage();
   const reduce = useReducedMotion();
   const skills = content.skills.reduce((n, g) => n + g.items.length, 0);
@@ -17,7 +18,7 @@ export function TerminalCard() {
   ];
 
   return (
-    <BentoCard cols={6} rows={3} aria-label={ui.terminal.aria} className="bg-[#050506] font-mono text-[15px] leading-[1.9] text-ink-200">
+    <BentoCard cols={wide ? 12 : 6} rows={wide ? 2 : 3} aria-label={ui.terminal.aria} className="bg-[#050506] font-mono text-[15px] leading-[1.9] text-ink-200">
       <div aria-hidden="true" className="mb-[18px] flex gap-[7px]">
         <span className="size-[11px] rounded-full bg-[#FF5F57]" />
         <span className="size-[11px] rounded-full bg-[#FEBC2E]" />
