@@ -10,7 +10,7 @@ export function EducationCard() {
   const { content, ui } = useLanguage();
   const e = content.education;
   return (
-    <BentoCard cols={6} rows={3} id="education" gate="education" className="flex flex-col justify-between gap-3.5">
+    <BentoCard cols={6} id="education" gate="education" className="flex flex-col justify-between gap-3.5">
       <CardLabel>{ui.education.label}</CardLabel>
       <div className="flex items-center gap-[18px]">
         <span aria-hidden="true" className="flex size-16 shrink-0 items-center justify-center rounded-lg bg-white/[.05] text-[var(--gate)]">
@@ -37,7 +37,7 @@ export function CertificationsCard({ certifications }: { certifications: Certifi
   const row = "flex items-center gap-3.5 rounded-lg border border-ink-600 bg-ink-800 px-3.5 py-3";
 
   return (
-    <BentoCard cols={12} rows={2} id="certs" gate="education" className="flex flex-col gap-2.5 overflow-y-auto">
+    <BentoCard cols={12} id="certs" gate="education" className="flex flex-col gap-2.5 overflow-y-auto">
       <CardLabel>{ui.certs.label}</CardLabel>
       {certifications.map((c) => {
         const body = (

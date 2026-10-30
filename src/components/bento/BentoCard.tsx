@@ -22,13 +22,14 @@ const ROWS = {
 export type BentoCols = keyof typeof COLS;
 export type BentoRows = keyof typeof ROWS;
 
-export function bentoSpan(cols: BentoCols, rows: BentoRows): string {
-  return `${COLS[cols]} ${ROWS[rows]}`;
+/** Without `rows` the card takes its content height (for a `fit` grid). */
+export function bentoSpan(cols: BentoCols, rows?: BentoRows): string {
+  return rows ? `${COLS[cols]} ${ROWS[rows]}` : COLS[cols];
 }
 
 interface BentoCardProps {
   cols: BentoCols;
-  rows: BentoRows;
+  rows?: BentoRows;
   /** Which city gate this card belongs to: its neon colours the label and accents, as in the 3D city. */
   gate?: GateKey;
   id?: string;

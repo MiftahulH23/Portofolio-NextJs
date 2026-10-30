@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 
 export default function Home() {
   return (
-    <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
+    <main id="top" className="mx-auto flex max-w-[1312px] flex-col gap-4 px-4 pb-12 sm:px-8">
       <BentoGrid>
         <IntroCard />
         <FloatingIconsCard />
@@ -33,8 +33,13 @@ export default function Home() {
         <FeaturedProject />
         <ProjectList />
         <ProcessCard />
+      </BentoGrid>
+      {/* Sized by the terminal's content, so neither card leaves an empty band below. */}
+      <BentoGrid fit>
         <TerminalCard />
         <EducationRow />
+      </BentoGrid>
+      <BentoGrid>
         <ContactSection />
       </BentoGrid>
     </main>
