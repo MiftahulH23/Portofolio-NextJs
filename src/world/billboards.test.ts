@@ -34,8 +34,10 @@ describe("billboards", () => {
   });
 
   it("builds the timeline from experience and graduation", () => {
-    expect(timelineEntries(en).map((e) => e.year)).toEqual(["2024", "2025", "2026"]);
-    expect(timelineEntries(en)[1].graduated).toBe(true);
+    expect(timelineEntries(en).map((e) => e.year)).toEqual(["2025", "2026", "2026"]);
+    expect(timelineEntries(en)[0].graduated).toBe(true);
+    // Same-year roles stay in the order they happened: the current one comes last.
+    expect(timelineEntries(en).map((e) => e.title).slice(1)).toEqual(["Laboratory Teaching Assistant", "Programmer"]);
     expect(yearsOf("Sep 2021 — Oct 2025")).toBe("2021 — 2025");
   });
 });

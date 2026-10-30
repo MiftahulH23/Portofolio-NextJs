@@ -1,6 +1,5 @@
 import { BentoGrid } from "@/components/bento/BentoGrid";
 import { ContactSection } from "@/components/bento/ContactSection";
-import { ContributionsCard } from "@/components/bento/ContributionsCard";
 import { EducationRow } from "@/components/bento/EducationRow";
 import { ExperienceCard } from "@/components/bento/ExperienceCard";
 import { FeaturedProject } from "@/components/bento/FeaturedProject";
@@ -13,8 +12,6 @@ import { ServicesSection } from "@/components/bento/ServicesSection";
 import { FloatingIconsCard } from "@/components/bento/FloatingIconsCard";
 import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
-import { getContent } from "@/content";
-import { getContributions } from "@/lib/github";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,13 +19,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/ringkas" },
 };
 
-export const revalidate = 86400;
-
-export default async function Home() {
-  const c = getContent("en");
-  const login = c.personal.githubLogin;
-  const contributions = await getContributions(login);
-
+export default function Home() {
   return (
     <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
       <BentoGrid>
@@ -42,9 +33,7 @@ export default async function Home() {
         <FeaturedProject />
         <ProjectList />
         <ProcessCard />
-        {/* The graph renders only with real GitHub data; the terminal then fills the row. */}
-        <TerminalCard wide={contributions.source !== "github"} />
-        <ContributionsCard data={contributions} login={login} />
+        <TerminalCard />
         <EducationRow />
         <ContactSection />
       </BentoGrid>

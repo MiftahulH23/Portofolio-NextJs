@@ -30,9 +30,12 @@ describe("bento cards part 1", () => {
     expect(screen.getByText("3.80")).toBeInTheDocument();
   });
 
-  it("ExperienceCard lists both roles and has the about anchor", () => {
+  it("ExperienceCard lists every role and has the about anchor", () => {
     renderWithLanguage(<ExperienceCard />);
+    expect(screen.getByText("Programmer")).toBeInTheDocument();
+    expect(screen.getByText("Oct 2026 — Present")).toBeInTheDocument();
     expect(screen.getByText("Laboratory Teaching Assistant")).toBeInTheDocument();
+    expect(screen.getByText("Mar 2026 — Oct 2026")).toBeInTheDocument();
     expect(screen.getByText("PT Bank Riau Kepri Syariah")).toBeInTheDocument();
     expect(document.getElementById("about")).not.toBeNull();
   });

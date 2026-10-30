@@ -47,7 +47,12 @@ export function yearsOf(duration: string): string {
 export function timelineEntries(c: PortfolioContent): TimelineEntry[] {
   const items: TimelineEntry[] = c.experience.map((e) => ({ year: firstYear(e.duration), title: e.position, org: e.company }));
   if (c.education.duration) items.push({ year: lastYear(c.education.duration), title: c.education.degree, org: c.education.institution, graduated: true });
-  return items.filter((i) => i.year).sort((a, b) => a.year.localeCompare(b.year)).slice(-3);
+  // Experience is listed newest first, so within one year a later index is the older role.
+  const order = new Map(items.map((item, i) => [item, -i]));
+  return items
+    .filter((i) => i.year)
+    .sort((a, b) => a.year.localeCompare(b.year) || order.get(a)! - order.get(b)!)
+    .slice(-3);
 }
 
 export function resolveFace(face: BoardFace, c: PortfolioContent): BoardFace {

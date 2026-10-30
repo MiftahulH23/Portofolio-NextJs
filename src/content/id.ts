@@ -53,8 +53,12 @@ export const id: PortfolioContent = {
   experience: [
     {
       ...en.experience[0],
+      duration: "Okt 2026 — Sekarang",
+    },
+    {
+      ...en.experience[1],
       position: "Asisten Praktikum Laboratorium",
-      duration: "Mar 2026 — Sekarang",
+      duration: "Mar 2026 — Okt 2026",
       achievements: [
         "Membantu dosen dalam pelaksanaan praktikum untuk mata kuliah Pemrograman, Manajemen Proyek, dan Rekayasa Perangkat Lunak.",
         "Mengevaluasi laporan praktikum dan memberikan umpan balik rutin pada tugas mahasiswa untuk memastikan standar pembelajaran terpenuhi.",
@@ -62,7 +66,7 @@ export const id: PortfolioContent = {
       ],
     },
     {
-      ...en.experience[1],
+      ...en.experience[2],
       achievements: [
         "Merancang dan mengembangkan sistem absensi berbasis web dari awal untuk peserta pelatihan internal menggunakan Laravel & MySQL.",
         "Meningkatkan pengalaman pengguna dengan mengimplementasikan antarmuka yang responsif dan intuitif menggunakan TailwindCSS.",

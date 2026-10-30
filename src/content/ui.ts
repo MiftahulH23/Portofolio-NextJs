@@ -40,12 +40,6 @@ export const uiEn = {
     availability: "✔ checking availability ... open",
     ready: "→ ready. say hi at {email}",
   },
-  contributions: {
-    live: "live via GitHub API",
-    heading: "Shipping code, consistently.",
-    total: "{n} contributions in the last year",
-    aria: "GitHub contribution graph",
-  },
   education: { label: "Education" },
   certs: { label: "Certifications", verify: "Verify" },
   contact: {
@@ -272,12 +266,6 @@ export const uiId: UiStrings = {
     projects: "✔ memuat proyek ........... {n} rilis",
     availability: "✔ cek ketersediaan ........ tersedia",
     ready: "→ siap. sapa saya di {email}",
-  },
-  contributions: {
-    live: "langsung dari GitHub API",
-    heading: "Konsisten menulis kode.",
-    total: "{n} kontribusi dalam setahun terakhir",
-    aria: "Grafik kontribusi GitHub",
   },
   education: { label: "Pendidikan" },
   certs: { label: "Sertifikasi", verify: "Verifikasi" },
