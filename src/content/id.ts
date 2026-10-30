@@ -54,6 +54,12 @@ export const id: PortfolioContent = {
     {
       ...en.experience[0],
       duration: "Okt 2026 — Sekarang",
+      achievements: [
+        "Mengembangkan dan menyempurnakan sistem informasi berbasis web untuk unit-unit kampus, mulai dari analisis kebutuhan hingga deployment.",
+        "Melakukan maintenance aplikasi yang sudah berjalan: memperbaiki bug, menerapkan pembaruan, dan menjaga sistem tetap stabil dalam penggunaan sehari-hari.",
+        "Merancang dan mengelola database serta layanan backend agar data tetap konsisten dan aman.",
+        "Berkoordinasi dengan pengguna dan unit terkait untuk menerjemahkan kebutuhan menjadi fitur baru, serta menyusun dokumentasi teknis.",
+      ],
     },
     {
       ...en.experience[1],

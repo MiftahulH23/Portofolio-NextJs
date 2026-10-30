@@ -70,7 +70,12 @@ export const en: PortfolioContent = {
       company: "Politeknik Caltex Riau",
       position: "Programmer",
       duration: "Oct 2026 — Present",
-      achievements: [],
+      achievements: [
+        "Developed and enhanced internal web-based information systems for campus units, from requirements gathering to deployment.",
+        "Maintained existing applications by fixing bugs, applying updates and keeping them stable in daily use.",
+        "Designed and managed databases and backend services to keep data consistent and secure.",
+        "Worked with users and other units to turn their needs into new features, and wrote technical documentation.",
+      ],
     },
     {
       company: "Politeknik Caltex Riau",
