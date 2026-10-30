@@ -34,7 +34,7 @@ describe("TouchTips", () => {
     const { unmount } = renderWithLanguage(<TouchTips />);
     act(() => worldStore.setPhase("running"));
     act(() => vi.advanceTimersByTime(900));
-    expect(screen.getByText("Hold ▲ to ride · ▼ to brake")).toBeInTheDocument();
+    expect(screen.getByText("Hold the big button to ride; the one beside it brakes")).toBeInTheDocument();
     act(() => vi.advanceTimersByTime(6000));
     expect(screen.getByText("Rotate your phone for a wider view")).toBeInTheDocument();
     expect(window.localStorage.getItem(TIP_KEYS.controls)).toBe("1");
@@ -43,7 +43,7 @@ describe("TouchTips", () => {
 
     renderWithLanguage(<TouchTips />);
     act(() => vi.advanceTimersByTime(15000));
-    expect(screen.queryByText("Hold ▲ to ride · ▼ to brake")).not.toBeInTheDocument();
+    expect(screen.queryByText("Hold the big button to ride; the one beside it brakes")).not.toBeInTheDocument();
     expect(screen.queryByText("Rotate your phone for a wider view")).not.toBeInTheDocument();
   });
 
@@ -52,6 +52,6 @@ describe("TouchTips", () => {
     renderWithLanguage(<TouchTips />);
     act(() => worldStore.setPhase("running"));
     act(() => vi.advanceTimersByTime(15000));
-    expect(screen.queryByText("Hold ▲ to ride · ▼ to brake")).not.toBeInTheDocument();
+    expect(screen.queryByText("Hold the big button to ride; the one beside it brakes")).not.toBeInTheDocument();
   });
 });

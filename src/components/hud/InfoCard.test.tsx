@@ -23,7 +23,7 @@ describe("InfoCard", () => {
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument();
     act(() => worldStore.openCard("profile"));
     const dialog = screen.getByRole("dialog", { name: "Miftahul Huda" });
-    expect(dialog).toHaveTextContent("Gate 1 · Profile");
+    expect(dialog).toHaveTextContent("Gate 1, Profile");
     await userEvent.click(screen.getByRole("button", { name: "Close information" }));
     expect(worldStore.getState().card).toBeNull();
   });
@@ -48,7 +48,7 @@ describe("InfoCard", () => {
     );
     act(() => worldStore.openCard("profile"));
     await userEvent.click(screen.getByText("lang"));
-    expect(screen.getByRole("dialog")).toHaveTextContent("Gerbang 1 · Profil");
+    expect(screen.getByRole("dialog")).toHaveTextContent("Gerbang 1, Profil");
     expect(screen.getByRole("button", { name: "Tutup informasi" })).toBeInTheDocument();
   });
 });

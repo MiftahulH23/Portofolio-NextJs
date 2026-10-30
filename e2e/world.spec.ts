@@ -6,7 +6,7 @@ declare global {
 
 async function start(page: Page) {
   await page.goto("/");
-  await page.getByRole("button", { name: "Start exploring →" }).click();
+  await page.getByRole("button", { name: "Start riding" }).click();
   await expect(page.getByRole("navigation", { name: "Journey route" })).toBeVisible({ timeout: 20_000 });
 }
 
@@ -20,7 +20,7 @@ async function rideThroughProfileGate(page: Page) {
 test("intro is server-rendered with real content", async ({ request }) => {
   const html = await (await request.get("/")).text();
   expect(html).toContain("Miftahul Huda");
-  expect(html).toContain("Start exploring");
+  expect(html).toContain("Start riding");
   expect(html).toContain('href="/ringkas"');
   expect(html).toContain("application/ld+json");
 });
@@ -37,7 +37,7 @@ test.describe("touch device", () => {
     await page.waitForLoadState("networkidle");
     await page.waitForTimeout(2000);
     expect(bodies.some((b) => b.includes("WebGLRenderer"))).toBe(false);
-    await page.getByRole("button", { name: "Start exploring →" }).click();
+    await page.getByRole("button", { name: "Start riding" }).click();
     await expect.poll(() => bodies.some((b) => b.includes("WebGLRenderer")), { timeout: 20_000 }).toBe(true);
   });
 
@@ -65,7 +65,7 @@ test("language switch updates the HUD and the open card", async ({ page }) => {
   await rideThroughProfileGate(page);
   await page.getByRole("button", { name: "Switch language to Indonesian" }).click();
   await expect(page.getByRole("navigation", { name: "Rute perjalanan" })).toBeVisible();
-  await expect(page.getByRole("dialog")).toContainText("Gerbang 1 · Profil");
+  await expect(page.getByRole("dialog")).toContainText("Gerbang 1, Profil");
 });
 
 test("resizing mid-ride keeps working", async ({ page }) => {
@@ -81,7 +81,7 @@ test("resizing mid-ride keeps working", async ({ page }) => {
 
 test("compact version link goes to /ringkas", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("link", { name: "View compact version ↗" }).click();
+  await page.getByRole("link", { name: "Open the compact version" }).click();
   await expect(page).toHaveURL(/\/ringkas$/);
   await expect(page.getByRole("heading", { level: 1 })).toContainText("Miftahul");
 });

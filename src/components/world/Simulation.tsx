@@ -56,6 +56,7 @@ export function Simulation({ onBell, onChime, onHorn, onBump }: SoundHooks) {
     }
     if (ev.nearMiss) worldStore.toast(hud.current.toastPed);
     worldStore.setKmh(kmh(rt.bike.v));
+    worldStore.setMeters(rt.trip.meters);
     const n = nearestUnvisited(rt.bike.x, rt.bike.z, worldStore.getState().visited);
     worldStore.setNav(n ? { key: n.gate.key, distance: Math.round(n.distance) } : null);
   }, -1);

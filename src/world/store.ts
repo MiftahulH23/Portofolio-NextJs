@@ -4,16 +4,16 @@ export type Tier = "high" | "low";
 export type Phase = "intro" | "loading" | "running" | "failed";
 export interface Nav { key: GateKey; distance: number }
 export interface WorldState {
-  phase: Phase; attempts: number; visited: GateKey[]; card: GateKey | null; finished: boolean; freeRide: boolean;
-  muted: boolean; tier: Tier; nav: Nav | null; kmh: number; toast: string | null; contextLost: boolean;
+  phase: Phase; attempts: number; visited: GateKey[]; card: GateKey | null; arrived: boolean; finished: boolean; freeRide: boolean;
+  muted: boolean; tier: Tier; nav: Nav | null; kmh: number; meters: number; toast: string | null; contextLost: boolean;
 }
 
 const MUTE_KEY = "kota-neon:muted";
 const TOAST_GAP_MS = 2500;
 
 export const INITIAL_STATE: WorldState = {
-  phase: "intro", attempts: 0, visited: [], card: null, finished: false, freeRide: false,
-  muted: false, tier: "high", nav: null, kmh: 0, toast: null, contextLost: false,
+  phase: "intro", attempts: 0, visited: [], card: null, arrived: false, finished: false, freeRide: false,
+  muted: false, tier: "high", nav: null, kmh: 0, meters: 0, toast: null, contextLost: false,
 };
 
 export function createWorldStore() {
@@ -49,13 +49,14 @@ export function createWorldStore() {
       const first = !state.visited.includes(key);
       const visited = first ? [...state.visited, key] : state.visited;
       const finished = state.finished || (first && visited.length === GATE_KEYS.length && !state.freeRide);
-      set({ visited, card: key, finished });
+      set({ visited, card: key, arrived: true, finished });
       return { first };
     },
-    openCard: (key: GateKey) => set({ card: key }),
+    /** `arrived` tells the card whether the rider rode through the gate or reopened it from the route bar. */
+    openCard: (key: GateKey) => set({ card: key, arrived: false }),
     closeCard: () => set({ card: null }),
     stayFree: () => set({ finished: false, freeRide: true }),
-    reset: () => set({ visited: [], card: null, finished: false, freeRide: false, nav: null }),
+    reset: () => set({ visited: [], card: null, finished: false, freeRide: false, nav: null, meters: 0 }),
     toggleMute() {
       const muted = !state.muted;
       try {
@@ -72,6 +73,8 @@ export function createWorldStore() {
       set({ nav });
     },
     setKmh: (kmh: number) => set({ kmh }),
+    /** Trip distance, rounded to 10 m so the HUD re-renders only when the shown value changes. */
+    setMeters: (meters: number) => set({ meters: Math.floor(meters / 10) * 10 }),
     toast(message: string, now = Date.now()) {
       if (now - lastToast < TOAST_GAP_MS) return;
       lastToast = now;

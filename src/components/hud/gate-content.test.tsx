@@ -25,7 +25,7 @@ describe("GateContent", () => {
   });
   it("contact links to the compact contact form", () => {
     renderWithLanguage(<GateContent gate="contact" />);
-    expect(screen.getByRole("link", { name: "Send a message →" })).toHaveAttribute("href", "/ringkas#contact");
+    expect(screen.getByRole("link", { name: "Send a message" })).toHaveAttribute("href", "/ringkas#contact");
     expect(screen.getByText(en.personal.email)).toBeInTheDocument();
   });
 });

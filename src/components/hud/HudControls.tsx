@@ -11,6 +11,7 @@ import { worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
 
 const pill = "pointer-events-auto inline-flex min-h-11 items-center gap-2 rounded-xl border border-white/15 bg-[#0d0c1a]/85 px-3 font-mono text-xs text-ink-200 backdrop-blur hover:text-ink-50";
+const plain = "pointer-events-auto inline-flex min-h-10 items-center gap-2 rounded-full px-3.5 text-[13px] font-semibold text-ink-300 transition-colors hover:bg-white/[.06] hover:text-ink-50";
 const row = "flex min-h-12 w-full items-center gap-3 rounded-xl px-2.5 text-left text-sm text-ink-50 transition-colors active:bg-white/[.06]";
 const chip = "grid size-8 shrink-0 place-items-center rounded-lg bg-white/[.06] text-lime";
 
@@ -19,14 +20,14 @@ function DesktopControls() {
   const muted = useWorld((s) => s.muted);
   const h = ui.world.hud;
   return (
-    <div className="flex gap-2 [@media(pointer:coarse)]:hidden">
-      <button type="button" className={pill} onClick={() => worldStore.toggleMute()} aria-label={muted ? h.unmute : h.mute} aria-pressed={muted}>
+    <div className="flex items-center rounded-full bg-[#05050a]/85 p-1 [@media(pointer:coarse)]:hidden">
+      <button type="button" className={plain} onClick={() => worldStore.toggleMute()} aria-label={muted ? h.unmute : h.mute} aria-pressed={muted}>
         {muted ? <VolumeX className="size-4" aria-hidden="true" /> : <Volume2 className="size-4" aria-hidden="true" />}
       </button>
-      <button type="button" className={pill} onClick={toggleLanguage} aria-label={h.switchLang}>
+      <button type="button" className={plain} onClick={toggleLanguage} aria-label={h.switchLang}>
         {h.langLabel}
       </button>
-      <Link href={RINGKAS} className={pill}>
+      <Link href={RINGKAS} className={plain}>
         {h.compact}
       </Link>
     </div>

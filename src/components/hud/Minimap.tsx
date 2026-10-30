@@ -49,12 +49,17 @@ export function Minimap() {
       }
       for (const gt of GATES) {
         const m = toMinimap(gt.x, gt.z), done = visited.includes(gt.key);
+        // Visited gates keep their colour but turn into a ring, like a passed stop on a transit map.
         g.beginPath();
-        g.arc(m.mx, m.my, 10, 0, Math.PI * 2);
-        g.globalAlpha = done ? 0.5 : 1;
-        g.fillStyle = hex(done ? NEON.lime : gt.color);
-        g.fill();
-        g.globalAlpha = 1;
+        g.arc(m.mx, m.my, done ? 8 : 10, 0, Math.PI * 2);
+        if (done) {
+          g.lineWidth = 4;
+          g.strokeStyle = hex(gt.color);
+          g.stroke();
+        } else {
+          g.fillStyle = hex(gt.color);
+          g.fill();
+        }
       }
       const me = toMinimap(rt.bike.x, rt.bike.z);
       g.save();
@@ -81,7 +86,7 @@ export function Minimap() {
       width={MINIMAP_PX}
       height={MINIMAP_PX}
       aria-hidden="true"
-      className="pointer-events-none fixed bottom-[calc(52px+env(safe-area-inset-bottom))] left-[18px] z-20 size-[168px] rounded-[18px] border border-white/15 bg-[#0d0c1a]/85 [@media(pointer:coarse)]:bottom-auto [@media(pointer:coarse)]:left-auto [@media(pointer:coarse)]:right-4 [@media(pointer:coarse)]:top-[calc(68px+env(safe-area-inset-top))] [@media(pointer:coarse)]:size-20 [@media(pointer:coarse)]:rounded-xl [@media(pointer:coarse)]:opacity-85"
+      className="pointer-events-none fixed bottom-[calc(52px+env(safe-area-inset-bottom))] left-[18px] z-20 size-[168px] rounded-[6px] bg-[#05050a]/85 [@media(pointer:coarse)]:bottom-auto [@media(pointer:coarse)]:left-auto [@media(pointer:coarse)]:right-4 [@media(pointer:coarse)]:top-[calc(68px+env(safe-area-inset-top))] [@media(pointer:coarse)]:size-20 [@media(pointer:coarse)]:rounded-xl [@media(pointer:coarse)]:opacity-85"
     />
   );
 }

@@ -13,7 +13,7 @@ describe("NavPill", () => {
   it("names the next gate and its distance, then confirms completion", () => {
     renderWithLanguage(<NavPill />);
     act(() => worldStore.setNav({ key: "profile", distance: 47 }));
-    expect(screen.getByText("→ Profile · 47 m")).toBeInTheDocument();
+    expect(screen.getByText("Profile in 47 m")).toBeInTheDocument();
     act(() => worldStore.setNav(null));
     expect(screen.getByText("All gates visited")).toBeInTheDocument();
   });
