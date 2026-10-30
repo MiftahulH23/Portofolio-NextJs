@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 import { GATES, type GateKey } from "@/world/gates";
 import { worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
-import { gateStyle } from "./gate-color";
+import { gateStyle } from "@/lib/gate-color";
 import { GateContent, gateTitle } from "./gate-content";
 
 const EASE = [0.2, 0.8, 0.2, 1] as const;

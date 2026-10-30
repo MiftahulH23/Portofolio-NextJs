@@ -57,11 +57,11 @@ describe("bento cards part 2", () => {
     );
     expect(screen.getByText("Cert A").closest("a")).toHaveAttribute("href", "https://example.com/a");
     expect(screen.getByText("Cert B").closest("a")).toBeNull();
-    expect(screen.getAllByText("Verify ↗")).toHaveLength(1);
+    expect(screen.getAllByText("Verify")).toHaveLength(1);
   });
 
-  it("EducationCard spans 12 columns when wide", () => {
-    renderWithLanguage(<EducationCard wide />);
-    expect(screen.getByText("Politeknik Caltex Riau").closest("section")?.className).toContain("bento:col-span-12");
+  it("EducationCard takes half a row, beside the terminal", () => {
+    renderWithLanguage(<EducationCard />);
+    expect(screen.getByText("Politeknik Caltex Riau").closest("section")?.className).toContain("bento:col-span-6");
   });
 });

@@ -9,14 +9,14 @@ describe("Header", () => {
   it("renders primary nav links pointing at home anchors", () => {
     renderWithLanguage(<Header />);
     const nav = screen.getByRole("navigation", { name: "Primary" });
-    expect(nav.querySelector('a[href="/ringkas#work"]')).toHaveTextContent("/work");
-    expect(nav.querySelector('a[href="/ringkas#contact"]')).toHaveTextContent("/contact");
+    expect(nav.querySelector('a[href="/ringkas#work"]')).toHaveTextContent("Work");
+    expect(nav.querySelector('a[href="/ringkas#contact"]')).toHaveTextContent("Contact");
   });
 
   it("switches language", async () => {
     renderWithLanguage(<Header />);
     await userEvent.click(screen.getAllByRole("button", { name: "Switch language to Indonesian" })[0]);
-    expect(screen.getByRole("navigation", { name: "Utama" })).toHaveTextContent("/karya");
+    expect(screen.getByRole("navigation", { name: "Utama" })).toHaveTextContent("Karya");
   });
 
   it("search button dispatches the open-palette event", async () => {

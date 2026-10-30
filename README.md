@@ -36,7 +36,7 @@ The teleport hook `window.__world.tp(x, z, heading)` exists in development, and 
 
 ## Environment
 
-See `.env.example`. `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are required for the contact form. `GITHUB_TOKEN` is optional (the graph falls back to a sample pattern). Set the same variables in Vercel → Project Settings → Environment Variables (Production + Preview).
+See `.env.example`. `RESEND_API_KEY` and `CONTACT_TO_EMAIL` are required for the contact form. Set the same variables in Vercel → Project Settings → Environment Variables (Production + Preview).
 
 ## Editing content
 

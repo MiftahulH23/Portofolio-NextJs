@@ -16,22 +16,13 @@ describe("BentoCard", () => {
     expect(section.className).toContain("bento:row-span-3");
   });
 
-  it("starts hidden for the scroll reveal by default", () => {
+  it("exposes its gate colour to the content", () => {
     render(
-      <BentoCard cols={4} rows={2} aria-label="Lazy">
+      <BentoCard cols={4} rows={2} gate="projects" aria-label="Work">
         x
       </BentoCard>,
     );
-    expect(screen.getByRole("region", { name: "Lazy" }).style.opacity).toBe("0");
-  });
-
-  it("renders visible from the server when reveal is off (above-the-fold / LCP)", () => {
-    render(
-      <BentoCard cols={8} rows={3} reveal={false} aria-label="Hero">
-        x
-      </BentoCard>,
-    );
-    expect(screen.getByRole("region", { name: "Hero" }).style.opacity).toBe("");
+    expect(screen.getByRole("region", { name: "Work" }).style.getPropertyValue("--gate")).toBe("#8b5cff");
   });
 
   it("bentoSpan returns static class names", () => {

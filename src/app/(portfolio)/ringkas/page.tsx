@@ -1,6 +1,5 @@
 import { BentoGrid } from "@/components/bento/BentoGrid";
 import { ContactSection } from "@/components/bento/ContactSection";
-import { ContributionsCard } from "@/components/bento/ContributionsCard";
 import { EducationRow } from "@/components/bento/EducationRow";
 import { ExperienceCard } from "@/components/bento/ExperienceCard";
 import { FeaturedProject } from "@/components/bento/FeaturedProject";
@@ -13,8 +12,6 @@ import { ServicesSection } from "@/components/bento/ServicesSection";
 import { FloatingIconsCard } from "@/components/bento/FloatingIconsCard";
 import { StackMarquee } from "@/components/bento/StackMarquee";
 import { TerminalCard } from "@/components/bento/TerminalCard";
-import { getContent } from "@/content";
-import { getContributions } from "@/lib/github";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -22,15 +19,9 @@ export const metadata: Metadata = {
   alternates: { canonical: "/ringkas" },
 };
 
-export const revalidate = 86400;
-
-export default async function Home() {
-  const c = getContent("en");
-  const login = c.personal.githubLogin;
-  const contributions = await getContributions(login);
-
+export default function Home() {
   return (
-    <main id="top" className="mx-auto max-w-[1312px] px-4 pb-12 sm:px-8">
+    <main id="top" className="mx-auto flex max-w-[1312px] flex-col gap-4 px-4 pb-12 sm:px-8">
       <BentoGrid>
         <IntroCard />
         <FloatingIconsCard />
@@ -42,9 +33,13 @@ export default async function Home() {
         <FeaturedProject />
         <ProjectList />
         <ProcessCard />
+      </BentoGrid>
+      {/* Sized by the terminal's content, so neither card leaves an empty band below. */}
+      <BentoGrid fit>
         <TerminalCard />
-        <ContributionsCard data={contributions} login={login} />
         <EducationRow />
+      </BentoGrid>
+      <BentoGrid>
         <ContactSection />
       </BentoGrid>
     </main>

@@ -30,9 +30,12 @@ describe("bento cards part 1", () => {
     expect(screen.getByText("3.80")).toBeInTheDocument();
   });
 
-  it("ExperienceCard lists both roles and has the about anchor", () => {
+  it("ExperienceCard lists every role and has the about anchor", () => {
     renderWithLanguage(<ExperienceCard />);
+    expect(screen.getByText("Programmer")).toBeInTheDocument();
+    expect(screen.getByText("Oct 2026 — Present")).toBeInTheDocument();
     expect(screen.getByText("Laboratory Teaching Assistant")).toBeInTheDocument();
+    expect(screen.getByText("Mar 2026 — Oct 2026")).toBeInTheDocument();
     expect(screen.getByText("PT Bank Riau Kepri Syariah")).toBeInTheDocument();
     expect(document.getElementById("about")).not.toBeNull();
   });
@@ -51,13 +54,13 @@ describe("bento cards part 1", () => {
     expect(screen.getByText("Mobile Development")).toBeInTheDocument();
   });
 
-  it("ServicesSection gives each service its own 3D icon instead of the wire cube", () => {
+  it("ServicesSection gives each service its own icon", () => {
     const { container } = renderWithLanguage(<ServicesSection />);
     const icons = [...container.querySelectorAll("[data-service-icon]")].map((el) => el.getAttribute("data-service-icon"));
     expect(icons).toEqual(["frontend", "backend", "fullstack", "mobile"]);
     for (const el of container.querySelectorAll("[data-service-icon]")) {
       expect(el).toHaveAttribute("aria-hidden", "true");
-      expect(el.querySelectorAll("svg").length).toBeGreaterThan(3);
+      expect(el.querySelectorAll("svg")).toHaveLength(1);
     }
     expect(container.querySelector("[data-wire-cube]")).toBeNull();
   });

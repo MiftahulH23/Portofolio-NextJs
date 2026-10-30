@@ -7,7 +7,7 @@ import { GATES } from "@/world/gates";
 import { getRuntime, resetRuntime } from "@/world/runtime";
 import { worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
-import { gateStyle } from "./gate-color";
+import { gateStyle } from "@/lib/gate-color";
 
 export function FinishDialog() {
   const { ui, content, lang } = useLanguage();

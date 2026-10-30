@@ -11,7 +11,7 @@ describe("FloatingIconsCard", () => {
     renderWithLanguage(<FloatingIconsCard />);
     expect(screen.getAllByTestId("float-icon")).toHaveLength(6);
     for (const name of ["React", "Laravel", "MySQL"]) expect(screen.queryByText(name)).not.toBeInTheDocument();
-    expect(screen.getByText("toolkit.glb")).toBeInTheDocument();
+    expect(screen.getByText("Toolkit")).toBeInTheDocument();
     expect(screen.queryByText("hover · click · drag")).not.toBeInTheDocument();
   });
 });

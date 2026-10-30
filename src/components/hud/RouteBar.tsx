@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { GATES } from "@/world/gates";
 import { worldStore } from "@/world/store";
 import { useWorld } from "@/world/useWorld";
-import { gateStyle } from "./gate-color";
+import { gateStyle } from "@/lib/gate-color";
 
 /** The six gates drawn as a transit line: visited stops fill with their own neon, the next one is ringed. */
 export function RouteBar() {

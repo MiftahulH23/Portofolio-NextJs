@@ -68,8 +68,19 @@ export const en: PortfolioContent = {
   experience: [
     {
       company: "Politeknik Caltex Riau",
+      position: "Programmer",
+      duration: "Oct 2026 — Present",
+      achievements: [
+        "Developed and enhanced internal web-based information systems for campus units, from requirements gathering to deployment.",
+        "Maintained existing applications by fixing bugs, applying updates and keeping them stable in daily use.",
+        "Designed and managed databases and backend services to keep data consistent and secure.",
+        "Worked with users and other units to turn their needs into new features, and wrote technical documentation.",
+      ],
+    },
+    {
+      company: "Politeknik Caltex Riau",
       position: "Laboratory Teaching Assistant",
-      duration: "Mar 2026 — Present",
+      duration: "Mar 2026 — Oct 2026",
       achievements: [
         "Assisted lecturers in conducting practical laboratory sessions for Programming, Project Management, and Software Engineering courses.",
         "Evaluated laboratory reports and provided regular feedback on student assignments to ensure learning standards were met.",
